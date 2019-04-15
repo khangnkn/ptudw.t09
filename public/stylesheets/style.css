@@ -6,3 +6,23 @@ body {
 a {
   color: #00B7FF;
 }
+
+.login-body {
+  background: linear-gradient(145deg, rgba(199,48,251,1) 0%, rgba(0,212,255,0.5032387955182073) 100%);  width: 100% !important;
+  display: flex;
+  justify-content: center;
+  margin: 0px;
+  padding: 15px;
+  width: 100% !important;
+  max-width: 100%;
+  min-height: 700px;
+}
+
+.login-form {
+  display: inline-block;
+  background-color: #ffffff;
+  width: 500px;
+  border-radius: 10px;
+  padding: 30px;
+  
+}
