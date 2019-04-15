@@ -4,11 +4,16 @@ body {
 }
 
 a {
-  color: #00B7FF;
+  color: #00b7ff;
 }
 
 .login-body {
-  background: linear-gradient(145deg, rgba(199,48,251,1) 0%, rgba(0,212,255,0.5032387955182073) 100%);  width: 100% !important;
+  background: linear-gradient(
+    145deg,
+    rgba(199, 48, 251, 1) 0%,
+    rgba(0, 212, 255, 0.5032387955182073) 100%
+  );
+  width: 100% !important;
   display: flex;
   justify-content: center;
   margin: 0px;
@@ -24,5 +29,26 @@ a {
   width: 500px;
   border-radius: 10px;
   padding: 30px;
-  
+}
+
+#change-password-form {
+  width: 400px;
+  margin: 10% auto;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.2);
+  border-radius: 2%;
+}
+#change-password-form .form-group {
+  padding: 2% 5% 0% 5%;
+}
+
+#change-password-form button {
+  margin: 5% auto;
+}
+
+#change-password-form .text-center {
+  padding: 5%;
+}
+
+#change-password-form small {
+  color: gray;
 }
