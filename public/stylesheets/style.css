@@ -17,12 +17,13 @@ a {
   padding: 0.2rem 1.0rem;
 }
 
-.login-body {
-  background: linear-gradient(
+.update-body, .login-body {
+  /* background: linear-gradient(
     145deg,
     rgba(199, 48, 251, 1) 0%,
     rgba(0, 212, 255, 0.5032387955182073) 100%
-  );
+  ); */
+  background: #ffffff;
   width: 100% !important;
   display: flex;
   justify-content: center;
@@ -33,14 +34,13 @@ a {
   min-height: 700px;
 }
 
-.login-form {
+.update-form, .login-form {
   display: inline-block;
   background-color: #ffffff;
   width: 400px;
   border-radius: 10px;
   padding: 30px;
   box-shadow: 0 3px 12px rgba(0, 0, 0, 0.2);
-  border-radius: 2%
 }
 
 .dropdown-menu {
