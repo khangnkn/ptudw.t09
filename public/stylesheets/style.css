@@ -18,11 +18,6 @@ a {
 }
 
 .update-body, .login-body {
-  /* background: linear-gradient(
-    145deg,
-    rgba(199, 48, 251, 1) 0%,
-    rgba(0, 212, 255, 0.5032387955182073) 100%
-  ); */
   background: #ffffff;
   width: 100% !important;
   display: flex;
@@ -52,7 +47,63 @@ a {
   color: #ffffff;
 }
 
+/* CSS for "Articles" page*/
+.card {
+  display: inline-block;
+  border-radius: 5px;
+  width: 300px;
+  margin: 10px;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
+}
 
+.articles-area {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.sc-info {
+  display: flex;
+  justify-content: flex-end;
+  opacity: 0.8;
+}
+
+/* Pagination */
+.paging {
+  display: flex;
+  justify-content: center;
+}
+
+
+/* Sidebar CSS */
+.btn-sidebar {
+  width: 100%;
+  text-align: start;
+  transition: 200ms;
+  border-radius: 0;
+}
+
+.btn-sidebar:hover {
+  background: #E95420;
+}
+
+.nav-ava {
+  display: flex;
+  align-items: center
+}
+
+.avatar {
+  display: inline-block;
+  height: 50px;
+  width: 50px;
+  margin: 5px;
+  border-radius: 50%;
+}
+
+.display-name {
+  font-size: 12pt;
+}
+/* Change Password Css */
 #change-password-form {
   width: 400px;
   margin: 10% auto;
