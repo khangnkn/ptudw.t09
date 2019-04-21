@@ -1,10 +1,9 @@
 var express = require("express");
 var router = express.Router();
-// const Handlebars = require('handlebars');
 
 /* GET users listing. */
-router.get("/", function(req, res, next) {
-  res.render("general-index", { title: "User" });
+router.get("/", function(req, res) {
+  res.render("general-index", { title: "User"});
 });
 
 router.get("/login", (req, res) => {
@@ -18,4 +17,5 @@ router.get("/changepassword", (req, res) => {
 router.get("/update-info", (req, res) => {
   res.render("user-update-info", { title: "Cập nhật thông tin cá nhân" });
 });
+
 module.exports = router;
