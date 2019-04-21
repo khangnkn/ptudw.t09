@@ -47,6 +47,17 @@ a {
   color: #ffffff;
 }
 
+/* CSS for detail Article Page - Content Page */
+
+.article {
+  width: auto;
+}
+
+.article .title {
+  display: flex;
+  justify-content: center;
+}
+
 /* CSS for "Articles" page*/
 .card {
   display: inline-block;
@@ -62,10 +73,14 @@ a {
   justify-content: space-evenly;
 }
 
-.sc-info {
+.sc-info, .creation-info {
   display: flex;
   justify-content: flex-end;
   opacity: 0.8;
+}
+
+.author-date {
+  display: inline-block;
 }
 
 /* Pagination */
