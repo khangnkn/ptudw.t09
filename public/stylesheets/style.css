@@ -1,18 +1,32 @@
 body {
   padding: 0px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-family: 'Roboto Slab', serif;
 }
 
 a {
   color: #00b7ff;
 }
 
-.login-body {
-  background: linear-gradient(
-    145deg,
-    rgba(199, 48, 251, 1) 0%,
-    rgba(0, 212, 255, 0.5032387955182073) 100%
-  );
+.wrapper {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+#logo-img {
+  height: 40px;
+  border-radius: 5px;
+}
+
+.navbar {
+  padding: 0.2rem 1.0rem;
+}
+
+.update-body, .login-body {
+  background: #ffffff;
   width: 100% !important;
   display: flex;
   justify-content: center;
@@ -23,14 +37,109 @@ a {
   min-height: 700px;
 }
 
-.login-form {
+.update-form, .login-form {
   display: inline-block;
   background-color: #ffffff;
-  width: 500px;
+  width: 400px;
   border-radius: 10px;
   padding: 30px;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.2);
 }
 
+.dropdown-menu {
+  margin-top: 15px;
+  background-color: #E95420;
+}
+
+.dropdown-item {
+  color: #ffffff;
+}
+
+/* CSS for detail Article Page - Content Page */
+
+.article {
+  width: auto;
+}
+
+.article .title {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+.article .abstract {
+  margin: 20px 0px;
+  font-weight: bold;
+}
+
+.article .relative-articles {
+  margin-top: 50px;
+}
+
+.txtComment {
+  width: 100%;
+}
+/* CSS for "Articles" page*/
+.card {
+  display: inline-block;
+  border-radius: 5px;
+  width: 300px;
+  margin: 10px;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
+}
+
+.articles-area {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.sc-info, .creation-info {
+  display: flex;
+  justify-content: flex-end;
+  opacity: 0.8;
+}
+
+.author-date {
+  display: inline-block;
+}
+
+/* Pagination */
+.paging {
+  display: flex;
+  justify-content: center;
+}
+
+
+/* Sidebar CSS */
+.btn-sidebar {
+  width: 100%;
+  text-align: start;
+  transition: 200ms;
+  border-radius: 0;
+}
+
+.btn-sidebar:hover {
+  background: #E95420;
+}
+
+.nav-ava {
+  display: flex;
+  align-items: center
+}
+
+.avatar {
+  display: inline-block;
+  height: 50px;
+  width: 50px;
+  margin: 5px;
+  border-radius: 50%;
+}
+
+.display-name {
+  font-size: 12pt;
+}
+/* Change Password Css */
 #change-password-form {
   width: 400px;
   margin: 10% auto;

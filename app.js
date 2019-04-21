@@ -1,12 +1,14 @@
-var createError = require("http-errors");
-var express = require("express");
-var path = require("path");
-var cookieParser = require("cookie-parser");
-var logger = require("morgan");
-const exphbs = require("express-handlebars");
-const froala-editor = require("froala-editor");
-var indexRouter = require("./routes/index");
-var usersRouter = require("./routes/users");
+var createError = require('http-errors');
+var express = require('express');
+var path = require('path');
+var cookieParser = require('cookie-parser');
+var logger = require('morgan');
+const exphbs = require('express-handlebars')
+
+const indexRouter = require('./routes/index');
+const usersRouter = require('./routes/users');
+const writerRouter = require('./routes/writer');
+const articleRouter = require('./routes/article');
 
 var app = express();
 
@@ -28,8 +30,15 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
+<<<<<<< HEAD
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
+=======
+app.use('/', indexRouter);
+app.use('/users', usersRouter);
+app.use('/writer', writerRouter);
+app.use('/article', articleRouter);
+>>>>>>> master
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -44,7 +53,11 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
+<<<<<<< HEAD
   res.render("error");
+=======
+  res.render('general-error');
+>>>>>>> master
 });
 
 module.exports = app;

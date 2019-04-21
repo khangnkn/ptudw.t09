@@ -1,18 +1,46 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-    <a class="navbar-brand" href="/">Người vận chuyển</a>
+<nav class="navbar navbar-expand-sm navbar-dark bg-primary d-flex">
+    <a class="navbar-brand" href="/">
+        <img src="/images/logo.png" alt="logo" id="logo-img">
+    </a>
     <ul class="navbar-nav">
-        <li class="nav-item">
-            <a href="#" class="nav-link">Home</a>
+        <li class="nav-item dropdown">
+            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" id="phone-dropdown">ĐIỆN THOẠI</a>
+            <div class="dropdown-menu">
+                <a href="#" class="dropdown-item">Samsung</a>
+                <a href="#" class="dropdown-item">Huawei</a>
+                <a href="#" class="dropdown-item">Apple</a>
+                <a href="#" class="dropdown-item">Xiaomi</a>
+                <a href="#" class="dropdown-item">Khác</a>
+            </div>
+        </li>
+        <li class="nav-item dropdown">
+            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" id="laptop-dropdown">LAPTOP</a>
+            <div class="dropdown-menu">
+                <a href="#" class="dropdown-item">Dell</a>
+                <a href="#" class="dropdown-item">Hewlett-Packard</a>
+                <a href="#" class="dropdown-item">Macbook</a>
+                <a href="#" class="dropdown-item">Asus</a>
+                <a href="#" class="dropdown-item">Khác</a>
+            </div>
+        </li>
+        <li class="nav-item dropdown">
+            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">LẬP TRÌNH</a>
+            <div class="dropdown-menu">
+                <a href="#" class="dropdown-item">Công nghệ mới</a>
+                <a href="#" class="dropdown-item">Data Science</a>
+                <a href="#" class="dropdown-item">Artificial Intelligence</a>
+            </div>
         </li>
         <li class="nav-item">
-            <a href="#" class="nav-link">About</a>
-        </li>
-        <li class="nav-item">
-            <a href="#" class="nav-link">Contact</a>
+            <a href="#" class="nav-link">LIÊN HỆ</a>
         </li>
         <li class="nav-item active">
-            <a href="/users/login" class="nav-link">Đăng nhập</a>
+            <a href="/users/login" class="nav-link">ĐĂNG NHẬP</a>
         </li>
         
     </ul>
+    <form action="" class="form-inline ml-auto">
+            <input type="text" class="form-control mr-sm-2" placeholder="Thang máy, công tố viên, ...">
+            <button class="btn btn-warning my-2 my-sm-0">Tìm kiếm</button>
+        </form>
 </nav>
