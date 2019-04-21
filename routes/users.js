@@ -16,6 +16,6 @@ router.get("/changepassword", (req, res) => {
 });
 
 router.get("/update-info", (req, res) => {
-  res.render("user-update-info", {title: 'Cập nhật thông tin cá nhân'})
-})
+  res.render("user-update-info", { title: "Cập nhật thông tin cá nhân" });
+});
 module.exports = router;

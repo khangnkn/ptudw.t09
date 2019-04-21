@@ -79,30 +79,7 @@ a {
 .txtComment {
   width: 100%;
 }
-/* CSS for "Articles" page*/
-.card {
-  display: inline-block;
-  border-radius: 5px;
-  width: 300px;
-  margin: 10px;
-  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
-}
 
-.articles-area {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-}
-
-.sc-info, .creation-info {
-  display: flex;
-  justify-content: flex-end;
-  opacity: 0.8;
-}
-
-.author-date {
-  display: inline-block;
-}
 
 /* Pagination */
 .paging {
@@ -160,4 +137,10 @@ a {
 
 #change-password-form small {
   color: gray;
+}
+
+.no-border {
+  outline: none;
+  box-shadow: none !important;
+  border: none;
 }
