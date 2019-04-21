@@ -1,13 +1,111 @@
 {{!-- {{> navbar}} --}}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <div class="container update-body">
-    <form action="" class="update-form">
-        <div class="form-group">
-            <label for="name">Họ tên </label>
-            <input type="text" id="name" class="form-control" placeholder="Nguyễn Công Hưng">
+<div class="container">
+    <div class="row">
+  		<div class="col-sm-3"><!--left col-->
+              
+
+      <div class="text-center">
+        <img src="/images/avatar.png" style = "heigth:192px;width:192px;object-fit: fill;" class="avatar img-circle img-thumbnail" alt="avatar">
+        <h6>Cập nhật ảnh đại diện...</h6>
+        <input type="file" class="text-center center-block file-upload">
+      </div></hr><br>
+
+               
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <p id="username" style="font-weight:bold;margin: auto;text-align: center;">techhub</p>
+            </div>
+            <div class="panel-body"  style="font-weight:bold;display: flex;justify-content:space-between;align-items:baseline;">
+                    <p style="font-weight:bold;">Premium: 7 ngày</p>
+                    <button type="button" class="btn btn-primary disabled" 
+                    style="margin-left:50px;
+                    background: #03001e;  /* fallback for old browsers */
+                    background: -webkit-linear-gradient(to right, #fdeff9, #ec38bc, #7303c0, #03001e);  /* Chrome 10-25, Safari 5.1-6 */
+                    background: linear-gradient(to right, #fdeff9, #ec38bc, #7303c0, #03001e); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+                    "
+                    >Active</button>
+            </div>
         </div>
-        <div class="form-group">
-            <label for="address">Địa chỉ:</label>
-            <input type="text" id="address" class="form-control" placeholder="227 Nguyễn Văn Cừ">
-        </div>
-    </form>
+        <ul class="list-group" style="margin-top:10px;">
+                <li class="list-group-item text-muted">Hoạt động<i class="fa fa-dashboard fa-1x"></i></li>
+                <li class="list-group-item text-right"><span class="pull-left"><strong>Đọc</strong></span> 125</li>
+                <li class="list-group-item text-right"><span class="pull-left"><strong>Thích</strong></span> 13</li>
+                <li class="list-group-item text-right"><span class="pull-left"><strong>Chia sẻ</strong></span> 37</li>
+        </ul> 
+        </div><!--/col-3-->
+    	<div class="col-sm-9" >
+            <h2>Cập nhật thông tin</h2>
+
+              
+          <div class="tab-content">
+            <div class="tab-pane active" id="home">
+                <hr>
+                  <form class="form" action="##" method="post" id="registrationForm">
+                      <div class="form-group">
+                          <div class="col-xs-6">
+                              <label for="first_name"><h4>Họ</h4></label>
+                              <input type="text" class="form-control" name="last_name" id="last_name" placeholder="Họ" title="Nhập họ của bạn.">
+                          </div>
+                      </div>
+                      <div class="form-group">
+                          
+                          <div class="col-xs-6">
+                            <label for="last_name"><h4>Tên</h4></label>
+                              <input type="text" class="form-control" name="first_name" id="first_name" placeholder="Tên" title="Nhập tên của bạn.">
+                          </div>
+                      </div>
+          
+                      <div class="form-group">
+                          <div class="col-xs-6">
+                             <label for="mobile"><h4>Email</h4></label>
+                              <input type="text" class="form-control" name="email" id="email" placeholder="techhub@email.com" title="Enter your email.">
+                          </div>
+                      </div>
+                      <div class="form-group">
+                          <div class="col-xs-6">
+                              <label for="email"><h4>Địa chỉ</h4></label>
+                              <input type="email" class="form-control" id="location" placeholder="Hồ Chí Minh" title="Enter a location">
+                          </div>
+                      </div>
+                      <div class="form-group">
+                          
+                          <div class="col-xs-6">
+                              <label for="password"><h4>Mật khẩu</h4></label>
+                              <input type="password" class="form-control" name="password" id="password" placeholder="Mật khẩu" title="Nhập mật khẩu muốn đổi." disabled>
+                          </div>
+                      </div>
+                      <div class="form-group">
+                          
+                          <div class="col-xs-6">
+                            <label for="password2"><h4>Xác nhận mật khẩu</h4></label>
+                              <input type="password" class="form-control" name="verify" id="verify" placeholder="Nhập lại mật khẩu" title="Xác nhận lại mật khẩu" disabled>
+                          </div>
+                      </div>
+
+                      <div style="align-items:center;margin-left: 15px;">
+                            <input class="form-check-inputcontain" type="checkbox" value="" id="defaultCheck1">
+                            <label class="form-check-label" for="defaultCheck1">
+                                Click chọn nếu bạn muốn đổi mật khẩu.
+                            </label>
+                      </div>
+                      <div class="form-group">
+                           <div class="col-xs-12">
+                                <br>
+                              	<button class="btn btn-lg btn-success" type="submit"><i class="glyphicon glyphicon-ok-sign"></i> Lưu</button>
+                               	<button class="btn btn-lg" type="reset" style="background-color:#e6e6e6;"><i class="glyphicon glyphicon-repeat"></i> Đặt lại</button>
+                            </div>
+                      </div>
+                  </form>
+              
+              <hr>
+              
+             </div><!--/tab-pane-->
+               
+              </div><!--/tab-pane-->
+          </div><!--/tab-content-->
+
+        </div><!--/col-9-->
+    </div><!--/row-->
 </div>
