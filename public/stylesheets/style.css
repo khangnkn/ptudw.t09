@@ -52,3 +52,9 @@ a {
 #change-password-form small {
   color: gray;
 }
+
+.no-border {
+  outline: none;
+  box-shadow: none !important;
+  border: none;
+}

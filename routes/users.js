@@ -14,4 +14,9 @@ router.get("/login", (req, res) => {
 router.get("/changepassword", (req, res) => {
   res.render("changepassword", { title: "Dang nhap" });
 });
+
+router.get("/new-post", (req, res) => {
+  res.render("new-post", { title: "Tao bai viet" });
+});
+
 module.exports = router;
