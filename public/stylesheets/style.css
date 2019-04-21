@@ -64,8 +64,21 @@ a {
 .article .title {
   display: flex;
   justify-content: center;
+  margin-bottom: 15px;
 }
 
+.article .abstract {
+  margin: 20px 0px;
+  font-weight: bold;
+}
+
+.article .relative-articles {
+  margin-top: 50px;
+}
+
+.txtComment {
+  width: 100%;
+}
 /* CSS for "Articles" page*/
 .card {
   display: inline-block;
