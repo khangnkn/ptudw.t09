@@ -8,6 +8,14 @@ a {
   color: #00b7ff;
 }
 
+.wrapper {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
 #logo-img {
   height: 40px;
   border-radius: 5px;
