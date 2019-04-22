@@ -1,0 +1,93 @@
+{{!-- {{> navbar}} --}}
+<link href="/stylesheets/updateinfor.css" rel="stylesheet">
+<div class = "container update-body-1">
+        <div class="row">
+            <div class="col-sm-3" id="colsm3">
+                <div class="text-center">
+                    <img src="/images/avatar.jpg" class="avatar" id="userimg">
+                    <h6>Cập nhật ảnh đại diện...</h6>
+                    <input type="file" class="file-upload">
+                </div>
+                <br>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <p id="nameuser">techhub</p>
+                    </div>
+                    <div class="panel-body" id="premiumPanel">
+                        <p>Premium:7 ngày</p>
+                        <button type="button" class="btn btn-primary disabled" id="activebtn" disabled>Active</button>
+                    </div>
+                </div>
+
+                <ul class="list-group">
+                    <li class="list-group-item text-muted">Hoạt động</li>
+                    <li class="list-group-item text-right"><span class="pull-left"><Strong>Đọc</Strong></span>125</li>
+                    <li class="list-group-item text-right"><span class="pull-left"><Strong>Thích</Strong></span>13</li>
+                    <li class="list-group-item text-right"><span class="pull-left"><Strong>Chia sẻ</Strong></span>5</li>
+                </ul>
+            </div>
+            <div class="col-sm-9" id="register">
+                <h2>Cập nhật thông tin</h2>
+
+                <div class="tab-content">
+                    <div class="tab-pane active">
+                        <hr>
+                        <form class="form" action="##" method="POST" id="registerForm">
+                            <div class="form-group">
+                                <div class="col-xs-6">
+                                    <label><h4>Họ</h4></label>
+                                    <input type="text" class="form-control" name="last_name" placeholder="Họ" title="Nhập họ của bạn.">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                    <div class="col-xs-6">
+                                        <label><h4>Tên</h4></label>
+                                        <input type="text" class="form-control" name="first_name" placeholder="Tên" title="Nhập tên của bạn.">
+                                    </div>
+                            </div>
+                            <div class="form-group">
+                                    <div class="col-xs-6">
+                                        <label><h4>Email</h4></label>
+                                        <input type="email" class="form-control" name="email" placeholder="techhub@gmail.com" title="Nhập gmail của bạn.">
+                                    </div>
+                            </div>
+                            <div class="form-group">
+                                    <div class="col-xs-6">
+                                        <label><h4>Địa chỉ</h4></label>
+                                        <input type="text" class="form-control" name="address" placeholder="Hồ Chí Minh" title="Nhập địa chỉ của bạn.">
+                                    </div>
+                            </div>
+                            <div class="form-group">
+                                    <div class="col-xs-6">
+                                        <label><h4>Mật khẩu</h4></label>
+                                        <input type="password" class="form-control" name="password" placeholder="Mật khẩu" title="Nhập mật khẩu của bạn." disabled>
+                                    </div>
+                            </div>
+                            <div class="form-group">
+                                    <div class="col-xs-6">
+                                        <label><h4>Xác nhận mật khẩu</h4></label>
+                                        <input type="password" class="form-control" name="verifyPassword" placeholder="Nhập lại mật khẩu" title="Nhập lại mật khẩu của bạn." disabled>
+                                    </div>
+                            </div>
+                            <div class="form-group" id="changePassDiv">
+                                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                                    <label class="form-check-label" for="defaultCheck1">
+                                        Click chọn nếu bạn muốn đổi mật khẩu.
+                                    </label>
+                            </div>
+
+                            <div class="form-group" >
+                                <div class="col-xs-12">
+                                    <br>
+                                    <button class="btn btn-lg btn-success" type="submit"><i class="glyphicon glyphicon-ok-sign"></i>Cập nhật</button>
+                                    <button class="btn btn-lg" type="reset" id="resetBtn" style="background-color:#c7c7c7;color:gray;"><i class="glyphicon glyphicon-repeat"></i>Đặt lại</button>
+                                </div>
+                            </div>
+                        </form>
+                        </hr>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>

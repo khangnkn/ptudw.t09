@@ -1,60 +1,118 @@
-/*Cap nhat thong tin CSS*/
-@font-face{
-font-family:'Glyphicons Halflings';
-src:url(./fonts/Glyphicon/glyphicons-halflings-regular.eot);
-src:url(./fonts/Glyphicon/glyphicons-halflings-regular.eot?#iefix) format('embedded-opentype'),
-url(./fonts/Glyphicon/glyphicons-halflings-regular.woff2) format('woff2'),
-url(./fonts/Glyphicon/glyphicons-halflings-regular.woff) format('woff'),
-url(./fonts/Glyphicon/glyphicons-halflings-regular.ttf) format('truetype'),
-url(./fonts/Glyphicon/glyphicons-halflings-regular.svg#glyphicons_halflingsregular) format('svg')}
-.glyphicon{
-	position:relative;
-	top:1px;
-	display:inline-block;
-	font-family:'Glyphicons Halflings';
-	font-style:normal;
-	font-weight:400;
-	line-height:1;
-	-webkit-font-smoothing:antialiased;
-	-moz-osx-font-smoothing:grayscale}
-.glyphicon-ok-sign:before{content:"\e084"}
-.glyphicon-repeat:before{content:"\e030"}
-.btn-lg{border-width:5px 5px 0;border-bottom-width:0}
-.btn-lg {border-width:0 5px 5px}
+.update-body-1{
+  margin-top: 20px;
+  background: #ffffff;
+  width: 65% !important;
+  max-width: 100%;
+  min-height: 700px;
+}
+#register{
+    margin-top: 100px;
+}
 
+#userimg{
+    height: 192px;
+    width:192px;
+    border-radius: 50%;
+    display:inline-block;
+    max-width:100%;
+    padding:4px;
+    line-height:1.42857143;
+    background-color:#fff;
+    border:1px solid #ddd;
+    -webkit-transition:all .2s ease-in-out;
+    -o-transition:all .2s ease-in-out;
+    transition:all .2s ease-in-out;
+}
+
+#nameuser{
+    font-weight:bold;
+    margin: auto;
+    text-align: center;
+}
+#premiumPanel{
+    font-weight:bold;
+    display: flex;
+    justify-content:space-between;
+    align-items:baseline;
+    padding: 10px 10px 5px 10px;
+}
+#activebtn{
+    background: #03001e;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #fdeff9, #ec38bc, #7303c0, #03001e);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #fdeff9, #ec38bc, #7303c0, #03001e); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.pull-left{
+    float:left!important}
+   
 .panel{
-	margin-bottom:20px;
+	margin-bottom:10px;
 	background-color:#fff;
 	border:1px solid transparent;
 	border-radius:4px;
 	-webkit-box-shadow:0 1px 1px rgba(0,0,0,.05);
 	box-shadow:0 1px 1px rgba(0,0,0,.05)}
-.panel-default{border-color:#ddd}
+
+.panel-default{
+    border-color:#ddd}
+
 .panel-default>.panel-heading
-{color:#333;background-color:#f5f5f5;border-color:#ddd}
-.panel-default>.panel-heading+.panel-collapse>.panel-body{border-top-color:#ddd}
-.panel-default>.panel-heading .badge{color:#f5f5f5;background-color:#333}
-.panel-default>.panel-footer+.panel-collapse>.panel-body{border-bottom-color:#ddd}
-.panel-heading{color:#fff;background-color:#337ab7;border-color:#337ab7}
-.panel-body{border-top:1px solid #ddd}
-.panel-group .panel-footer{border-top:0}
-.panel-group .panel-footer+.panel-collapse .panel-body{border-bottom:1px solid #ddd}
-.zoom {
-  padding: 50px;
-  background-color: green;
-  transition: transform .2s;
-  width: 200px;
-  height: 200px;
-  margin: 0 auto;
+{
+    color:#333;
+    background-color:#f5f5f5;
+    border-color:#ddd}
+
+.col-xs-12,.col-xs-6{
+    position:relative;
+    min-height:1px;
+
+    padding-right:15px;
+    padding-left:15px;
+    float: left;
+    }
+.col-xs-6{
+    width: 50%;
+    padding-top: 5px;
 }
-.img-thumbnail1{
-display:inline-block;
-max-width:100%;
-height:auto;padding:4px;
-line-height:1.42857143;
-background-color:#fff;
-border:1px solid #ddd;
-border-radius:4px;
--webkit-transition:all .2s ease-in-out;
--o-transition:all .2s ease-in-out;
-transition:all .2s ease-in-out}
+
+.col-xs-12{
+    padding-top: 0px;
+    width: 100%;
+}
+
+.btndiv{
+    margin-top: 0px;
+}
+
+#changePassDiv{
+    align-items:center;
+    margin-left: 15px;
+    float: left;
+    min-height:1px;
+    padding-right:20px;
+    padding-left:20px;
+    padding-top:10px;
+    padding-bottom: 1px;
+}
+
+@font-face{
+    font-family:'Glyphicons Halflings';
+    src:url(./fonts/Glyphicon/glyphicons-halflings-regular.eot);
+    src:url(./fonts/Glyphicon/glyphicons-halflings-regular.eot?#iefix) format('embedded-opentype'),
+    url(./fonts/Glyphicon/glyphicons-halflings-regular.woff2) format('woff2'),
+    url(./fonts/Glyphicon/glyphicons-halflings-regular.woff) format('woff'),
+    url(./fonts/Glyphicon/glyphicons-halflings-regular.ttf) format('truetype'),
+    url(./fonts/Glyphicon/glyphicons-halflings-regular.svg#glyphicons_halflingsregular) format('svg')}
+    .glyphicon{
+        position:relative;
+        top:1px;
+        display:inline-block;
+        font-family:'Glyphicons Halflings';
+        font-style:normal;
+        font-weight:400;
+        line-height:1;
+        margin-right: 5px;
+        -webkit-font-smoothing:antialiased;
+        -moz-osx-font-smoothing:grayscale}
+    .glyphicon-ok-sign:before{content:"\e084"}
+    .glyphicon-repeat:before{content:"\e030";color: gray;}

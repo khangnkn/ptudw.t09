@@ -10,12 +10,19 @@
     crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
   <link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
-  <link rel='stylesheet' href='/stylesheets/style.css' />
+  <link rel='stylesheet' href='/stylesheets/main.css' />
+  {{#if extra}}
+  {{{extra}}}
+  {{/if}}
+
 </head>
 
 <body>
   {{> navbar}}
-  {{{ body }}}
+  <div class="wrapper">
+    {{{ body }}}
+  </div>
+
   {{> footer}}
 </body>
 
