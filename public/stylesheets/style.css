@@ -8,14 +8,6 @@ a {
   color: #00b7ff;
 }
 
-.wrapper {
-  width: 100%;
-  padding-right: 15px;
-  padding-left: 15px;
-  margin-right: auto;
-  margin-left: auto;
-}
-
 #logo-img {
   height: 40px;
   border-radius: 5px;
@@ -25,7 +17,7 @@ a {
   padding: 0.2rem 1.0rem;
 }
 
-.update-body, .login-body {
+.update-body, .login-body{
   background: #ffffff;
   width: 100% !important;
   display: flex;
@@ -55,31 +47,26 @@ a {
   color: #ffffff;
 }
 
-/* CSS for detail Article Page - Content Page */
-
-.article {
-  width: auto;
+/* CSS for "Articles" page*/
+.card {
+  display: inline-block;
+  border-radius: 5px;
+  width: 300px;
+  margin: 10px;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
 }
 
-.article .title {
+.articles-area {
   display: flex;
-  justify-content: center;
-  margin-bottom: 15px;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
 }
 
-.article .abstract {
-  margin: 20px 0px;
-  font-weight: bold;
+.sc-info {
+  display: flex;
+  justify-content: flex-end;
+  opacity: 0.8;
 }
-
-.article .relative-articles {
-  margin-top: 50px;
-}
-
-.txtComment {
-  width: 100%;
-}
-
 
 /* Pagination */
 .paging {
@@ -139,12 +126,4 @@ a {
   color: gray;
 }
 
-<<<<<<< HEAD:public/stylesheets/style.css
 
-=======
-.no-border {
-  outline: none;
-  box-shadow: none !important;
-  border: none;
-}
->>>>>>> ffe34b4f142f42dbe55a653f173b8d4865448267:public/stylesheets/main.css
