@@ -1,14 +1,14 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
-const exphbs = require('express-handlebars')
+var createError = require("http-errors");
+var express = require("express");
+var path = require("path");
+var cookieParser = require("cookie-parser");
+var logger = require("morgan");
+const exphbs = require("express-handlebars");
 
-const indexRouter = require('./routes/index');
-const usersRouter = require('./routes/users');
-const writerRouter = require('./routes/writer');
-const articleRouter = require('./routes/article');
+const indexRouter = require("./routes/index");
+const usersRouter = require("./routes/users");
+const writerRouter = require("./routes/writer");
+const articleRouter = require("./routes/article");
 
 var app = express();
 
@@ -30,10 +30,10 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
-app.use('/writer', writerRouter);
-app.use('/article', articleRouter);
+app.use("/", indexRouter);
+app.use("/users", usersRouter);
+app.use("/writer", writerRouter);
+app.use("/article", articleRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -48,7 +48,7 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.render('general-error');
+  res.render("general-error");
 });
 
 module.exports = app;
