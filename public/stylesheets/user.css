@@ -1,7 +1,7 @@
 /* Change Password Css */
 #change-password-form {
   width: 400px;
-  margin: 10% auto;
+  margin: 2% auto;
   box-shadow: 0 3px 12px rgba(0, 0, 0, 0.2);
   border-radius: 2%;
 }
