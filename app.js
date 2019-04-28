@@ -6,7 +6,7 @@ var logger = require('morgan');
 const exphbs = require('express-handlebars')
 
 const indexRouter = require('./routes/index');
-const userRouter = require('./routes/user');
+const subscriberRouter = require('./routes/subscriber');
 const writerRouter = require('./routes/writer');
 const articleRouter = require('./routes/article');
 
@@ -31,7 +31,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use('/', indexRouter);
-app.use('/user', userRouter);
+app.use('/subscriber', subscriberRouter);
 app.use('/writer', writerRouter);
 app.use('/article', articleRouter);
 
