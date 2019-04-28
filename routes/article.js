@@ -5,7 +5,7 @@ router.get('/', function(req, res) {
     res.redirect('/');
 })
 
-router.get('/article-01',function (req, res) {
+router.get('/article-demo',function (req, res) {
     var a_data = {
         a_title: '5 tính năng hay nhất của MIUI 10 trên máy Xiaomi',
         a_author: 'Khang Nguyen',

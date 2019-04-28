@@ -1,15 +1,19 @@
-<div class="container editor">
-    <input id="post-title" type="text" class="form-control border-0 shadow-none display-4" placeholder="Tiêu đề"
-        width="100%" value="" />
-    <div id="froala-editor" class="fr-box custom-theme fr-basic fr-top"></div>
-    <div class="form-group d-flex flex-row-reverse">
-        <button type="button" class="btn btn-outline-primary mt-5 right">Đăng bài</button>
+<div class="row">
+    <div class="col-sm-2">
+        {{> side-panel}}
     </div>
-    <label for="tags">Tags:</label>
-    <input type="text" name="tags" id="tags" class="border-0 shadow-none" />
+    <div class="col-sm-10">
+        <input id="post-title" type="text" class="form-control no-border lead" placeholder="Tiêu đề" width="100%" />
+        <div id="froala-editor" class="fr-box custom-theme fr-basic fr-top"></div>
+        <div class="form-group d-flex flex-row-reverse">
+            <button type="button" class="btn btn-outline-primary mt-5 right">Đăng bài</button>
+        </div>
+        <label for="tags">Tags:</label>
+        <input type="text" name="tags" id="tags" class="border-0 shadow-none" />
+    </div>
+</div>
 
-</div>
-</div>
+
 
 <!-- Include Editor JS files. -->
 <script type="text/javascript"
