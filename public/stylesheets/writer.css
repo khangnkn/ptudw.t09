@@ -1,25 +1,31 @@
 /* CSS for "Articles" page*/
 
 .card {
-    display: inline-block;
-    border-radius: 5px;
-    width: 300px;
-    margin: 10px;
-    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
-  }
-  
-  .articles-area {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-  }
-  
-  .sc-info, .creation-info {
-    display: flex;
-    justify-content: flex-end;
-    opacity: 0.8;
-  }
-  
-  .author-date {
-    display: inline-block;
-  }
+  display: inline-block;
+  border-radius: 5px;
+  width: 300px;
+  margin: 10px;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
+}
+
+.articles-area {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.sc-info,
+.creation-info {
+  display: flex;
+  justify-content: flex-end;
+  opacity: 0.8;
+}
+
+.author-date {
+  display: inline-block;
+}
+
+.container.editor {
+  margin-top: 2%;
+  width: 65%;
+}
