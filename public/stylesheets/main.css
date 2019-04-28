@@ -1,7 +1,7 @@
 body {
   padding: 0px;
   font-size: 14px;
-  font-family: 'Roboto Slab', serif;
+  font-family: "Roboto Slab", serif;
 }
 
 a {
@@ -28,10 +28,11 @@ a {
 }
 
 .navbar {
-  padding: 0.2rem 1.0rem;
+  padding: 0.2rem 1rem;
 }
 
-.update-body, .login-body {
+.update-body,
+.login-body {
   background: #ffffff;
   width: 100% !important;
   display: flex;
@@ -43,7 +44,8 @@ a {
   /* min-height: 700px; */
 }
 
-.update-form, .login-form {
+.update-form,
+.login-form {
   display: inline-block;
   background-color: #ffffff;
   width: 400px;
@@ -54,7 +56,7 @@ a {
 
 .dropdown-menu {
   margin-top: 15px;
-  background-color: #E95420;
+  background-color: #e95420;
 }
 
 .dropdown-item {
@@ -86,13 +88,11 @@ a {
   width: 100%;
 }
 
-
 /* Pagination */
 .paging {
   display: flex;
   justify-content: center;
 }
-
 
 /* Sidebar CSS */
 .btn-sidebar {
@@ -103,12 +103,12 @@ a {
 }
 
 .btn-sidebar:hover {
-  background: #E95420;
+  background: #e95420;
 }
 
 .nav-ava {
   display: flex;
-  align-items: center
+  align-items: center;
 }
 
 .avatar {
@@ -121,32 +121,4 @@ a {
 
 .display-name {
   font-size: 12pt;
-}
-/* Change Password Css */
-#change-password-form {
-  width: 400px;
-  margin: 10% auto;
-  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.2);
-  border-radius: 2%;
-}
-#change-password-form .form-group {
-  padding: 2% 5% 0% 5%;
-}
-
-#change-password-form button {
-  margin: 5% auto;
-}
-
-#change-password-form .text-center {
-  padding: 5%;
-}
-
-#change-password-form small {
-  color: gray;
-}
-
-.no-border {
-  outline: none;
-  box-shadow: none !important;
-  border: none;
 }
