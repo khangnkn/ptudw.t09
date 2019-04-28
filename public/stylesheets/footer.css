@@ -22,7 +22,7 @@
   font-weight: normal !important;
   font-variant: normal !important;
   text-transform: none !important;
-  speak: none;
+  /* speak: none; */
   line-height: 1;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -35,29 +35,23 @@
   font-weight: normal !important;
   font-variant: normal !important;
   text-transform: none !important;
-  speak: none;
+  /* speak: none; */
   line-height: 1;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-body {
-
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 172px;
 }
 
-html,
-body {
-    font-style: normal;
-    line-height: 1.5;
-  height: auto;
-  min-height: 100vh;
-  position: relative;
-  color: #232323;
-}
       
 .cid-rnNh0X6qr0 {
     padding-top: 45px;
-    padding-bottom: 45px;
+    padding-bottom: 10px;
     background-color: #ffffff;
   }
 @media (max-width: 767px) {
@@ -70,9 +64,9 @@ body {
     font-size: 7rem;
     color: #f36;
   }
-.cid-rnNh0X6qr0 .media-wrap img {
+/* .cid-rnNh0X6qr0 .media-wrap img {
     height: 6rem;
-  }
+  } */
 .mbr-text {
     font-style: normal;
     line-height: 1.6;
