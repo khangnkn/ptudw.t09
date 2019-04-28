@@ -6,7 +6,7 @@ var logger = require('morgan');
 const exphbs = require('express-handlebars')
 
 const indexRouter = require('./routes/index');
-const usersRouter = require('./routes/users');
+const userRouter = require('./routes/user');
 const writerRouter = require('./routes/writer');
 const articleRouter = require('./routes/article');
 
@@ -31,9 +31,13 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/user', userRouter);
 app.use('/writer', writerRouter);
 app.use('/article', articleRouter);
+
+app.get('/sitemap', (req, res) => {
+  res.render('sitemap', {title: 'Sitemap'})
+})
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

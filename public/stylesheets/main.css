@@ -8,15 +8,21 @@ a {
   color: #00b7ff;
 }
 
+.main {
+  position: relative;
+  min-height: 100vh;
+}
+
 .wrapper {
   width: 100%;
   padding-right: 15px;
   padding-left: 15px;
+  padding-bottom: 172px;
   margin-right: auto;
   margin-left: auto;
 }
 
-#logo-img {
+.logo-img {
   height: 40px;
   border-radius: 5px;
 }
@@ -34,7 +40,7 @@ a {
   padding: 15px;
   width: 100% !important;
   max-width: 100%;
-  min-height: 700px;
+  /* min-height: 700px; */
 }
 
 .update-form, .login-form {
@@ -139,12 +145,8 @@ a {
   color: gray;
 }
 
-<<<<<<< HEAD:public/stylesheets/style.css
-
-=======
 .no-border {
   outline: none;
   box-shadow: none !important;
   border: none;
 }
->>>>>>> ffe34b4f142f42dbe55a653f173b8d4865448267:public/stylesheets/main.css

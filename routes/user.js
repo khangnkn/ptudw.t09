@@ -10,7 +10,7 @@ router.get("/login", (req, res) => {
   res.render("user-login", { title: "Đăng nhập" });
 });
 
-router.get("/changepassword", (req, res) => {
+router.get("/change-password", (req, res) => {
   res.render("user-change-password", { title: "Đổi mật khẩu" });
 });
 

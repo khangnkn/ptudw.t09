@@ -1,8 +1,14 @@
-<div class="container">
-    <input id="post-title" type="text" class="form-control no-border lead" placeholder="Tiêu đề" width="100%" />
-    <div id="froala-editor" class="fr-box custom-theme fr-basic fr-top"></div>
+<div class="row">
+    <div class="col-sm-2">
+        {{> side-panel}}
+    </div>
+    <div class="col-sm-10">
+        <input id="post-title" type="text" class="form-control no-border lead" placeholder="Tiêu đề" width="100%" />
+        <div id="froala-editor" class="fr-box custom-theme fr-basic fr-top"></div>
+    </div>
 </div>
-</div>
+
+
 
 <!-- Include Editor JS files. -->
 <script type="text/javascript"
