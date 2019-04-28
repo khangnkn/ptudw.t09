@@ -2,8 +2,14 @@ var express = require("express");
 var router = express.Router();
 
 router.get("/", function(req, res) {
-  res.render("writer-welcome", { title: "Welcome, writer!" });
+  res.redirect('/writer/welcome')
 });
+
+router.get("/welcome", function(req, res) {
+  res.render("writer-welcome", {
+    title: "Chào mừng, phóng viên!",
+    extra: '<link rel="stylesheet" href="/stylesheets/writer.css">'});
+})
 
 router.get("/editor", function(req, res) {
   res.render("writer-new-post", {
@@ -15,13 +21,9 @@ router.get("/editor", function(req, res) {
 
 router.get("/articles", function(req, res) {
   res.render("writer-show-articles", {
-    title: "Articles",
+    title: "Các bài đã viết",
     extra: '<link rel="stylesheet" href="/stylesheets/writer.css">',
   });
-});
-
-router.get("/new-post", (req, res) => {
-  res.render("new-post", { title: "Đăng bài" });
 });
 
 module.exports = router;
