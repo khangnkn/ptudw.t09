@@ -1,0 +1,8 @@
+.action::before {
+  font-family: "fontawesome";
+  content: "\f142";
+}
+
+.dropdown-toggle::after {
+  display: none;
+}
