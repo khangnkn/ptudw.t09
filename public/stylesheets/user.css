@@ -29,10 +29,12 @@
 .unmask::before {
   font-family: "fontawesome";
   content: "\f06e";
+  color: gray;
 }
 
 .password[type="text"] + .input-group-append .unmask:before {
   content: "\f070";
+  color: #e95420;
 }
 #valid {
   font-size: 12px;
