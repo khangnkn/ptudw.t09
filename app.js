@@ -1,14 +1,15 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
-const exphbs = require('express-handlebars')
+var createError = require("http-errors");
+var express = require("express");
+var path = require("path");
+var cookieParser = require("cookie-parser");
+var logger = require("morgan");
+const exphbs = require("express-handlebars");
 
-const indexRouter = require('./routes/index');
-const subscriberRouter = require('./routes/subscriber');
-const writerRouter = require('./routes/writer');
-const articleRouter = require('./routes/article');
+const indexRouter = require("./routes/index");
+const subscriberRouter = require("./routes/subscriber");
+const writerRouter = require("./routes/writer");
+const articleRouter = require("./routes/article");
+const editorRouter = require("./routes/editor");
 
 var app = express();
 
@@ -30,14 +31,15 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
-app.use('/', indexRouter);
-app.use('/subscriber', subscriberRouter);
-app.use('/writer', writerRouter);
-app.use('/article', articleRouter);
+app.use("/", indexRouter);
+app.use("/subscriber", subscriberRouter);
+app.use("/writer", writerRouter);
+app.use("/article", articleRouter);
+app.use("/editor", editorRouter);
 
-app.get('/sitemap', (req, res) => {
-  res.render('sitemap', {title: 'Sitemap'})
-})
+app.get("/sitemap", (req, res) => {
+  res.render("sitemap", { title: "Sitemap" });
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
