@@ -3,7 +3,7 @@
         <img src="/images/ava_test.jpg" alt="Avatar" class="avatar">
         <span class="display-name">Nguyen Khang</span>
     </li>
-    <li class="nav-item">
+    {{!-- <li class="nav-item">
         <a class="btn btn-sidebar" href="/writer/editor">
             <span><img src="/images/icons/baseline-create-24px.svg" alt=""></span>
             Viết bài
@@ -13,5 +13,12 @@
         <a class="btn btn-sidebar" href="/writer/articles">
             <span><img src="/images/icons/baseline-format_align_right-24px.svg" alt=""></span>
             Các bài đã đăng</a>
+    </li> --}}
+    {{#each sideitem}}
+    <li class="nav-item">
+        <a class="btn btn-sidebar" href="{{this.href}}">
+            <span><img src="{{this.src}}" alt=""></span>
+            {{this.content}}</a>
     </li>
+    {{/each}}
 </ul>
