@@ -7,7 +7,9 @@ router.get("/", function(req, res) {
 });
 
 router.get("/login", (req, res) => {
-  res.render("user-login", { title: "Đăng nhập" });
+  res.render("user-login", {
+    title: "Đăng nhập",
+  });
 });
 
 router.get("/change-password", function(req, res) {
