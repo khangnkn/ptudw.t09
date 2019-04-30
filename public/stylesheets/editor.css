@@ -9,32 +9,62 @@
   display: none;
 }
 
-.card-body {
+#card-detail > .card-body {
   display: flex;
   align-content: center;
   justify-content: space-between;
+  padding: 0.8rem;
 }
-.dropdown-menu a {
-  white-space: normal;
-}
-.dropdown-menu > li {
-  margin-left: 10px;
+
+.dropdown-menu li {
   position: relative;
 }
 
 .dropdown-menu > li > i {
   position: absolute;
   top: 3px;
-  margin-right: 10px;
+  margin-left: 10px;
 }
 .navbar-nav > li > #action {
   background-color: white;
 }
 
-#action > li > a > small {
+#action > li > button > small {
   margin-left: 10px;
+}
+
+#action > li > button {
+  width: 100%;
+  border-radius: 0%;
+  border: none !important;
+  text-align: left;
 }
 
 h5 {
   font-weight: bold;
+}
+
+.card-detail > p {
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
+
+.card-title {
+  margin-bottom: 0;
+}
+
+.card-title > a {
+  color: black;
+}
+a[id="card-title"]:hover {
+  color: grey;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.modal-header > button {
+  margin: 0.2rem;
 }

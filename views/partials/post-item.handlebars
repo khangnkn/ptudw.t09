@@ -5,25 +5,53 @@
         <div>{{daytime}}</div>
     </div>
 </div> --}}
-<div class="card">
+<div class="card" id="card-detail">
     <div class="card-body">
         <div class="card-detail">
-            <p class="card-writer">{{writer}}</p>
-            <h5 class="card-title"><a href="{{link}}"><b>{{title}}</b></a></h5>
-            <p class="card-datetime">{{datetime}}</p>
+            <small class="card-writer">{{writer}}</small>
+            <h5 class="card-title"><a href="{{link}}" id="card-title"><b>{{title}}</b></a></h5>
+            <small class="card-datetime">{{datetime}}</small>
         </div>
         <div class="card-action">
         </div>
         <ul class="nav navbar-nav">
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle action" data-toggle="dropdown"><b class="caret"></b></a>
-                <ul class="dropdown-menu dropdown-menu-right shadow-lg" id="action">
-                    <li><a href="#"><i class="fas fa-pencil-alt"></i><small>Edit</small></a></li>
-                    <li><a href="#"><i class="far fa-eye"></i><small>Preview</small></a></li>
-                    <li><a href="#"><i class="far fa-newspaper"></i><small>Publish</small></a></li>
-                    <li><a href="#"><i class="fas fa-trash"></i><small>Trash</small></a></li>
+                <ul class="dropdown-menu dropdown-menu-right shadow-none" id="action">
+                    <li><button type="button" class="btn btn-outline-primary"><i class="fas fa-pencil-alt"></i><small>
+                                Edit</small></button></li>
+                    <li><button type="button" class="btn btn-outline-primary" data-toggle="modal"
+                            data-target="#myModal"><i class="far fa-eye"></i><small>
+                                View</small></button></li>
+                    <li><button type="button" class="btn btn-outline-primary"><i class="far fa-newspaper"></i><small>
+                                Publish</small></button></li>
+                    <li><button type="button" class="btn btn-outline-primary"><i class="fas fa-eraser"></i><small>
+                                Deny</small></button>
+                    <li><button type="button" class="btn btn-outline-primary"><i class="fas fa-trash"></i><small>
+                                Trash</small></button>
+                    </li>
                 </ul>
             </li>
         </ul>
+    </div>
+</div>
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="btn btn-primary"><small>
+                        Publish now</small></button>
+                <button type="button" class="btn btn-primary"><small>
+                        Trash</small></button>
+            </div>
+            <div class="modal-body">
+                {{> article}}
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
     </div>
 </div>
