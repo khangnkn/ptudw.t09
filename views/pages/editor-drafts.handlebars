@@ -1,16 +1,16 @@
-<div class="card">
-    <div class="card-header">
-        <ul class="nav nav-tabs card-header-tabs">
-            <li class="nav-item">
-                <a class="nav-link active" href="#">Publish</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Dafts</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-            </li>
-        </ul>
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <ul class="nav nav-tabs card-header-tabs">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Publish<span class="badge badge-light">{{{publish}}}</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="#">Dafts<span class="badge badge-light">{{{draft}}}</span></a>
+                </li>
+            </ul>
+        </div>
+        {{>post-item writer='Ngân Khánh' title='Những người bạn phương xa' link='#' datetime='Mar 9, 2019 11:11 AM'}}
+        {{>post-item writer='Ngân Khánh' title='Những người bạn phương xa' link='#' datetime='Mar 9, 2019 11:11 AM'}}
     </div>
-    {{>post-item writer='Ngân Khánh' title='Những người bạn phương xa' datetime='Mar 9, 2019 11:11 AM'}}
 </div>
