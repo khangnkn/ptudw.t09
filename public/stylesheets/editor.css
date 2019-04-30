@@ -60,11 +60,11 @@ a[id="card-title"]:hover {
   color: grey;
 }
 
-.modal-header {
+#view_modal .modal-header {
   display: flex;
   justify-content: flex-end;
 }
 
-.modal-header > button {
+#view_modal .modal-header > button {
   margin: 0.2rem;
 }
