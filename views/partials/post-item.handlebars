@@ -16,8 +16,9 @@
                     <li><button type="button" class="btn btn-outline-primary" data-toggle="modal"
                             data-target="#view_modal"><i class="far fa-eye"></i><small>
                                 View</small></button></li>
-                    <li><button type="button" class="btn btn-outline-primary"><i class="far fa-newspaper"></i><small>
-                                Publish</small></button></li>
+                    <li><button type="button" class="btn btn-outline-primary" data-toggle="modal"
+                            data-target="#publish_modal"><i class="far fa-newspaper">
+                            </i><small>Publish</small> </button> </li>
                     <li><button type="button" class="btn btn-outline-primary" data-toggle="modal"
                             data-target="#deny_modal"><i class="fas fa-eraser"></i><small>
                                 Deny</small></button>
@@ -44,6 +45,42 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="publish_modal" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4>Lý do từ chối</h4>
+            </div>
+            <div class="modal-body" id="data">
+                <form>
+                    <div class="form-group">
+                        <label for="categories"><b>Categories:</b></label>
+                        <select class="form-control" id="categories">
+                            <option value="volvo">Category 1</option>
+                            <option value="saab">Category 1</option>
+                            <option value="mercedes">Category 1</option>
+                            <option value="audi">Category 1</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="tags"><b>Tags:</b></label>
+                        <input class="form-control" type="text" name="tags" id="tags">
+                    </div>
+                    <div class="form-group">
+                        <label for="date"><b>Ngày xuất bản:</b></label>
+                        <input class="form-control" type="date" name="date" id="date">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save</button>
             </div>
         </div>
     </div>
