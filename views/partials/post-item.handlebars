@@ -11,19 +11,18 @@
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle action" data-toggle="dropdown"><b class="caret"></b></a>
                 <ul class="dropdown-menu dropdown-menu-right shadow-none" id="action">
-                    <li><button type="button" class="btn btn-outline-primary"><i class="fas fa-pencil-alt"></i><small>
-                                Edit</small></button></li>
                     <li><button type="button" class="btn btn-outline-primary" data-toggle="modal"
                             data-target="#view_modal"><i class="far fa-eye"></i><small>
-                                View</small></button></li>
+                                Xem</small></button></li>
                     <li><button type="button" class="btn btn-outline-primary" data-toggle="modal"
                             data-target="#publish_modal"><i class="far fa-newspaper">
-                            </i><small>Publish</small> </button> </li>
+                            </i><small>Xuất bản</small> </button> </li>
                     <li><button type="button" class="btn btn-outline-primary" data-toggle="modal"
                             data-target="#deny_modal"><i class="fas fa-eraser"></i><small>
-                                Deny</small></button>
-                    <li><button type="button" class="btn btn-outline-primary"><i class="fas fa-trash"></i><small>
-                                Trash</small></button>
+                                Từ chối</small></button>
+                    <li><button type="button" class="btn btn-outline-primary" data-toggle="modal"
+                            data-target="#trash_modal"><i class="fas fa-trash"></i><small>
+                                Xóa</small></button>
                     </li>
                 </ul>
             </li>
@@ -36,15 +35,15 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="btn btn-primary"><small>
-                        Publish now</small></button>
-                <button type="button" class="btn btn-primary"><small>
-                        Trash</small></button>
+                        Xuất bản ngay</small></button>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#trash_modal"><small>
+                        Xóa</small></button>
             </div>
             <div class="modal-body" id="data">
                 {{> article}}
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
             </div>
         </div>
     </div>
@@ -79,8 +78,8 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+                <button type="button" class="btn btn-primary">Lưu &amp; xuất bản</button>
             </div>
         </div>
     </div>
@@ -102,8 +101,30 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+                <button type="button" class="btn btn-primary">Gửi tin nhắn</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="trash_modal" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4>Xác nhận xóa bài</h4>
+            </div>
+            {{!-- <div class="modal-body" id="data">
+                <form>
+                    <div class="form-group">
+                        <p class="form-controll">Thật sự muốn xóa bài</p>
+                    </div>
+                </form>
+            </div> --}}
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+                <button type="button" class="btn btn-primary">Xóa bài</button>
             </div>
         </div>
     </div>
