@@ -9,7 +9,7 @@
   display: none;
 }
 
-#card-detail > .card-body {
+.card > .card-body {
   display: flex;
   align-content: center;
   justify-content: space-between;
@@ -25,15 +25,15 @@
   top: 3px;
   margin-left: 10px;
 }
-.navbar-nav > li > #action {
+.navbar-nav > li > .dropdown-action {
   background-color: white;
 }
 
-#action > li > button > small {
+.dropdown-action > li > button > small {
   margin-left: 10px;
 }
 
-#action > li > button {
+.dropdown-action > li > button {
   width: 100%;
   border-radius: 0%;
   border: none !important;
@@ -60,11 +60,16 @@ a[id="card-title"]:hover {
   color: grey;
 }
 
-#view_modal .modal-header {
+.view-modal .modal-header {
   display: flex;
   justify-content: flex-end;
 }
 
-#view_modal .modal-header > button {
+.view-modal .modal-header > button {
   margin: 0.2rem;
+}
+
+.content-img {
+  width: 100%;
+  margin: 5px;
 }
