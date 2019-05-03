@@ -44,16 +44,44 @@ router.get("/drafts", function(req, res) {
   res.render("admin-drafts", {
     title: "Quản lý bài viết",
     extra:
-      '<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"/> <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous"> <link rel="stylesheet" href="/stylesheets/admin.css">',
+      '<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"/> <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous"> <link rel="stylesheet" href="/stylesheets/admin.css"> <link rel="stylesheet" href="/stylesheets/editor.css">',
     data: postData,
   });
 });
 
+var bagde = {
+  users: 0,
+  writers: 0,
+  editors: 0,
+  subscribers: 0,
+};
 router.get("/users", function(req, res) {
+  var postData = [
+    {
+      fullname: "Ngân Khánh",
+      username: "ngankhanh98",
+      type: "Editor",
+    },
+    {
+      fullname: "Nguyên Khang",
+      username: "nkhang",
+      type: "Subscriber",
+    },
+    {
+      fullname: "Nguyễn Công Hưng",
+      username: "ngconghung",
+      type: "Writer",
+    },
+  ];
   res.render("admin-users", {
     title: "Quản lý người dùng",
     extra:
-      '<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"/> <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous"> <link rel="stylesheet" href="/stylesheets/editor.css">',
+      '<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"/> <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous"> <link rel="stylesheet" href="/stylesheets/admin.css">',
+    users: bagde.users,
+    writer: bagde.writers,
+    editor: bagde.editors,
+    subscribers: bagde.subscribers,
+    data: postData,
   });
 });
 

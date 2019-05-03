@@ -61,3 +61,20 @@
   font-size: 0.75rem;
   text-transform: uppercase;
 }
+
+p {
+  margin-block-end: 0;
+}
+
+.action::before {
+  background: none;
+  font-family: "fontawesome";
+  content: "\f054";
+}
+
+.card > .card-body {
+  display: flex;
+  align-content: center;
+  justify-content: space-between;
+  padding: 0.8rem;
+}
