@@ -1,0 +1,76 @@
+.index-card {
+  margin: 5px;
+  width: auto;
+}
+
+.index-card-sm {
+  display: inline-block !important;
+  margin: 0px 5px 10px 5px;
+  /* height: 150px; */
+  width: 250px;
+}
+
+.card .card-title {
+  margin: 5px;
+}
+
+.card-image {
+  width: 100%;
+  height: auto;
+}
+
+.card-info {
+  position: absolute;
+  top: 0;
+  padding: 5px;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.65);
+}
+
+.card-content {
+  padding: 5px 10px;
+}
+
+.group-header {
+  font-size: 18pt;
+  font-weight: 500;
+  border-left: 5px solid #e95420;
+  border-bottom: 1px solid #e95420;
+  /* margin: 5px; */
+  margin-bottom: 10px;
+  padding: 5px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+/* Override tab-content bootstrap */
+.tab-pane {
+  max-height: 450px;
+  width: auto;
+  padding: 25px;
+  overflow: scroll;
+}
+
+/* Home panel
+ * Category panel */
+.home-login,
+.top-category {
+  height: auto;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+}
+.panel-category {
+  display: block;
+  padding: 7px;
+  border-left: 5px solid #e95420;
+  height: 40px;
+  transition: 300ms;
+}
+
+.panel-category:hover {
+  transform: translateX(20px);
+}
+
+/* Add margin for any section */
+.section {
+  margin-bottom: 20px;
+}

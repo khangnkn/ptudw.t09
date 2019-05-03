@@ -1,5 +1,131 @@
-{{!-- {{> navbar}} --}}
-<h1>{{title}}</h1>
-<p>Welcome to {{title}}</p>
-<p>This is the web project!</p>
-git
+<div class="container">
+    {{!-- Top articles --}}
+    <div class="row section">
+        <div class="col-sm-7">
+            <div id="main-slide" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        {{>short-content category='Laptop'}}
+                    </div>
+                    <div class="carousel-item">
+                        {{>short-content category='Laptop'}}
+                    </div>
+                    <div class="carousel-item">
+                        {{>short-content category='Laptop'}}
+                    </div>
+                </div>
+                <a class="carousel-control-prev" href="#main-slide" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#main-slide" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
+        <div class="col-sm-5">
+            {{>home-short-content category='Laptop' sm="true"}}
+            {{>home-short-content category='Phone' sm="true"}}
+        </div>
+    </div>
+    <div class="row section">
+        <div class="col-sm-3">
+            <div class="top-category section">
+                <div class="group-header">
+                    Chuyên mục
+                </div>
+                <ul class="nav flex-column">
+                    <li>
+                        <a class="panel-category" href="">Apple</a>
+                    </li>
+                    <li>
+                        <a class="panel-category" href="">Samsung</a>
+                    </li>
+                    <li>
+                        <a class="panel-category" href="">Hewlett-Packard</a>
+                    </li>
+                    <li>
+                        <a class="panel-category" href="">Artificial Intelligence</a>
+                    </li>
+                    <li>
+                        <a class="panel-category" href="">Xiaomi</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="home-login section">
+                <div class="group-header">
+                    Đăng nhập nhanh
+                </div>
+                <form class="login-form login-form-sm" action="">
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" class="form-control" id="email" placeholder="abc@xyz.com.vn">
+                    </div>
+                    <div class="form-group">
+                        <label for="pwd">Mật khẩu:</label>
+                        <input type="password" class="form-control" id="pwd" placeholder="******">
+                    </div>
+                    <div class="form-group form-check">
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="checkbox"> Ghi nhớ đăng nhập
+                        </label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Đăng nhập</button>
+                </form>
+            </div>
+        </div>
+        <div class="col-sm-9">
+            {{!-- Most viewed articles --}}
+            <div class="section">
+                <div class="group-header">
+                    Xem nhiều
+                </div>
+                <div class="group-contents">
+                    {{>horizontal-short-content}}
+                    {{>horizontal-short-content}}
+                    {{>horizontal-short-content}}
+                </div>
+            </div>
+
+            {{!-- New articles --}}
+            <div class="section">
+                <div class="group-header">
+                    Tin mới
+                </div>
+                {{!-- Nav tabs --}}
+                <ul class="nav nav-tabs">
+                    <li class="nav-item"><a href="#phone-tab" data-toggle="tab" class="nav-link active">Điện thoại</a>
+                    </li>
+                    <li class="nav-item"><a href="#laptop-tab" data-toggle="tab" class="nav-link">Laptop</a></li>
+                    <li class="nav-item"><a href="#programming-tab" data-toggle="tab" class="nav-link">Lập trình</a>
+                    </li>
+                </ul>
+                {{!-- Nav contents --}}
+                <div class="tab-content">
+                    <div class="tab-pane container active" id="phone-tab">
+                        {{>short-content category="Programming" cs="card-small"}}
+                        {{>horizontal-short-content category="Phone"}}
+                        {{>horizontal-short-content category="Phone"}}
+                        {{>horizontal-short-content category="Phone"}}
+                        {{>horizontal-short-content category="Phone"}}
+                    </div>
+                    <div class="tab-pane container fade" id="laptop-tab">
+                        {{>short-content category="Programming" cs="card-small"}}
+                        {{>horizontal-short-content}}
+                        {{>horizontal-short-content}}
+                        {{>horizontal-short-content}}
+                    </div>
+                    <div class="tab-pane container fade" id="programming-tab">
+                        {{>short-content category="Programming" cs="card-small"}}
+                        {{>horizontal-short-content}}
+                        {{>horizontal-short-content}}
+                        {{>horizontal-short-content}}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

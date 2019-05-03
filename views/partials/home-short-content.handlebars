@@ -1,9 +1,9 @@
-<div class="card {{cs}}">
-    <div class="card-img">
-        <img src="/images/articles/1/article-img1.png" alt="" class="card-img-top">
-    </div>
-    <div class="card-body">
-        <h4>Lorem ipsum, dolor sit amet.</h4>
+<div class="card index-card {{sm}}">
+    {{!-- <div class="card-image"> --}}
+    <img class='card-image' src="/images/articles/1/article-img1.png" alt="">
+    {{!-- </div> --}}
+    <h4 class="card-title">Lorem ipsum, dolor sit amet.</h4>
+    <div class="card-info">
         <div class="sc-info">
             <img src="/images/icons/outline-create-24px.svg" alt="Date Created">
             <div>
@@ -16,14 +16,13 @@
                 <div class="badge badge-primary">{{category}}</div>
             </div>
         </div>
-        <p class="card-text">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo, doloremque numquam nulla
+    </div>
+    {{#unless sm}}
+    <div class="card-content">
+        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo, doloremque numquam nulla
             ipsa quidem mollitia
             porr onsit tempore aspernatur corrupti! Ab nam natus facilis quae laboriosam aliquid sunt sapiente quidem.
         </p>
-        {{#if isWriter}}
-        <button class="btn btn-primary">Xem</button>
-        <button class="btn btn-info">Chỉnh sửa</button>
-        {{/if}}
     </div>
+    {{/unless}}
 </div>
