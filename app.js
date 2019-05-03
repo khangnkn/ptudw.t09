@@ -10,6 +10,7 @@ const subscriberRouter = require("./routes/subscriber");
 const writerRouter = require("./routes/writer");
 const articleRouter = require("./routes/article");
 const editorRouter = require("./routes/editor");
+const adminRouter = require("./routes/admin");
 
 var app = express();
 
@@ -36,6 +37,7 @@ app.use("/subscriber", subscriberRouter);
 app.use("/writer", writerRouter);
 app.use("/article", articleRouter);
 app.use("/editor", editorRouter);
+app.use("/admin", adminRouter);
 
 app.get("/sitemap", (req, res) => {
   res.render("sitemap", { title: "Sitemap" });
