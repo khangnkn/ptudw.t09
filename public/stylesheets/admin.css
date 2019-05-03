@@ -78,3 +78,14 @@ p {
   justify-content: space-between;
   padding: 0.8rem;
 }
+
+.card-infor img {
+  border-radius: 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.avatar {
+  width: fit-content;
+  height: fit-content;
+}

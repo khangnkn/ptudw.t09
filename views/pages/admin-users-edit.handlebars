@@ -1,0 +1,42 @@
+<div class="row">
+    <nav class="col-md-2 d-none d-md-block bg-light">
+        {{>admin-sidebar}}
+    </nav>
+    <nav class="col-md-10 d-none d-md-block ">
+        <nav class="mt-3">
+            <div class="nav nav-pills" id="nav-tab" role="tablist">
+                <a class="nav-item nav-link active" id="nav-back-tab" data-toggle="tab" href="#nav-back" role="tab"
+                    aria-controls="nav-back" aria-selected="true"><i class="fas fa-chevron-left"></i> Back</a>
+
+            </div>
+        </nav>
+        <div class="tab-content" id="nav-tabContent">
+            <div class="tab-pane fade show active" id="nav-back" role="tabpanel" aria-labelledby="nav-back-tab">
+                <div class="card-infor">
+                    <div class="avatar col-md-2">
+                        <img src="https://vignette.wikia.nocookie.net/disney/images/b/ba/Profile_-_Pascal.png"
+                            alt="avatar" width="100" height="100">
+                    </div>
+                    <div class="col-md-10 user-detail d-flex align-items-center">
+                        <div>
+                            <h5 class="user-fullname"><b>{{fullname}}</b></h5>
+                            <p class="user-username rb-0">@{{username}}</p>
+                            <p class="user-type"><span class="badge badge-primary">{{{type}}}</span></p>
+                        </div>
+                    </div>
+
+                </div>
+                <hr>
+                <div class="form-group">
+                    <label for="categories"><b>Chuyên mục:</b></label>
+                    <select class="form-control" id="categories-{{index}}">
+                        <option value="volvo">Category 1</option>
+                        <option value="saab">Category 1</option>
+                        <option value="mercedes">Category 1</option>
+                        <option value="audi">Category 1</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </nav>
+</div>
