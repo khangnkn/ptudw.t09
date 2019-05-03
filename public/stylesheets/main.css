@@ -8,8 +8,6 @@ body {
 
 a {
   color: #000;
-  font-size: 14pt;
-  font-weight: 600;
   transition: 200ms;
 }
 
@@ -156,7 +154,7 @@ a:hover {
 /* On mouse-over, add a deeper shadow */
 .card:hover {
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
-  transform: scale(1.03);
+  /* transform: scale(1.03); */
 }
 
 .card-small {
