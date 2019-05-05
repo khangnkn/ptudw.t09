@@ -30,3 +30,26 @@ Phát triển giao diện các trang:
   - [Thực tế điều khiển đèn, máy lạnh, quạt, robot hút bụi, chơi nhạc... bằng Google Assistant tiếng Việt](http://localhost:3000/article/article-2)
   - [YouTube đã "sát hại" Internet Explorer 6 ](http://localhost:3000/article/article-3)
   - [Trải nghiệm Google Assistant tiếng Việt: Thông minh, được việc, giọng êm nhưng đôi lúc đùa hơi nhạt](http://localhost:3000/article/article-4)
+
+### Kiểm tra:
+
+- Clone từ [GitHub](https://github.com/nkhang/ptudw.t09)
+
+```bash
+git clone https://github.com/nkhang/ptudw.t09.git
+cd ptudw.t09
+```
+
+- Cài đặt các dependencies cần thiết:
+
+```bash
+npm install
+```
+
+- Start ứng dụng:
+
+```bash
+npm start
+```
+
+- Ứng dụng sẽ chạy ở port 3000. Chú ý: Tắt ứng dụng đang chạy port 3000 nếu `npm start` không thành công.
