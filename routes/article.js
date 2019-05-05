@@ -8,6 +8,8 @@ router.get("/", function(req, res) {
 router.get("/article-1", function(req, res) {
   var a_data = {
     a_title: "5 tính năng hay nhất của MIUI 10 trên máy Xiaomi",
+    a_image:
+      "https://i.gadgets360cdn.com/products/large/1529877080_635_xiaomi_redmi_6_pro.jpg",
     a_author: "Khang Nguyen",
     a_date: "20/04/2019",
     a_abstract:
@@ -27,6 +29,7 @@ router.get("/article-2", function(req, res) {
     a_title:
       "Thực tế điều khiển đèn, máy lạnh, quạt, robot hút bụi, chơi nhạc... bằng Google Assistant tiếng Việt",
     a_author: "Ngan Khanh",
+    a_image: "/images/articles/2/01.jpg",
     a_date: "03/05/2019",
     a_abstract:
       "Bật đèn phòng ngủ nhỏ. Đặt độ sáng đèn phòng ngủ nhỏ ở mức 25%. Bật máy lạnh phòng ngủ nhỏ. Bật máy hút bụi. Gắn máy hút bụi vào đế sạc",
@@ -43,6 +46,8 @@ router.get("/article-2", function(req, res) {
 router.get("/article-3", function(req, res) {
   var a_data = {
     a_title: 'YouTube đã "sát hại" Internet Explorer 6 như thế nào?',
+    a_image:
+      "https://kenh14cdn.com/2019/5/4/photo-1-15569778026991546204914.jpg",
     a_author: "Khang Nguyen",
     a_date: "20/04/2019",
     a_abstract:
@@ -61,6 +66,8 @@ router.get("/article-4", function(req, res) {
   var a_data = {
     a_title:
       "Trải nghiệm Google Assistant tiếng Việt: Thông minh, được việc, giọng êm nhưng đôi lúc đùa hơi nhạt",
+    a_image:
+      "https://kenh14cdn.com/2019/5/3/photo-4-15568734466982032111122.jpg",
     a_author: "Khang Nguyen",
     a_date: "20/04/2019",
     a_abstract:
