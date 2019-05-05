@@ -4,15 +4,22 @@
         <div class="col-sm-7">
             <div id="main-slide" class="carousel slide" data-ride="carousel">
                 <div class="carousel-inner">
+                    {{#each top}}
+                    <div class="carousel-item {{#unless @index}}active
+                    {{/unless}}">
+                        {{>short-content sc-id = this.id  sc-image = this.image sc-title = this.title sc-author = this.author sc-date = this.date sc-category = this.category sc-abstract = this.abstract}}
+                    </div>
+                    {{/each}}
+                    {{!--
                     <div class="carousel-item active">
-                        {{>short-content category='Laptop'}}
+                        {{>short-content sc-image = top.image sc-title = top.title sc-author = top.author sc-date = top.date sc-category = top.category sc-abstract = top.abstract}}
+                    </div>
+                     <div class="carousel-item">
+                        {{>short-content sc-image = top[0].image sc-title = top[0].title sc-author = top[0].author sc-date = top[0].date sc-category = top[0].category sc-abstract = top[0].abstract}}
                     </div>
                     <div class="carousel-item">
-                        {{>short-content category='Laptop'}}
-                    </div>
-                    <div class="carousel-item">
-                        {{>short-content category='Laptop'}}
-                    </div>
+                        {{>short-content sc-image = top[0].image sc-title = top[0].title sc-author = top[0].author sc-date = top[0].date sc-category = top[0].category sc-abstract = top[0].abstract}}
+                    </div> --}}
                 </div>
                 <a class="carousel-control-prev" href="#main-slide" role="button" data-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
