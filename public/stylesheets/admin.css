@@ -89,3 +89,25 @@ p {
   width: fit-content;
   height: fit-content;
 }
+
+.card-infor {
+  padding: 10px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.form-group {
+  visibility: hidden;
+  width: 30%;
+}
+
+.categories[id="Editor"] {
+  display: float;
+  visibility: visible;
+}
+
+.premium[id="Subscriber"] {
+  top: 0;
+  display: float;
+  visibility: visible;
+}
