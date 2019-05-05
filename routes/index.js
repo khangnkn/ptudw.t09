@@ -35,12 +35,24 @@ router.get("/", function(req, res, next) {
       category: "Máy tính",
       abstract:
         "AMD sẽ ra mắt thế hệ Ryzen 3000 dùng kiến trúc Zen 2 tại Computex 2019 và ngay trước thềm triển lãm này, hãng đã vừa tiết lộ thêm thông tin về tiến trình, cụ thể là các CPU dùng kiến trúc Zen 2 và GPU kiến trúc Navi mới đều dùng tiến trình 7 nm của TSMC. Riêng dòng EPYC Rome dành cho máy chủ sẽ được bán vào quý 3 năm nay."
+    },
+    {
+      id: 4,
+      image:
+        "https://kenh14cdn.com/2019/5/3/photo-4-15568734466982032111122.jpg",
+      title:
+        "Trải nghiệm Google Assistant tiếng Việt: Thông minh, được việc, giọng êm nhưng đôi lúc đùa hơi nhạt",
+      author: "Khanh Hacker",
+      date: "07/05/2019",
+      abstract:
+        "Ở thời điểm hiện tại, Google Assistant là trợ lý ảo đầu tiên và duy nhất mà người Việt có thể sử dụng và được hưởng lợi."
     }
   ];
   res.render("general-index", {
     title: "TechHub",
     extra: '<link rel="stylesheet" href="/stylesheets/home.css">',
-    top: topdt
+    top: topdt,
+    topr: [topdt[0], topdt[1]]
   });
   console.log(topdt);
 });
