@@ -10,9 +10,9 @@
 
 Phát triển giao diện các trang:
 
-- [Trang chủ](localhost:3000/)
+- [Trang chủ](http://localhost:3000/)
 - Các trang dành cho `subcriber`
-  - [Login](localhost:3000/subcriber/login)
+  - [Login](http://localhost:3000/subcriber/login)
   - [Đổi mật khẩu](http://localhost:3000/subscriber/change-password)
   - [Cập nhật thông tin](http://localhost:3000/subscriber/update-info)
 - Các trang dành cho `writer`
