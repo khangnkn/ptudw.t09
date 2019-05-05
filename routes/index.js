@@ -6,13 +6,14 @@ router.get("/", function(req, res, next) {
   var topdt = [
     {
       id: 1,
-      image: "/images/articles/1/article-img1.png",
-      title: "Canonical ra mắt Ubuntu 19.04!",
+      image:
+        "https://i.gadgets360cdn.com/products/large/1529877080_635_xiaomi_redmi_6_pro.jpg",
+      title: "5 tính năng hay nhất của MIUI 10 trên máy Xiaomi",
       author: "Nguyên Khang",
       date: "01/05/2019",
       category: "Programming",
       abstract:
-        "Canonical ra mắt Ubuntu 19.04 với một số nâng cấp về hiệu năng nhưng liệu bạn có nên nâng cấp ngay?"
+        "6 cái này là những tính năng mình hay sử dụng nhất, và nó giúp mình rất nhiều trong việc dùng con Redmi Note 7 (cũng như nhiều dòng smartphone Xiaomi khác) một cách hiệu quả. Mời anh em đang dùng Xiaomi tham khảo nhé."
     },
     {
       id: 2,
@@ -27,14 +28,14 @@ router.get("/", function(req, res, next) {
     },
     {
       id: 3,
-      image: "/images/articles/2/02.jpg",
-      title:
-        "AMD tiết lộ thêm về Zen 2, phối hợp 2 tiến trình 7 nm và 14 nm, Navi mới ra sẽ có giá dưới 699 USD",
+      image:
+        "https://kenh14cdn.com/2019/5/4/photo-1-15569778026991546204914.jpg",
+      title: 'YouTube đã "sát hại" Internet Explorer 6 như thế nào?',
       author: "Công Hưng",
       date: "04/05/2019",
       category: "Máy tính",
       abstract:
-        "AMD sẽ ra mắt thế hệ Ryzen 3000 dùng kiến trúc Zen 2 tại Computex 2019 và ngay trước thềm triển lãm này, hãng đã vừa tiết lộ thêm thông tin về tiến trình, cụ thể là các CPU dùng kiến trúc Zen 2 và GPU kiến trúc Navi mới đều dùng tiến trình 7 nm của TSMC. Riêng dòng EPYC Rome dành cho máy chủ sẽ được bán vào quý 3 năm nay."
+        "Thay vì bị chỉ trích, YouTube lại được tôn vinh như cứu tinh của web khi khuyến khích mọi người từ bỏ trình duyệt già cỗi này để chuyển sang các trình duyệt khác, tốt hơn, an toàn hơn."
     },
     {
       id: 4,
