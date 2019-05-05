@@ -69,11 +69,12 @@
 
 .panel-category:hover {
   transform: translateX(20px);
+  font-weight: bold;
 }
 
 /* Add margin for any section */
 .section {
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 }
 
 /* font size 13 */

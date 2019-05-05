@@ -1,9 +1,9 @@
 body {
   padding: 0px;
-  font-size: 13px;
+  font-size: 14px;
   /* font-family: "Roboto Slab", serif; */
-  /* font-family: Arial, Helvetica, sans-serif; */
-  font-family: "Roboto", sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
+  /* font-family: "Roboto", sans-serif; */
 }
 
 a {
@@ -154,6 +154,7 @@ a:hover {
 /* On mouse-over, add a deeper shadow */
 .card:hover {
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  filter: brightness(80%);
   /* transform: scale(1.03); */
 }
 
@@ -163,15 +164,20 @@ a:hover {
 }
 
 .nav-link {
-  color: #e95420;
+  /* color: #ffffff !important; */
+  font-weight: bold;
+  /* font-size: 12pt; */
+  line-height: 24px;
 }
 
-/* Horizontal short content */
+.nav-link:hover {
+  color: rgba(255, 255, 255, 0.9) !important;
+}
 
 .hsc {
   transition: 300ms;
   height: 200px;
-  margin: 10px;
+  margin: 10px 10px 20px 10px;
   overflow: hidden;
 }
 
@@ -187,7 +193,7 @@ a:hover {
 }
 
 .hsc .abstract {
-  margin: 5px;
-  padding: 5px;
+  margin: 10px 0px 0px 0px;
+  /* padding: 5px;frt */
   font-weight: bold;
 }
