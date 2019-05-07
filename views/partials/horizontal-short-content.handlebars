@@ -1,0 +1,28 @@
+<a href="/article/article-{{sc-id}}">
+    <div class="row hsc">
+        <div class="col-sm-4">
+            {{#if sc-image}}
+            <img src="{{sc-image}}" alt="" class="card-img-top">
+            {{else}}
+            <img src="/images/articles/1/article-img1.png" alt="" class="card-img-top">
+            {{/if}}
+        </div>
+        <div class="col-sm-8">
+            <div class="badge badge-primary">{{sc-category}}</div>
+            {{#if sc-title}}
+            <h3>{{sc-title}}</h3>
+            {{else}}
+            <h3>This title is a bug.</h3>
+            {{/if}}
+            <div class="post-info">
+                <strong>Tác giả: </strong>{{sc-author}}
+                <span> | </span>
+                <strong>Ngày xuất bản: </strong>{{sc-date}}
+            </div>
+            <div class="abstract">
+                {{sc-abstract}}
+            </div>
+        </div>
+
+    </div>
+</a>
