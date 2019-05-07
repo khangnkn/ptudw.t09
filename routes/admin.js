@@ -6,16 +6,143 @@ router.get("/", function(req, res) {
 });
 
 router.get("/categories", function(req, res) {
+  var page = 1;
+  var cate = {
+    id: 1,
+    name: 'Công nghệ',
+    total: 5
+  };
+
+  var cateData = [
+    {
+      id: 2,
+      name: 'Điện thoại',
+      total: 5
+    },
+    {
+      id: 3,
+      name: 'Laptop',
+      total: 6
+    }
+    ,
+    {
+      id: 4,
+      name:'Xu hướng',
+      total:12
+    },
+    {
+      id: 5,
+      name:'Lập trình',
+      total:12
+    }
+  ];
+
+  var postData = [
+    {
+      id: 2,
+      image: "/images/articles/2/01.jpg",
+      title:
+        "Thực tế điều khiển đèn, máy lạnh, quạt, robot hút bụi, chơi nhạc... bằng Google Assistant tiếng Việt",
+      author: "Khánh Hacker",
+      date: "30/04/2019",
+      category: [
+        {id:1,name:"Công nghệ"},
+        {id:4,name:'Xu hướng'}],
+      abstract:
+        "Bật đèn phòng ngủ nhỏ. Đặt độ sáng đèn phòng ngủ nhỏ ở mức 25%. Bật máy lạnh phòng ngủ nhỏ. Bật máy hút bụi. Gắn máy hút bụi vào đế sạc"
+    },
+    {
+      id: 1,
+      image:
+        "https://i.gadgets360cdn.com/products/large/1529877080_635_xiaomi_redmi_6_pro.jpg",
+      title: "5 tính năng hay nhất của MIUI 10 trên máy Xiaomi",
+      author: "Nguyên Khang",
+      date: "01/05/2019",
+      category: [
+        {id:5,name:"Lập trình"},
+        {id:2,name:'Điện thoại'}
+      ],
+      abstract:
+        "6 cái này là những tính năng mình hay sử dụng nhất, và nó giúp mình rất nhiều trong việc dùng con Redmi Note 7 (cũng như nhiều dòng smartphone Xiaomi khác) một cách hiệu quả. Mời anh em đang dùng Xiaomi tham khảo nhé."
+    }
+  ];
+
   res.render("admin-categories", {
     title: "Admin Dashboard",
     extra:
       '<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"/> <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous"> <link rel="stylesheet" href="/stylesheets/admin.css"><link rel="stylesheet" href="/stylesheets/category-tag-manager.css">',
+      currPage: page,
+      currCate: cate,
+      cateList: cateData,
+      postList: postData
   });
 });
 
 router.get("/tags", function(req, res) {
+  var page = 1;
+  var tag = {
+    id: 1,
+    name: 'Sự kiện',
+    total: 15
+  };
+  var tagData = [
+    {
+      id: 2,
+      name: 'Độc',
+      total: 5
+    },
+    {
+      id: 3,
+      name: 'Lạ',
+      total: 6
+    }
+    ,
+    {
+      id: 4,
+      name:'Vấn đề',
+      total:12
+    },
+    {
+      id: 5,
+      name:'Trải nghiệm',
+      total:12
+    }
+  ];
+  var postData = [
+    {
+      id: 2,
+      image: "/images/articles/2/01.jpg",
+      title:
+        "Thực tế điều khiển đèn, máy lạnh, quạt, robot hút bụi, chơi nhạc... bằng Google Assistant tiếng Việt",
+      author: "Khánh Hacker",
+      date: "30/04/2019",
+      tag: [
+        {id:5,name:"Trải ngiệm"},
+        {id:3,name:'Sự kiện'}],
+      abstract:
+        "Bật đèn phòng ngủ nhỏ. Đặt độ sáng đèn phòng ngủ nhỏ ở mức 25%. Bật máy lạnh phòng ngủ nhỏ. Bật máy hút bụi. Gắn máy hút bụi vào đế sạc"
+    },
+    {
+      id: 1,
+      image:
+        "https://i.gadgets360cdn.com/products/large/1529877080_635_xiaomi_redmi_6_pro.jpg",
+      title: "5 tính năng hay nhất của MIUI 10 trên máy Xiaomi",
+      author: "Nguyên Khang",
+      date: "01/05/2019",
+      tag: [
+        {id:1,name:"Sự kiện"},
+        {id:3,name:'Lạ'}
+      ],
+      abstract:
+        "6 cái này là những tính năng mình hay sử dụng nhất, và nó giúp mình rất nhiều trong việc dùng con Redmi Note 7 (cũng như nhiều dòng smartphone Xiaomi khác) một cách hiệu quả. Mời anh em đang dùng Xiaomi tham khảo nhé."
+    }
+  ];
   res.render("admin-tags", {
     title: "Admin Dashboard",
+    currPage: page,
+    currTag: tag,
+    tagList: tagData,
+    postList: postData,
     extra:
       '<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"/> <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous"> <link rel="stylesheet" href="/stylesheets/admin.css"><link rel="stylesheet" href="/stylesheets/category-tag-manager.css">',
   });
