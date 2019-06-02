@@ -1,11 +1,11 @@
 var mysql = require('mysql');
 var createConnection = () => {
     return mysql.createConnection({
-        host: 'localhost',
+        host: 'db4free.net',
         port: 3306,
-        user: 'root',
-        password: 'root',
-        database: 'TechhubDB',
+        user: 'techhubbbb',
+        password: 'techhubbbb',
+        database: 'techhubbbb',
     });
 
 }
