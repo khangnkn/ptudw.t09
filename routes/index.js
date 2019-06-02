@@ -1,8 +1,25 @@
 var express = require("express");
+var articles = require('../models/article.model');
+var subcategories = require('../models/subcategory.model');
 var router = express.Router();
+var path = require('path');
 
 /* GET home page. */
 router.get("/", function (req, res, next) {
+  articles.GetTop4()
+    .then(data => {
+      subcategories.byCatId(data[0].Category)
+        .then(Name => {
+          console.log(Name);
+        })
+        .catch(err => {
+          console.log(err);
+        })
+      console.log(data);
+    })
+    .catch(err => {
+      console.log(err);
+    })
   var topdt = [{
       id: 1,
       image: "https://i.gadgets360cdn.com/products/large/1529877080_635_xiaomi_redmi_6_pro.jpg",
@@ -45,7 +62,7 @@ router.get("/", function (req, res, next) {
     top: topdt,
     topr: [topdt[0], topdt[1]]
   });
-  console.log(topdt);
+  // console.log(topdt);
 });
 
 module.exports = router;

@@ -5,19 +5,19 @@ SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
 
 -- -----------------------------------------------------
--- Schema TechhubDB
+-- Schema techhub
 -- -----------------------------------------------------
 
 -- -----------------------------------------------------
--- Schema TechhubDB
+-- Schema techhub
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `TechhubDB` DEFAULT CHARACTER SET utf8 ;
-USE `TechhubDB` ;
+CREATE SCHEMA IF NOT EXISTS `techhub` DEFAULT CHARACTER SET utf8 ;
+USE `techhub` ;
 
 -- -----------------------------------------------------
--- Table `TechhubDB`.`Users`
+-- Table `techhub`.`Users`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `TechhubDB`.`Users` (
+CREATE TABLE IF NOT EXISTS `techhub`.`Users` (
   `Id` INT NOT NULL,
   `Username` VARCHAR(30) NOT NULL,
   `Password` VARCHAR(30) NOT NULL,
@@ -31,51 +31,51 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `TechhubDB`.`Writers`
+-- Table `techhub`.`Writers`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `TechhubDB`.`Writers` (
+CREATE TABLE IF NOT EXISTS `techhub`.`Writers` (
   `Id` INT NOT NULL,
   `Alias` VARCHAR(45) NULL,
   CONSTRAINT `FK_PK_Writers_Users`
     FOREIGN KEY (`Id`)
-    REFERENCES `TechhubDB`.`Users` (`Id`)
+    REFERENCES `techhub`.`Users` (`Id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `TechhubDB`.`Editors`
+-- Table `techhub`.`Editors`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `TechhubDB`.`Editors` (
+CREATE TABLE IF NOT EXISTS `techhub`.`Editors` (
   `Id` INT NOT NULL,
   `ManagedCate` VARCHAR(45) NULL,
   CONSTRAINT `FK_PK_Editors_Users`
     FOREIGN KEY (`Id`)
-    REFERENCES `TechhubDB`.`Users` (`Id`)
+    REFERENCES `techhub`.`Users` (`Id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `TechhubDB`.`Subcribers`
+-- Table `techhub`.`Subcribers`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `TechhubDB`.`Subcribers` (
+CREATE TABLE IF NOT EXISTS `techhub`.`Subcribers` (
   `Id` INT NOT NULL,
   `Premium` INT NOT NULL,
   CONSTRAINT `FK_PK_Subcribers_Users`
     FOREIGN KEY (`Id`)
-    REFERENCES `TechhubDB`.`Users` (`Id`)
+    REFERENCES `techhub`.`Users` (`Id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `TechhubDB`.`Categories`
+-- Table `techhub`.`Categories`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `TechhubDB`.`Categories` (
+CREATE TABLE IF NOT EXISTS `techhub`.`Categories` (
   `Id` INT NOT NULL AUTO_INCREMENT,
   `Name` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`Id`),
@@ -84,9 +84,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `TechhubDB`.`SubCategories`
+-- Table `techhub`.`SubCategories`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `TechhubDB`.`SubCategories` (
+CREATE TABLE IF NOT EXISTS `techhub`.`SubCategories` (
   `Id` INT NOT NULL AUTO_INCREMENT,
   `Category` INT NOT NULL,
   `Name` VARCHAR(45) NOT NULL,
@@ -95,16 +95,16 @@ CREATE TABLE IF NOT EXISTS `TechhubDB`.`SubCategories` (
   INDEX `FK_SubCategories_Categories_idx` (`Category` ASC) ,
   CONSTRAINT `FK_SubCategories_Categories`
     FOREIGN KEY (`Category`)
-    REFERENCES `TechhubDB`.`Categories` (`Id`)
+    REFERENCES `techhub`.`Categories` (`Id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `TechhubDB`.`Articles`
+-- Table `techhub`.`Articles`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `TechhubDB`.`Articles` (
+CREATE TABLE IF NOT EXISTS `techhub`.`Articles` (
   `Id` INT NOT NULL AUTO_INCREMENT,
   `Title` VARCHAR(45) NOT NULL,
   `Category` INT NOT NULL,
@@ -117,16 +117,16 @@ CREATE TABLE IF NOT EXISTS `TechhubDB`.`Articles` (
   INDEX `FK_Articles_Categories_idx` (`Category` ASC) ,
   CONSTRAINT `FK_Articles_Categories`
     FOREIGN KEY (`Category`)
-    REFERENCES `TechhubDB`.`SubCategories` (`Id`)
+    REFERENCES `techhub`.`SubCategories` (`Id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `TechhubDB`.`Tags`
+-- Table `techhub`.`Tags`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `TechhubDB`.`Tags` (
+CREATE TABLE IF NOT EXISTS `techhub`.`Tags` (
   `Id` INT NOT NULL AUTO_INCREMENT,
   `Name` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`Id`))
@@ -134,9 +134,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `TechhubDB`.`Articles_Tags`
+-- Table `techhub`.`Articles_Tags`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `TechhubDB`.`Articles_Tags` (
+CREATE TABLE IF NOT EXISTS `techhub`.`Articles_Tags` (
   `Id` INT NOT NULL AUTO_INCREMENT,
   `idTag` INT NOT NULL,
   `idArticle` INT NOT NULL,
@@ -145,21 +145,21 @@ CREATE TABLE IF NOT EXISTS `TechhubDB`.`Articles_Tags` (
   INDEX `FK_Articles_Tags_Tags_idx` (`idTag` ASC) ,
   CONSTRAINT `FK_Articles_Tags_Articles`
     FOREIGN KEY (`idArticle`)
-    REFERENCES `TechhubDB`.`Articles` (`Id`)
+    REFERENCES `techhub`.`Articles` (`Id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `FK_Articles_Tags_Tags`
     FOREIGN KEY (`idTag`)
-    REFERENCES `TechhubDB`.`Tags` (`Id`)
+    REFERENCES `techhub`.`Tags` (`Id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `TechhubDB`.`Admins`
+-- Table `techhub`.`Admins`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `TechhubDB`.`Admins` (
+CREATE TABLE IF NOT EXISTS `techhub`.`Admins` (
   `Id` INT NOT NULL AUTO_INCREMENT,
   `Username` VARCHAR(45) NOT NULL,
   `Password` VARCHAR(45) NOT NULL,
