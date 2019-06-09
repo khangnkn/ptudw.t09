@@ -1,22 +1,15 @@
-<div class="row">
-    <nav class="col-md-2 d-none d-md-block bg-light">
-        {{>admin-sidebar}}
-    </nav>
-    <nav class="col-md-10 d-none d-md-block">
-        <div class="card border-right-0 border-bottom-0 border-left-0 d-flex mt-3">
-            <div class="card-header border-left border-right">
-                <ul class="nav nav-tabs card-header-tabs">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Publish<span class="badge badge-light">{{{publish}}}</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="#">Dafts<span class="badge badge-light">{{{draft}}}</span></a>
-                    </li>
-                </ul>
-            </div>
-            {{#each data}}
-            {{>post-item index=@index writer=this.writer title=this.title link=this.link datetime=this.datetime content=this.content}}
-            {{/each}}
-        </div>
-    </nav>
+<div class="card border-right-0 border-bottom-0 border-left-0 d-flex mt-3">
+    <div class="card-header border-left border-right">
+        <ul class="nav nav-tabs card-header-tabs">
+            <li class="nav-item">
+                <a class="nav-link" href="#">Publish<span class="badge badge-light">{{{publish}}}</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" href="#">Dafts<span class="badge badge-light">{{{draft}}}</span></a>
+            </li>
+        </ul>
+    </div>
+    {{#each data}}
+    {{>post-item index=@index writer=this.writer title=this.title link=this.link datetime=this.datetime content=this.content}}
+    {{/each}}
 </div>
