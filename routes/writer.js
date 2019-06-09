@@ -29,8 +29,10 @@ router.get("/welcome", function(req, res) {
   });
 });
 
-router.get("/editor", function(req, res) {
+router.get("/:id/editor", function(req, res) {
+  var _id = req.param.id;
   res.render("writer/writer-new-post", {
+    id: _id,
     layout: "writer-layout",
     title: "Biên tập bài viết",
     extra:
@@ -39,7 +41,7 @@ router.get("/editor", function(req, res) {
   });
 });
 
-router.post("/editor", (req, res, next) => {
+router.post("/:id/editor", (req, res, next) => {
   // req.body["State"] = 1;
   // req.body["Category"] = 1;
   // req.body["Date"] = "2019-1-1";
@@ -53,7 +55,7 @@ router.post("/editor", (req, res, next) => {
       .format("YYYY-DD-MM")
       .toString(),
     Cover: null,
-    Author: 1,
+    Author: parseInt(req.params.id),
     Content: req.body["Content"],
     Abstract: "hi",
     State: 1,
