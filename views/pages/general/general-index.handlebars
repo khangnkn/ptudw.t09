@@ -7,7 +7,7 @@
                     {{#each top}}
                     <div class="carousel-item {{#unless @index}}active
                     {{/unless}}">
-                        {{>short-content sc-id = this.id  sc-image = this.image sc-title = this.title sc-author = this.author sc-date = this.date sc-category = this.category sc-abstract = this.abstract}}
+                        {{>short-content data=this}}
                     </div>
                     {{/each}}
                 </div>
@@ -23,7 +23,7 @@
         </div>
         <div class="col-sm-5">
             {{#each topr}}
-            {{>home-short-content sc-id = this.id sc-image = this.image sc-title = this.title sc-author=this.author sc-date = this.date sc-category = this.category}}
+            {{>home-short-content data=this}}
             {{/each}}
         </div>
     </div>
@@ -83,8 +83,9 @@
                     Xem nhiều
                 </div>
                 <div class="group-contents">
-                    {{#each top}}
-                    {{>horizontal-short-content  sc-id = this.id  sc-image = this.image sc-title = this.title sc-author = this.author sc-date = this.date sc-category = this.category sc-abstract = this.abstract}}
+                    {{#each this.top}}
+                    {{!-- <p>{this.Id}</p> --}}
+                    {{>horizontal-short-content data=this}}
                     {{/each}}
                 </div>
             </div>

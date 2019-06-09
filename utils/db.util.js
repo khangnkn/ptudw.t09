@@ -17,7 +17,6 @@ module.exports = {
             connection.query(sql, (error, results, fields) => {
                 if (error)
                     reject(error);
-                console.log(results);
                 resolve(results)
             })
             connection.end();
@@ -72,5 +71,15 @@ module.exports = {
 
             connection.end();
         });
+    },
+
+    executeNoReturn: sql => {
+        var connection = createConnection();
+        connection.connect();
+        connection.query(sql, (error, results, fields) => {
+            if (error)
+                console.log(error);
+        })
+        connection.end();
     }
 }

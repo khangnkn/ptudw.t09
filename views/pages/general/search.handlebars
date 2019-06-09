@@ -1,0 +1,66 @@
+<div class="container">
+
+    {{!-- Under top articles --}}
+    <div class="row section">
+        {{!-- Panels on the left --}}
+        <div class="col-sm-3">
+            <div class="top-category section">
+                <div class="group-header">
+                    Chuyên mục
+                </div>
+                <ul class="nav flex-column">
+                    <li>
+                        <a class="panel-category" href="">Apple</a>
+                    </li>
+                    <li>
+                        <a class="panel-category" href="">Samsung</a>
+                    </li>
+                    <li>
+                        <a class="panel-category" href="">Hewlett-Packard</a>
+                    </li>
+                    <li>
+                        <a class="panel-category" href="">Artificial Intelligence</a>
+                    </li>
+                    <li>
+                        <a class="panel-category" href="">Xiaomi</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="home-login section">
+                <div class="group-header">
+                    Đăng nhập nhanh
+                </div>
+                <form class="login-form login-form-sm" action="">
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" class="form-control" id="email" placeholder="abc@xyz.com.vn">
+                    </div>
+                    <div class="form-group">
+                        <label for="pwd">Mật khẩu:</label>
+                        <input type="password" class="form-control" id="pwd" placeholder="******">
+                    </div>
+                    <div class="form-group form-check">
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="checkbox"> Ghi nhớ đăng nhập
+                        </label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Đăng nhập</button>
+                </form>
+            </div>
+        </div>
+        <div class="col-sm-9">
+            {{!-- Most viewed articles --}}
+            <div class="section">
+                <div class="group-header">
+                    Tìm kiếm
+                </div>
+                <div class="group-contents">
+                    {{#each this.top}}
+                    {{>horizontal-short-content data=this}}
+                    {{/each}}
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

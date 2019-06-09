@@ -168,14 +168,24 @@ a:hover {
 }
 
 .nav-link {
-  /* color: #ffffff !important; */
   font-weight: bold;
-  /* font-size: 12pt; */
   line-height: 24px;
 }
 
 .nav-link:hover {
   color: rgba(255, 255, 255, 0.9) !important;
+}
+
+
+.card-short-content.card-img {
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
+}
+
+.card-short-content .card-body {
+  height: 210px;
+  overflow: scroll;
 }
 
 /* horizontal short contain */
@@ -188,28 +198,18 @@ a:hover {
 
 .hsc:hover {
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
-  transform: scale(1.05);
-}
-.card-short-content.card-img {
-  width: 100%;
-  height: 300px;
-  overflow: hidden;
+  transform: scale(1.03);
 }
 
-.card-short-content .card-body {
-  height: 210px;
-  overflow: scroll;
-}
 .hsc .card-img {
   display: inline-block;
-  /* height: 200px;
-  width: 300px; */
 }
 
 .hsc .abstract {
   margin: 10px 0px 0px 0px;
-  /* padding: 5px;frt */
   font-weight: bold;
+  overflow: hidden;
+  text-overflow: "Xem thêm";
 }
 
 /* general-article */

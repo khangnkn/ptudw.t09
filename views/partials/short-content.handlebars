@@ -1,15 +1,15 @@
-<a href="/article/article-{{sc-id}}">
+<a href="/article/article-{{data.Id}}">
     <div class="card card-short-content {{cs}}">
         <div class="card-img">
-            {{#if sc-image}}
-            <img src="{{sc-image}}" alt="" class="card-img-top">
+            {{#if data.Cover}}
+            <img src="{{data.Cover}}" alt="" class="card-img-top">
             {{else}}
             <img src="/images/articles/1/article-img1.png" alt="" class="card-img-top">
             {{/if}}
         </div>
         <div class="card-body">
-            {{#if sc-title}}
-            <h4>{{sc-title}}</h4>
+            {{#if data.Title}}
+            <h4>{{data.Title}}</h4>
             {{else}}
             <h4>This title is a bug.</h4>
             {{/if}}
@@ -17,27 +17,27 @@
                 <img src="/images/icons/outline-create-24px.svg" alt="Date Created">
                 <div>
                     <div>
-                        {{#if sc-author}}
-                        <em>Tác giả: {{sc-author}}</em>
+                        {{#if data.Author}}
+                        <em>Tác giả: {{data.Author}}</em>
                         {{else}}
                         <em>Tác giả: Không tên</em>
                         {{/if}}
                     </div>
                     <div>
-                        {{#if sc-date}}
-                        <em>Ngày xuất bản: {{sc-date}}</em>
+                        {{#if data.Date}}
+                        <em>Ngày xuất bản: {{data.Date}}</em>
                         {{else}}
                         <em>Ngày xuất bản: Không rõ</em>
                         {{/if}}
                     </div>
-                    {{#if sc-category}}
-                    <div class="badge badge-primary">{{sc-category}}</div>
+                    {{#if data.Category}}
+                    <div class="badge badge-primary">{{data.Category}}</div>
                     {{/if}}
                 </div>
             </div>
             <p class="card-text">
-                {{#if sc-abstract}}
-                {{sc-abstract}}
+                {{#if data.Abstract}}
+                {{data.Abstract}}
                 {{else}}
                 <p>
                     <strong>Đọc tiếp ...</strong>

@@ -14,17 +14,9 @@ const adminRouter = require("./routes/admin");
 
 var app = express();
 
-// view engine setup
-app.engine(
-  "handlebars",
-  exphbs({
-    defaultLayout: "main",
-    layoutsDir: path.join(__dirname, "views/layouts"),
-    partialsDir: path.join(__dirname, "views/partials"),
-  })
-);
-app.set("views", path.join(__dirname, "views/pages"));
-app.set("view engine", "handlebars");
+require('./middlewares/view-engine')(app);
+// require('./middlewares/session')(app);
+// require('./middlewares/passport')(app);
 
 app.use(logger("dev"));
 app.use(express.json());
