@@ -3,76 +3,76 @@
         {{>admin-sidebar}}
     </nav>
     <div class="col-md-10"> --}}
-{{!-- <div class="row"> --}}
-<div class="col-lg-9">
-    <div class="technology">
-        <div class="section_title_container d-flex flex-row align-items-start justify-content-start">
-            <div>
-                <div class="section_title">{{currTag.name}}</div>
-                <div class="section_subtitle">Tag</div>
+<div class="row">
+    <div class="col-lg-9">
+        <div class="technology">
+            <div class="section_title_container d-flex flex-row align-items-start justify-content-start">
+                <div>
+                    <div class="section_title">{{currTag.name}}</div>
+                    <div class="section_subtitle">Tag</div>
+                </div>
+                <div class="section_bar"></div>
             </div>
-            <div class="section_bar"></div>
-        </div>
-        <hr>
-        <div class="technology_content">
-            <!-- Post -->
-            {{#each postList}}
-            {{>item-cate_tag src-type='Tag' src-link='tags'src-option=../tagList src-img = this.image src-title = this.title src-author=this.author src-date=this.date src-content=this.abstract  src-attr=this.tag}}
             <hr>
-            {{/each}}
+            <div class="technology_content">
+                <!-- Post -->
+                {{#each postList}}
+                {{>item-cate_tag src-type='Tag' src-link='tags'src-option=../tagList src-img = this.image src-title = this.title src-author=this.author src-date=this.date src-content=this.abstract  src-attr=this.tag}}
+                <hr>
+                {{/each}}
+            </div>
         </div>
     </div>
-</div>
 
-<div class="col-lg-3" style="margin-top: 250px;">
-    <div class="sidebar-area bg-white mb-30 box-shadow  ">
-        <!-- Sidebar Widget -->
+    <div class="col-lg-3" style="margin-top: 250px;">
+        <div class="sidebar-area bg-white mb-30 box-shadow  ">
+            <!-- Sidebar Widget -->
 
-        <div class="p20">
-            <div class="milestone_text1">{{currTag.name}} có: </div> <br>
-            <div class="milestone d-flex flex-row align-items-center justify-content-center">
-                <div class="milestone_icon d-flex flex-column align-items-center justify-content-center">
-                    <img src="/images/icon_7.svg"></div>
-                <div class="milestone_content">
-                    <div class="milestone_counter">{{currTag.total}}</div>
-                    <div class="milestone_text">Bài viết</div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Sidebar Widget -->
-        <div class="p20">
-            <!-- Section Title -->
-            <div class="section-heading" style="color: orange;font-weight: bold;">
-                <h5>Tags</h5>
-            </div>
-
-            <div class="tags">
-                <div class="tags_content d-flex flex-row align-items-start justify-content-start flex-wrap">
-                    {{#each tagList}}
-                    <div class="tag"><a href="/admin/categories?var={{this.id}}">{{this.name}}</a></div>
-                    {{/each}}
+            <div class="p20">
+                <div class="milestone_text1">{{currTag.name}} có: </div> <br>
+                <div class="milestone d-flex flex-row align-items-center justify-content-center">
+                    <div class="milestone_icon d-flex flex-column align-items-center justify-content-center">
+                        <img src="/images/icon_7.svg"></div>
+                    <div class="milestone_content">
+                        <div class="milestone_counter">{{currTag.total}}</div>
+                        <div class="milestone_text">Bài viết</div>
+                    </div>
                 </div>
             </div>
 
+            <!-- Sidebar Widget -->
+            <div class="p20">
+                <!-- Section Title -->
+                <div class="section-heading" style="color: orange;font-weight: bold;">
+                    <h5>Tags</h5>
+                </div>
+
+                <div class="tags">
+                    <div class="tags_content d-flex flex-row align-items-start justify-content-start flex-wrap">
+                        {{#each tagList}}
+                        <div class="tag"><a href="/admin/categories?var={{this.id}}">{{this.name}}</a></div>
+                        {{/each}}
+                    </div>
+                </div>
+
+            </div>
         </div>
     </div>
+
+
+    <div class="col-lg-9">
+
+        <hr style="color: orange;size: 5px;">
+        <nav>
+            <ul class="pagination">
+                <li class="page-item active"><a class="page-link" href="#">{{currPage}}</a></li>
+                <li class="page-item"><a class="page-link" href="#" id="pageNext1"></a></li>
+                <li class="page-item"><a class="page-link" href="#" id="pageNext2"></a></li>
+                <li class="page-item"><a class="page-link" href="#"><i class="fas fa-angle-right"></i></a></li>
+            </ul>
+        </nav>
+    </div>
 </div>
-
-
-<div class="col-lg-9">
-
-    <hr style="color: orange;size: 5px;">
-    <nav>
-        <ul class="pagination">
-            <li class="page-item active"><a class="page-link" href="#">{{currPage}}</a></li>
-            <li class="page-item"><a class="page-link" href="#" id="pageNext1"></a></li>
-            <li class="page-item"><a class="page-link" href="#" id="pageNext2"></a></li>
-            <li class="page-item"><a class="page-link" href="#"><i class="fas fa-angle-right"></i></a></li>
-        </ul>
-    </nav>
-</div>
-{{!-- </div> --}}
 {{!-- </div>
 </div> --}}
 

@@ -79,8 +79,8 @@ router.get("/categories", function(req, res) {
     },
   ];
 
-  res.render("admin-categories", {
-    layout: "sublayout",
+  res.render("admin/admin-categories", {
+    layout: "admin-layout",
     title: "Admin Dashboard",
     extra:
       '<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"/> <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous"> <link rel="stylesheet" href="/stylesheets/admin.css"><link rel="stylesheet" href="/stylesheets/category-tag-manager.css">',
@@ -162,7 +162,8 @@ router.get("/tags", function(req, res) {
         "6 cái này là những tính năng mình hay sử dụng nhất, và nó giúp mình rất nhiều trong việc dùng con Redmi Note 7 (cũng như nhiều dòng smartphone Xiaomi khác) một cách hiệu quả. Mời anh em đang dùng Xiaomi tham khảo nhé.",
     },
   ];
-  res.render("admin-tags", {
+  res.render("admin/admin-tags", {
+    layout: "admin-layout",
     title: "Admin Dashboard",
     currPage: page,
     currTag: tag,
@@ -202,7 +203,7 @@ router.get("/drafts", function(req, res) {
     },
   ];
   res.render("admin/admin-drafts", {
-    layout: "sublayout",
+    layout: "admin-layout",
     title: "Quản lý bài viết",
     extra:
       '<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"/> <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous"> <link rel="stylesheet" href="/stylesheets/admin.css"> <link rel="stylesheet" href="/stylesheets/editor.css">',
@@ -235,7 +236,7 @@ router.get("/users", function(req, res) {
     },
   ];
   res.render("admin/admin-users", {
-    layout: "sublayout",
+    layout: "admin-layout",
     title: "Quản lý người dùng",
     extra:
       '<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"/> <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous"> <link rel="stylesheet" href="/stylesheets/admin.css">',
@@ -249,7 +250,7 @@ router.get("/users", function(req, res) {
 
 router.get("/users/edit/ngankhanh98", function(req, res) {
   res.render("admin/admin-users-edit", {
-    layout: "sublayout",
+    layout: "admin-layout",
     title: "Chỉnh sửa người dùng",
     extra:
       '<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"/> <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous"> <link rel="stylesheet" href="/stylesheets/admin.css">',
