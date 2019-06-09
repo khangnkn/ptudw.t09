@@ -1,33 +1,25 @@
-<div class="row">
-    <nav class="col-md-2 d-none d-md-block bg-light">
-        {{>admin-sidebar}}
-    </nav>
-    <nav class="col-md-10 d-none d-md-block">
-        <nav class="mt-3">
-            <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                <a class="nav-item nav-link active" id="nav-users-tab" data-toggle="tab" href="#nav-users" role="tab"
-                    aria-controls="nav-users" aria-selected="true">Tất cả <span
-                        class="badge badge-light">{{{users}}}</span></a>
-                <a class="nav-item nav-link" id="nav-writer-tab" data-toggle="tab" href="#nav-writer" role="tab"
-                    aria-controls="nav-writer" aria-selected="false">Phóng viên <span
-                        class="badge badge-light">{{{writer}}}</span></a>
-                <a class="nav-item nav-link" id="nav-editor-tab" data-toggle="tab" href="#nav-editor" role="tab"
-                    aria-controls="nav-editor" aria-selected="false">Biên tập viên<span
-                        class="badge badge-light">{{{editor}}}</span></a>
-                <a class="nav-item nav-link" id="nav-sub-tab" data-toggle="tab" href="#nav-sub" role="tab"
-                    aria-controls="nav-sub" aria-selected="false">Độc giả<span
-                        class="badge badge-light">{{{subscribers}}}</span></a>
-            </div>
-        </nav>
-        <div class="tab-content" id="nav-tabContent">
-            <div class="tab-pane fade show active" id="nav-users" role="tabpanel" aria-labelledby="nav-users-tab">
-                {{#each data}}
-                {{>user-item index=@index fullname=this.fullname username=this.username type=this.type}}
-                {{/each}}
-            </div>
-            <div class="tab-pane fade" id="nav-writer" role="tabpanel" aria-labelledby="nav-writer-tab">...</div>
-            <div class="tab-pane fade" id="nav-editor" role="tabpanel" aria-labelledby="nav-editor-tab">...</div>
-            <div class="tab-pane fade" id="nav-sub" role="tabpanel" aria-labelledby="nav-sub-tab">...</div>
-        </div>
-    </nav>
+<nav class="mt-3">
+    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+        <a class="nav-item nav-link active" id="nav-users-tab" data-toggle="tab" href="#nav-users" role="tab"
+            aria-controls="nav-users" aria-selected="true">Tất cả <span class="badge badge-light">{{{users}}}</span></a>
+        <a class="nav-item nav-link" id="nav-writer-tab" data-toggle="tab" href="#nav-writer" role="tab"
+            aria-controls="nav-writer" aria-selected="false">Phóng viên <span
+                class="badge badge-light">{{{writer}}}</span></a>
+        <a class="nav-item nav-link" id="nav-editor-tab" data-toggle="tab" href="#nav-editor" role="tab"
+            aria-controls="nav-editor" aria-selected="false">Biên tập viên<span
+                class="badge badge-light">{{{editor}}}</span></a>
+        <a class="nav-item nav-link" id="nav-sub-tab" data-toggle="tab" href="#nav-sub" role="tab"
+            aria-controls="nav-sub" aria-selected="false">Độc giả<span
+                class="badge badge-light">{{{subscribers}}}</span></a>
+    </div>
+</nav>
+<div class="tab-content" id="nav-tabContent">
+    <div class="tab-pane fade show active" id="nav-users" role="tabpanel" aria-labelledby="nav-users-tab">
+        {{#each data}}
+        {{>user-item index=@index fullname=this.fullname username=this.username type=this.type}}
+        {{/each}}
+    </div>
+    <div class="tab-pane fade" id="nav-writer" role="tabpanel" aria-labelledby="nav-writer-tab">...</div>
+    <div class="tab-pane fade" id="nav-editor" role="tabpanel" aria-labelledby="nav-editor-tab">...</div>
+    <div class="tab-pane fade" id="nav-sub" role="tabpanel" aria-labelledby="nav-sub-tab">...</div>
 </div>

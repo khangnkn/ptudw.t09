@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>{{title}}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="/stylesheets/bootstrap.css">
+    {{!-- <link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet"> --}}
+    {{!-- <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> --}}
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
+    <link rel='stylesheet' href='/stylesheets/main.css'>
+
+    {{#if extra}}
+    {{{extra}}}
+    {{/if}}
+
+</head>
+
+<body>
+    <div class="main">
+        {{> navbar}}
+        <div class="wrapper">
+            <div class="row">
+                <nav class="col-md-2 d-none d-md-block bg-light">
+                    {{>admin-sidebar}}
+                </nav>
+                <div class="col-md-10 d-none d-md-block">
+                    {{{ body }}}
+                </div>
+            </div>
+        </div>
+        {{> footer}}
+        <script src="https://code.jquery.com/jquery-3.4.0.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    </div>
+
+</body>
+
+</html>

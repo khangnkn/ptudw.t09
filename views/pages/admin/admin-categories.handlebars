@@ -1,85 +1,85 @@
-
-<div class="row">
+{{!-- <div class="row">
     <nav class="col-md-2 d-none d-md-block bg-light">
         {{>admin-sidebar}}
-    </nav>
-    <nav class="col-md-10">
-        <div class="row">
-            <div class="col-lg-9">
-                <div class="technology">
-                    <div class="section_title_container d-flex flex-row align-items-start justify-content-start">
-                        <div>
-                            <div class="section_title">{{currCate.name}}</div>
-                            <div class="section_subtitle">{{type}}</div>
-                        </div>
-                        <div class="section_bar"></div>
-                    </div>
-                    <hr>
-                    <div class="technology_content">
-
-                        <!-- Post -->
-                        {{#each postList}}
-                            {{>item-cate_tag src-type='Category' src-link='categories' src-option=../cateList src-img = this.image src-title = this.title src-author=this.author src-date=this.date src-content=this.abstract  src-attr=this.category}}
-                            <hr>
-                        {{/each}}
-
-                    </div>
+    </nav> --}}
+{{!-- <nav class="col-md-10"> --}}
+<div class="row">
+    <div class="col-lg-9">
+        <div class="technology">
+            <div class="section_title_container d-flex flex-row align-items-start justify-content-start">
+                <div>
+                    <div class="section_title">{{currCate.name}}</div>
+                    <div class="section_subtitle">{{type}}</div>
                 </div>
+                <div class="section_bar"></div>
             </div>
+            <hr>
+            <div class="technology_content">
 
-            <div class="col-lg-3" style="margin-top: 250px;">
-                <div class="sidebar-area bg-white mb-30 box-shadow  ">
-                    <!-- Sidebar Widget -->
+                <!-- Post -->
+                {{#each postList}}
+                {{>item-cate_tag src-type='Category' src-link='categories' src-option=../cateList src-img = this.image src-title = this.title src-author=this.author src-date=this.date src-content=this.abstract  src-attr=this.category}}
+                <hr>
+                {{/each}}
 
-                    <div class="p20">
-                        <div class="milestone_text1" style="font-weight: bold;">{{currCate.name}} có: </div> <br>
-                        <div class="milestone d-flex flex-row align-items-center justify-content-center">
-                            <div class="milestone_icon d-flex flex-column align-items-center justify-content-center">
-                                <img src="/images/icon_7.svg"></div>
-                            <div class="milestone_content">
-                                <div class="milestone_counter">{{currCate.total}}</div>
-                                <div class="milestone_text">Bài viết</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Sidebar Widget -->
-                    <div class="p20">
-                        <!-- Section Title -->
-                        <div class="section-heading" style="color: orange;font-weight: bold;">
-                            <h5>Categories</h5>
-                        </div>
-
-                        <!-- Catagory Widget -->
-                        <ul class="catagory-widgets _ul" style="padding:0px;">
-                            
-                            {{#each cateList}}
-                                <li><a href="/admin/categories?var={{this.id}}"><span class="_li" style="font-size: 20px;"><i class="fas fa-feather _li" aria-hidden="true"></i>
-                                        {{this.name}} <span class="_li">{{this.total}}</span></span>
-                            {{/each}}
-                        </ul>
-                    </div>
-                </div>
             </div>
-
-
-            <div class="col-lg-9">
-
-                <hr style="color: orange;size: 5px;">
-                <nav>
-                    <ul class="pagination" load()>
-                        <li class="page-item active"><a class="page-link" href="#">{{currPage}}</a></li>
-                        <li class="page-item"><a class="page-link" id="pageNext1"></a></li>
-                        <li class="page-item"><a class="page-link" id="pageNext2"></a></li>
-                        <li class="page-item"><a class="page-link" href="#"><i class="fas fa-angle-right"></i></a></li>
-                    </ul>
-                </nav>
-            </div>
-
         </div>
-    </nav>
+    </div>
+
+    <div class="col-lg-3" style="margin-top: 250px;">
+        <div class="sidebar-area bg-white mb-30 box-shadow  ">
+            <!-- Sidebar Widget -->
+
+            <div class="p20">
+                <div class="milestone_text1" style="font-weight: bold;">{{currCate.name}} có: </div> <br>
+                <div class="milestone d-flex flex-row align-items-center justify-content-center">
+                    <div class="milestone_icon d-flex flex-column align-items-center justify-content-center">
+                        <img src="/images/icon_7.svg"></div>
+                    <div class="milestone_content">
+                        <div class="milestone_counter">{{currCate.total}}</div>
+                        <div class="milestone_text">Bài viết</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar Widget -->
+            <div class="p20">
+                <!-- Section Title -->
+                <div class="section-heading" style="color: orange;font-weight: bold;">
+                    <h5>Categories</h5>
+                </div>
+
+                <!-- Catagory Widget -->
+                <ul class="catagory-widgets _ul" style="padding:0px;">
+
+                    {{#each cateList}}
+                    <li><a href="/admin/categories?var={{this.id}}"><span class="_li" style="font-size: 20px;"><i
+                                    class="fas fa-feather _li" aria-hidden="true"></i>
+                                {{this.name}} <span class="_li">{{this.total}}</span></span>
+                            {{/each}}
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="col-lg-9">
+
+        <hr style="color: orange;size: 5px;">
+        <nav>
+            <ul class="pagination" load()>
+                <li class="page-item active"><a class="page-link" href="#">{{currPage}}</a></li>
+                <li class="page-item"><a class="page-link" id="pageNext1"></a></li>
+                <li class="page-item"><a class="page-link" id="pageNext2"></a></li>
+                <li class="page-item"><a class="page-link" href="#"><i class="fas fa-angle-right"></i></a></li>
+            </ul>
+        </nav>
+    </div>
+
 </div>
+{{!-- </nav> --}}
+{{!-- </div> --}}
 <script>
-        document.getElementById("pageNext1").innerHTML = {{currPage}} + 1;
-        document.getElementById("pageNext2").innerHTML = {{currPage}}+2;
-</script> 
+    document.getElementById("pageNext1").innerHTML = {{ currPage }} + 1;
+    document.getElementById("pageNext2").innerHTML = {{ currPage }}+2;
+</script>

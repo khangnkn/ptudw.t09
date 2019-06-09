@@ -80,6 +80,7 @@ router.get("/categories", function(req, res) {
   ];
 
   res.render("admin/admin-categories", {
+    layout: "admin-layout",
     title: "Admin Dashboard",
     extra:
       '<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"/> <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous"> <link rel="stylesheet" href="/stylesheets/admin.css"><link rel="stylesheet" href="/stylesheets/category-tag-manager.css">',
@@ -162,6 +163,7 @@ router.get("/tags", function(req, res) {
     },
   ];
   res.render("admin/admin-tags", {
+    layout: "admin-layout",
     title: "Admin Dashboard",
     currPage: page,
     currTag: tag,
@@ -201,6 +203,7 @@ router.get("/drafts", function(req, res) {
     },
   ];
   res.render("admin/admin-drafts", {
+    layout: "admin-layout",
     title: "Quản lý bài viết",
     extra:
       '<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"/> <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous"> <link rel="stylesheet" href="/stylesheets/admin.css"> <link rel="stylesheet" href="/stylesheets/editor.css">',
@@ -233,6 +236,7 @@ router.get("/users", function(req, res) {
     },
   ];
   res.render("admin/admin-users", {
+    layout: "admin-layout",
     title: "Quản lý người dùng",
     extra:
       '<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"/> <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous"> <link rel="stylesheet" href="/stylesheets/admin.css">',
@@ -246,6 +250,7 @@ router.get("/users", function(req, res) {
 
 router.get("/users/edit/ngankhanh98", function(req, res) {
   res.render("admin/admin-users-edit", {
+    layout: "admin-layout",
     title: "Chỉnh sửa người dùng",
     extra:
       '<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"/> <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous"> <link rel="stylesheet" href="/stylesheets/admin.css">',
