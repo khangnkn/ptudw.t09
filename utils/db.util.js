@@ -5,7 +5,7 @@ var createConnection = () => {
         port: 3306,
         user: 'root',
         password: 'root',
-        database: 'techhub',
+        database: 'techhub_v3',
     });
 
 }

@@ -5,18 +5,11 @@ var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 const exphbs = require("express-handlebars");
 
-const indexRouter = require("./routes/index");
-const subscriberRouter = require("./routes/subscriber");
-const writerRouter = require("./routes/writer");
-const articleRouter = require("./routes/article");
-const editorRouter = require("./routes/editor");
-const adminRouter = require("./routes/admin");
-
 var app = express();
 
 require('./middlewares/view-engine')(app);
-// require('./middlewares/session')(app);
-// require('./middlewares/passport')(app);
+require('./middlewares/session')(app);
+require('./middlewares/passport')(app);
 
 app.use(logger("dev"));
 app.use(express.json());
@@ -26,12 +19,12 @@ app.use(express.urlencoded({
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
-app.use("/", indexRouter);
-app.use("/subscriber", subscriberRouter);
-app.use("/writer", writerRouter);
-app.use("/article", articleRouter);
-app.use("/editor", editorRouter);
-app.use("/admin", adminRouter);
+app.use("/", require("./routes/index"));
+app.use("/subscriber", require("./routes/subscriber"));
+app.use("/writer", require("./routes/writer"));
+app.use("/article", require("./routes/article"));
+app.use("/editor", require("./routes/editor"));
+app.use("/admin", require("./routes/admin"));
 
 app.get("/sitemap", (req, res) => {
   res.render("sitemap", {
