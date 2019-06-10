@@ -1,23 +1,24 @@
 var mysql = require("mysql");
 var createConnection = () => {
   return mysql.createConnection({
-    host: "db4free.net",
+    host: 'localhost',
     port: 3306,
-    user: "techhub",
-    password: "ptudw.t09",
-    database: "techhub",
+    user: 'root',
+    password: 'root',
+    database: 'techhub_v3',
   });
-};
+
+}
 module.exports = {
   load: sql => {
     return new Promise((resolve, reject) => {
       var connection = createConnection();
       connection.connect();
       connection.query(sql, (error, results, fields) => {
-        if (error) reject(error);
-        console.log(results);
-        resolve(results);
-      });
+        if (error)
+          reject(error);
+        resolve(results)
+      })
       connection.end();
     });
   },
@@ -25,15 +26,30 @@ module.exports = {
   insert: (tableName, obj) => {
     return new Promise((resolve, reject) => {
       var connection = createConnection();
-      var sql = `INSERT INTO ${tableName} set ?`;
+      var sql = `INSERT INTO ${tableName} set ?`
       connection.connect();
       connection.query(sql, obj, (error, results, fields) => {
-        if (error) reject(error);
-        resolve(results);
-      });
+        if (error)
+          reject(error);
+        resolve(results)
+      })
       connection.end();
     });
   },
+
+  // insert: (tableName, obj) => {
+  //   return new Promise((resolve, reject) => {
+  //     var connection = createConnection();
+  //     var sql = `INSERT INTO ${tableName} set ?`;
+  //     connection.connect();
+  //     connection.query(sql, obj, (error, results, fields) => {
+  //       if (error)
+  //         reject(error);
+  //       resolve(results);
+  //     });
+  //     connection.end();
+  //   });
+  // },
 
   update: (tableName, obj) => {
     return new Promise((resolve, reject) => {
@@ -64,7 +80,30 @@ module.exports = {
         resolve(results.affectedRows);
       });
 
+      <<
+      <<
+      <<
+      < HEAD
       connection.end();
     });
   },
-};
+}; ===
+===
+=
+connection.end();
+});
+},
+
+executeNoReturn: sql => {
+  var connection = createConnection();
+  connection.connect();
+  connection.query(sql, (error, results, fields) => {
+    if (error)
+      console.log(error);
+  })
+  connection.end();
+}
+} >>>
+>>>
+>
+feature / top
