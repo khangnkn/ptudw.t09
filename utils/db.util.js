@@ -1,4 +1,14 @@
 var mysql = require("mysql");
+// var createConnection = () => {
+//   return mysql.createConnection({
+//     host: "localhost",
+//     port: 3306,
+//     user: "root",
+//     password: "root",
+//     database: "techhub_v3",
+//   });
+// };
+
 var createConnection = () => {
   return mysql.createConnection({
     host: "db4free.net",
@@ -15,7 +25,6 @@ module.exports = {
       connection.connect();
       connection.query(sql, (error, results, fields) => {
         if (error) reject(error);
-        console.log(results);
         resolve(results);
       });
       connection.end();
@@ -34,6 +43,20 @@ module.exports = {
       connection.end();
     });
   },
+
+  // insert: (tableName, obj) => {
+  //   return new Promise((resolve, reject) => {
+  //     var connection = createConnection();
+  //     var sql = `INSERT INTO ${tableName} set ?`;
+  //     connection.connect();
+  //     connection.query(sql, obj, (error, results, fields) => {
+  //       if (error)
+  //         reject(error);
+  //       resolve(results);
+  //     });
+  //     connection.end();
+  //   });
+  // },
 
   update: (tableName, obj) => {
     return new Promise((resolve, reject) => {
@@ -63,8 +86,17 @@ module.exports = {
         if (error) reject(error);
         resolve(results.affectedRows);
       });
-
       connection.end();
     });
   },
-};
+
+  executeNoReturn: sql => {
+    var connection = createConnection();
+    connection.connect();
+    connection.query(sql, (error, results, fields) => {
+      if (error)
+        console.log(error);
+    })
+    connection.end();
+  }
+}

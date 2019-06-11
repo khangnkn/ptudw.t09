@@ -1,32 +1,31 @@
-<a href="/article/article-{{sc-id}}">
+<a href="/article/article-{{data.Id}}">
     <div class="card index-card sm">
-        {{#if sc-image}}
-        <img src="{{sc-image}}" alt="" class="card-img-top">
+        {{#if data.Cover}}
+        <img src="{{data.Cover}}" alt="" class="card-img-top">
         {{else}}
         <img src="/images/articles/1/article-img1.png" alt="" class="card-img-top">
         {{/if}}
-        {{#if sc-title}}
-        <h4 class="card-title">{{sc-title}}</h4>
+        {{#if data.Title}}
+        <h4 class="card-title">{{data.Title}}</h4>
         {{else}}
         <h4>Lorem ipsum, dolor sit amet.</h4>
         {{/if}}
         <div class="card-info">
             <div class="sc-info">
-                <img src="/images/icons/outline-create-24px.svg" alt="Date Created">
-                {{#if sc-author}}
-                <em>Tác giả: {{sc-author}}</em>
+                {{#if data.Author}}
+                <em><i class="fa fa-user" aria-hidden="true"></i> Tác giả: {{data.Author}}</em>
                 {{else}}
-                <em>Tác giả: Không tên</em>
+                <em><i class="fa fa-user" aria-hidden="true"></i> Tác giả: Không tên</em>
                 {{/if}}
                 <span>&nbsp;||&nbsp;</span>
-                {{#if sc-date}}
-                <em>Ngày xuất bản: {{sc-date}}</em>
+                {{#if data.Date}}
+                <em><i class="fa fa-calendar" aria-hidden="true"></i>Ngày xuất bản: {{data.Date}}</em>
                 {{else}}
-                <em>Ngày xuất bản: Không rõ</em>
+                <em><i class="fa fa-calendar" aria-hidden="true"></i> Ngày xuất bản: Không rõ</em>
                 {{/if}}
 
             </div>
-            <div class="badge badge-primary">{{sc-category}}</div>
+            <div class="badge badge-primary">{{data.Category}}</div>
         </div>
     </div>
 </a>

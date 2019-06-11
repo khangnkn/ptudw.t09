@@ -3,22 +3,20 @@
         <img src="/images/ava_test.jpg" alt="Avatar" class="avatar">
         <span class="display-name">Nguyen Khang</span>
     </li>
-    {{!-- <li class="nav-item">
-        <a class="btn btn-sidebar" href="/writer/editor">
-            <span><img src="/images/icons/baseline-create-24px.svg" alt=""></span>
-            Viết bài
-        </a>
+
+    <li class="nav-item">
+        <a class="btn btn-sidebar" href="#" id="new-post">
+            <i class="fa fa-pencil" aria-hidden="true"></i>
+            Viết bài</a>
     </li>
     <li class="nav-item">
-        <a class="btn btn-sidebar" href="/writer/articles">
-            <span><img src="/images/icons/baseline-format_align_right-24px.svg" alt=""></span>
+        <a class="btn btn-sidebar" href="#" id="posts">
+            <i class="fa fa-align-right" aria-hidden="true"></i>
             Các bài đã đăng</a>
-    </li> --}}
-    {{#each sideitem}}
-    <li class="nav-item">
-        <a class="btn btn-sidebar" href="{{this.href}}">
-            <span><img src="{{this.src}}" alt=""></span>
-            {{this.content}}</a>
     </li>
-    {{/each}}
+
 </ul>
+<script>
+    document.getElementById("new-post").href = "/writer/" + "1" + "/editor"
+    document.getElementById("posts").href = "/writer/" + "1" + "/articles"
+</script>
