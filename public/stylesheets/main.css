@@ -4,6 +4,8 @@ body {
   /* font-family: "Roboto Slab", serif; */
   font-family: Arial, Helvetica, sans-serif;
   /* font-family: "Roboto", sans-serif; */
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 a {
@@ -175,7 +177,6 @@ a:hover {
 .nav-link:hover {
   color: rgba(255, 255, 255, 0.9) !important;
 }
-
 
 .card-short-content.card-img {
   width: 100%;
