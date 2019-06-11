@@ -4,17 +4,14 @@
 <head>
     <title>{{title}}</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+        type="text/css" />
     <link rel="stylesheet" href="/stylesheets/bootstrap.css">
-    {{!-- <link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet"> --}}
-    {{!-- <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> --}}
     <link href="https://fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
     <link rel='stylesheet' href='/stylesheets/main.css'>
-
-    {{#if extra}}
-    {{{extra}}}
-    {{/if}}
-
+    <link rel="stylesheet" href="/stylesheets/custom-theme.css">
+    <link rel="stylesheet" href="/stylesheets/writer.css">
+    {{{_sections.css}}}
 </head>
 
 <body>
@@ -31,10 +28,11 @@
                 </div>
             </div>
             {{> footer}}
-            <script src="https://code.jquery.com/jquery-3.4.0.js"></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
         </div>
+        <script src="https://code.jquery.com/jquery-3.4.0.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        {{{_sections.js}}}
 </body>
 
 </html>

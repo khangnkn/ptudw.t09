@@ -79,31 +79,17 @@ module.exports = {
         if (error) reject(error);
         resolve(results.affectedRows);
       });
-
-      <<
-      <<
-      <<
-      < HEAD
       connection.end();
     });
   },
-}; ===
-===
-=
-connection.end();
-});
-},
 
-executeNoReturn: sql => {
-  var connection = createConnection();
-  connection.connect();
-  connection.query(sql, (error, results, fields) => {
-    if (error)
-      console.log(error);
-  })
-  connection.end();
+  executeNoReturn: sql => {
+    var connection = createConnection();
+    connection.connect();
+    connection.query(sql, (error, results, fields) => {
+      if (error)
+        console.log(error);
+    })
+    connection.end();
+  }
 }
-} >>>
->>>
->
-feature / top
