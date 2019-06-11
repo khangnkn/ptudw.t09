@@ -40,7 +40,7 @@ router.post("/:id/editor", (req, res, next) => {
   console.log(obj);
   articlemodule
     .add(obj)
-    .then(res.end("done"))
+    .then(console.log("OK"))
     .catch(next);
 });
 
