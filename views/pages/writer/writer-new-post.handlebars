@@ -1,9 +1,3 @@
-<style>
-    .mce-tinymce.mce-container.mce-panel {
-        border: none !important;
-    }
-</style>
-
 <script
     src="https://cdn.tiny.cloud/1/j7ksxfppru4mwv156fe0cz8fobscw12j7jmaiw7cvfqaer16/tinymce/5/tinymce.min.js"></script>
 <script>
@@ -18,3 +12,11 @@
         <button type="submit" class="btn btn-outline-primary mt-5 right">Đăng bài</button>
     </div>
 </form>
+
+{{#section 'js'}}
+<script src="https://cdn.tiny.cloud/1/j7ksxfppru4mwv156fe0cz8fobscw12j7jmaiw7cvfqaer16/tinymce/5/tinymce.min.js">
+</script>
+<script>
+    tinymce.init({ selector: '#tiny-editor', menubar: false, border: false });
+</script>
+{{/section}}
