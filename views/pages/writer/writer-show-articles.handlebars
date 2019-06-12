@@ -1,10 +1,14 @@
 <div class="articles-area">
-    {{> short-content category='Phones' isWriter=true}}
-    {{> short-content category='Laptops' isWriter=true}}
+    {{#each data}}
+    {{> short-content category='Phones' isWriter=true Id=Id Title=this.Title Date=this.Date Cover=this.Cover Abstract=this.Abstract Content=this.Content Author=this.Author Category=this.Category}}
+    {{/each}}
+
+
+    {{!-- {{> short-content category='Laptops' isWriter=true}}
     {{> short-content category='IT' isWriter=true}}
     {{> short-content category='Intelligence' isWriter=true}}
     {{> short-content category='Programming' isWriter=true}}
-    {{> short-content category='General' isWriter=true}}
+    {{> short-content category='General' isWriter=true}} --}}
 </div>
 <div class="paging">
     <ul class="pagination">
