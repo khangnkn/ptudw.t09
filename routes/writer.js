@@ -44,7 +44,7 @@ router.post("/:id/editor", (req, res, next) => {
     .then(n => {
       console.log(n.insertId);
       draftmodule
-        .get(n.insertId)
+        .load(n.insertId)
         .then(rows => {
           console.log(rows);
           var dt = {
@@ -53,10 +53,10 @@ router.post("/:id/editor", (req, res, next) => {
             Cover: rows[0].Cover,
             Abstract: rows[0].Abstract,
             Content: rows[0].Content,
-            Author: rows[0].Alias,
+            Author: rows[0].Author,
           };
           console.log(dt);
-          res.render("general/general-article-detail", { data: dt });
+          res.render("general/general-article-detail", { data: rows[0] }); //?
         })
         .catch(next);
     })
@@ -64,9 +64,15 @@ router.post("/:id/editor", (req, res, next) => {
 });
 
 router.get("/:id/articles", function(req, res) {
-  res.render("writer/writer-show-articles", {
-    layout: "writer-layout",
-    title: "Các bài đã viết",
+  var _id = req.params.id;
+  draftmodule.loadByUser(_id).then(_rows => {
+    var list = Object.values(JSON.parse(JSON.stringify(_rows)));
+    console.log(list);
+    res.render("writer/writer-show-articles", {
+      data: list,
+      layout: "writer-layout",
+      title: "Các bài đã viết",
+    });
   });
 });
 
