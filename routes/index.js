@@ -26,14 +26,9 @@ router.get("/search", (req, res) => {
     return
   };
   if (req.query.cat) {
-    // implement query by cat
-    articles.byCat(id).then(data => {
-      res.render(kfsdklfkdfks)
-    })
     return
   };
   if (req.query.tag) {
-
     return;
   };
   articles.GetTop4().then(dt => {

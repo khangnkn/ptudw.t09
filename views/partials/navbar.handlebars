@@ -31,13 +31,35 @@
                 <a href="#" class="dropdown-item">Artificial Intelligence</a>
             </div>
         </li>
-        <li class="nav-item">
-            <a href="#" class="nav-link">LIÊN HỆ</a>
+        {{#if isAuthenticated}}
+        <li class="nav-item dropdown">
+            <form id="frmSignout" action="/account/logout" method="POST"></form>
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                Hi, <b>{{authUser.Fullname}}</b>
+
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/account/profile">
+                    <i class="fa fa-user" aria-hidden="true"></i>
+                    Profile
+                </a>
+                <a class="dropdown-item" href="javascript: $('#frmSignout').submit();">
+                    <i class="fa fa-power-off" aria-hidden="true"></i> Sign Out
+                </a>
+            </div>
         </li>
+        {{else}}
         <li class="nav-item active">
             <a href="/subscriber/login" class="nav-link">ĐĂNG NHẬP</a>
         </li>
+        {{/if}}
+        {{#if role}}
+        <li class="nav-item active">
+            <span class="badge badge-success">{{role}}</span>
+        </li>
 
+        {{/if}}
     </ul>
     <form action="" class="form-inline ml-auto">
         <input type="text" class="form-control mr-sm-2" placeholder="Thang máy, công tố viên, ...">

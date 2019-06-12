@@ -2,6 +2,8 @@ var express = require("express");
 var router = express.Router();
 var passport = require('passport');
 var auth = require('../middlewares/auth');
+const writers = require('../models/writer.model');
+
 /* GET users listing. */
 router.get("/", function (req, res) {
   res.render("general/general-index", {
@@ -21,7 +23,7 @@ router.post("/login", (req, res, next) => {
       return next(err);
 
     if (!user) {
-      return res.render('subcriber/login', {
+      return res.render('subscriber/login', {
 
         err_message: info.message
       })
@@ -32,7 +34,8 @@ router.post("/login", (req, res, next) => {
         return next(err);
       }
       // return res.redirect('/');
-      return res.end("OK")
+
+      return res.redirect("/subscriber/change-password")
     });
   })(req, res, next);
 });
@@ -50,7 +53,7 @@ router.get("/update-info", auth, (req, res) => {
   });
 });
 
-router.post("/login", auth, (req, res, next) => {
+router.post("/logout", auth, (req, res, next) => {
   passport.logOut();
   res.redirect("/login");
 });
