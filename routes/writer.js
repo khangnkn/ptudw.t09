@@ -47,7 +47,16 @@ router.post("/:id/editor", (req, res, next) => {
         .get(n.insertId)
         .then(rows => {
           console.log(rows);
-          res.render("general/general-article-detail"), { data: rows };
+          var dt = {
+            Title: rows[0].Title,
+            Date: rows[0].Date,
+            Cover: rows[0].Cover,
+            Abstract: rows[0].Abstract,
+            Content: rows[0].Content,
+            Author: rows[0].Alias,
+          };
+          console.log(dt);
+          res.render("general/general-article-detail", { data: dt });
         })
         .catch(next);
     })
