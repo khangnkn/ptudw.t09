@@ -1,13 +1,14 @@
 var express = require("express");
 const articlemodule = require("../models/article.model");
+const draftmodule = require("../models/draft.model");
 var router = express.Router();
 var moment = require("moment");
 
-router.get("/", function (req, res) {
+router.get("/", function(req, res) {
   res.redirect("/writer/welcome");
 });
 
-router.get("/welcome", function (req, res) {
+router.get("/welcome", function(req, res) {
   res.render("writer/writer-welcome", {
     layout: "writer-layout",
     title: "Chào mừng, phóng viên!",
@@ -15,7 +16,7 @@ router.get("/welcome", function (req, res) {
   });
 });
 
-router.get("/:id/editor", function (req, res) {
+router.get("/:id/editor", function(req, res) {
   var _id = req.param.id;
   res.render("writer/writer-new-post", {
     id: _id,
@@ -34,20 +35,29 @@ router.post("/:id/editor", (req, res, next) => {
     Cover: null,
     Author: parseInt(req.params.id),
     Content: req.body["Content"],
-    Abstract: "hi",
+    Abstract: req.body["Abstract"],
     State: 1,
   };
   console.log(obj);
   articlemodule
     .add(obj)
-    .then(console.log("OK"))
+    .then(n => {
+      console.log(n.insertId);
+      draftmodule
+        .get(n.insertId)
+        .then(rows => {
+          console.log(rows);
+          res.render("general/general-article-detail"), { data: rows };
+        })
+        .catch(next);
+    })
     .catch(next);
 });
 
-router.get("/:id/articles", function (req, res) {
+router.get("/:id/articles", function(req, res) {
   res.render("writer/writer-show-articles", {
     layout: "writer-layout",
-    title: "Các bài đã viết"
+    title: "Các bài đã viết",
   });
 });
 

@@ -15,6 +15,15 @@
     {{{extra}}}
     {{/if}}
 
+    <style>
+        .nav-link[role="sidebar"] {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            padding: 0.5rem 1rem;
+        }
+    </style>
+
 </head>
 
 <body>
@@ -23,7 +32,7 @@
         <div class="wrapper">
             <div class="row">
                 <nav class="col-md-2 d-none d-md-block bg-light">
-                    {{>admin-sidebar}}
+                    {{>editor-sidebar}}
                 </nav>
                 <nav class="col-md-10 d-none d-md-block">
                     {{{ body }}}</nav>
