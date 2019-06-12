@@ -6,6 +6,7 @@ var createConnection = () => {
     user: "root",
     password: "root",
     database: "techhub_v3",
+    multipleStatements: true,
   });
 };
 
@@ -44,20 +45,6 @@ module.exports = {
     });
   },
 
-  // insert: (tableName, obj) => {
-  //   return new Promise((resolve, reject) => {
-  //     var connection = createConnection();
-  //     var sql = `INSERT INTO ${tableName} set ?`;
-  //     connection.connect();
-  //     connection.query(sql, obj, (error, results, fields) => {
-  //       if (error)
-  //         reject(error);
-  //       resolve(results);
-  //     });
-  //     connection.end();
-  //   });
-  // },
-
   update: (tableName, obj) => {
     return new Promise((resolve, reject) => {
       var connection = createConnection();
@@ -94,9 +81,8 @@ module.exports = {
     var connection = createConnection();
     connection.connect();
     connection.query(sql, (error, results, fields) => {
-      if (error)
-        console.log(error);
-    })
+      if (error) console.log(error);
+    });
     connection.end();
-  }
-}
+  },
+};

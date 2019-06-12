@@ -32,7 +32,8 @@
   height: calc(100vh - 48px);
   padding-top: 0.5rem;
   overflow-x: hidden;
-  overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+  overflow-y: auto;
+  /* Scrollable contents if viewport is shorter than content. */
 }
 
 @supports ((position: -webkit-sticky) or (position: sticky)) {
@@ -70,13 +71,6 @@ p {
   background: none;
   font-family: "fontawesome";
   content: "\f054";
-}
-
-.card > .card-body {
-  display: flex;
-  align-content: center;
-  justify-content: space-between;
-  padding: 0.8rem;
 }
 
 .card-infor img {

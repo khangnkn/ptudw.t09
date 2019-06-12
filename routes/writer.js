@@ -1,5 +1,6 @@
 var express = require("express");
 const articlemodule = require("../models/article.model");
+const draftmodule = require("../models/draft.model");
 var router = express.Router();
 var moment = require("moment");
 
@@ -34,21 +35,50 @@ router.post("/:id/editor", (req, res, next) => {
     Cover: null,
     Author: parseInt(req.params.id),
     Content: req.body["Content"],
-    Abstract: "hi",
+    Abstract: req.body["Abstract"],
     State: 1,
   };
   console.log(obj);
   articlemodule
     .add(obj)
-    .then(console.log("OK"))
+    .then(n => {
+      console.log(n.insertId);
+      draftmodule
+        .load(n.insertId)
+        .then(rows => {
+          console.log(rows);
+          var dt = {
+            Title: rows[0].Title,
+            Date: rows[0].Date,
+            Cover: rows[0].Cover,
+            Abstract: rows[0].Abstract,
+            Content: rows[0].Content,
+            Author: rows[0].Author,
+          };
+          console.log(dt);
+          res.render("general/general-article-detail", {
+            data: rows[0]
+          }); //?
+        })
+        .catch(next);
+    })
     .catch(next);
 });
 
 router.get("/:id/articles", function (req, res) {
-  res.render("writer/writer-show-articles", {
-    layout: "writer-layout",
-    title: "Các bài đã viết"
-  });
+  var _id = req.params.id;
+  draftmodule.loadByUser(_id).then(rows => {
+    rows.forEach(element => {
+      element.Date = moment(element.Date).format("L")
+    });
+    // var list = Object.values(JSON.parse(JSON.stringify(_rows)));
+    // console.log(list);
+    res.render("writer/writer-show-articles", {
+      data: rows,
+      layout: "writer-layout",
+      title: "Các bài đã viết",
+    });
+  }).catch(err => console.log(err));
 });
 
 module.exports = router;

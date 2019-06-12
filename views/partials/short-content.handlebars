@@ -1,53 +1,52 @@
-<a href="/article/article-{{data.Id}}">
-    <div class="card card-short-content {{cs}}">
+<a href="/article/article-{{Id}}" target="_blank">
+    <div class="card h-100">
         <div class="card-img">
-            {{#if data.Cover}}
-            <img src="{{data.Cover}}" alt="" class="card-img-top">
+            {{#if Cover}}
+            <img src="{{Cover}}" alt="Cover" class="card-img-top">
             {{else}}
             <img src="/images/articles/1/article-img1.png" alt="" class="card-img-top">
             {{/if}}
         </div>
         <div class="card-body">
-            {{#if data.Title}}
-            <h4>{{data.Title}}</h4>
+            {{#if Title}}
+            <h4>{{Title}}</h4>
             {{else}}
-            <h4>This title is a bug.</h4>
+            <h4>This title is missing</h4>
             {{/if}}
-            <div class="sc-info">
-                <img src="/images/icons/outline-create-24px.svg" alt="Date Created">
-                <div>
-                    <div>
-                        {{#if data.Author}}
-                        <em>Tác giả: {{data.Author}}</em>
-                        {{else}}
-                        <em>Tác giả: Không tên</em>
-                        {{/if}}
-                    </div>
-                    <div>
-                        {{#if data.Date}}
-                        <em>Ngày xuất bản: {{data.Date}}</em>
-                        {{else}}
-                        <em>Ngày xuất bản: Không rõ</em>
-                        {{/if}}
-                    </div>
-                    {{#if data.Category}}
-                    <div class="badge badge-primary">{{data.Category}}</div>
-                    {{/if}}
-                </div>
+            <div>
+                {{#if Premium}}
+                <span class="badge badge-pill badge-success">Premium</span>
+                {{/if}}
+                <br>
+                <i class="fa fa-pencil" aria-hidden="true"></i>
+                {{#if Alias}}
+                <em>Tác giả: {{Alias}}</em>
+                {{else}}
+                <em>Tác giả: Không tên</em>
+                {{/if}}
+                <br>
+                <i class="fa fa-clock-o" aria-hidden="true"></i>
+                {{#if Date}}
+                <em>Ngày xuất bản: {{Date}}</em>
+                {{else}}
+                <em>Ngày xuất bản: Không rõ</em>
+                {{/if}}
+                <br>
+                {{#if Category}}
+                <div class="badge badge-primary">{{Category}}</div>
+                {{/if}}
             </div>
             <p class="card-text">
-                {{#if data.Abstract}}
-                {{data.Abstract}}
-                {{else}}
-                <p>
-                    <strong>Đọc tiếp ...</strong>
+                {{#if Abstract}}
+                {{Abstract}} <p>
+                    <b>Đọc tiếp ...</b>
+                    {{/if}}
                 </p>
+                {{#if isWriter}}
+                <button type="button" class="btn btn-sm btn-outline-primary" disabled>{{Status}}</button>
+                <button class="btn btn-sm btn-primary">Xem</button>
+                <button class="btn btn-sm btn-info">Chỉnh sửa</button>
                 {{/if}}
-            </p>
-            {{#if isWriter}}
-            <button class="btn btn-primary">Xem</button>
-            <button class="btn btn-info">Chỉnh sửa</button>
-            {{/if}}
         </div>
     </div>
 </a>

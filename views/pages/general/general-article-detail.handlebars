@@ -10,7 +10,10 @@
             <i class="fa fa-pencil" aria-hidden="true"></i>
             <em>Author: {{data.Alias}}</em> <br>
             <i class="fa fa-clock-o" aria-hidden="true"></i>
-            <em>Date: {{data.PublishTime}}</em>
+            <em>Date: {{data.PublishTime}}</em> <br>
+            {{#if data.Premium}}
+            <span class="badge badge-pill badge-success">Premium</span>
+            {{/if}}
         </div>
 
     </div>
@@ -44,7 +47,5 @@
             <textarea name="txtComment" class="txtComment" id="" rows="5"></textarea>
             <button class="btn btn-primary m-1">Gửi</button>
         </form>
-
-
     </div>
 </div>
