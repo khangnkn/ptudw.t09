@@ -6,10 +6,11 @@
         <img src="{{data.Cover}}" alt="">
     </div>
     <div class="creation-info">
-        <img src="/images/icons/outline-create-24px.svg" alt="Date Created">
         <div class="author-date">
-            <em>Author: {{data.Author}}</em> <br>
-            <em>Date: {{data.Date}}</em>
+            <i class="fa fa-pencil" aria-hidden="true"></i>
+            <em>Author: {{data.Alias}}</em> <br>
+            <i class="fa fa-clock-o" aria-hidden="true"></i>
+            <em>Date: {{data.PublishTime}}</em>
         </div>
 
     </div>
@@ -41,7 +42,7 @@
         <h3>Bình luận</h3>
         <form action="post" class="">
             <textarea name="txtComment" class="txtComment" id="" rows="5"></textarea>
-            <button class="btn btn-primary">Gửi</button>
+            <button class="btn btn-primary m-1">Gửi</button>
         </form>
 
 

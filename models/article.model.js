@@ -6,7 +6,9 @@ module.exports = {
   },
 
   GetDetail: id => {
-    var sql = `SELECT ar.Id, ar.Title, ar.Date, ar.Cover, ar.Abstract, ar.Content, wr.Alias as \"Author\", sc.Name as \"Category\" FROM Articles ar, Writers wr, SubCategories sc WHERE ar.Author = wr.Id and ar.Category = sc.Id and ar.Id = ${id} limit 1`;
+    var sql = `SELECT articles.Id, drafts.Title, drafts.Abstract, drafts.Cover, writers.Alias, drafts.Content, articles.Premium, articles.PublishTime, articles.Views
+    FROM articles JOIN drafts ON articles.Draft = drafts.Id and articles.Id = ${id} 
+    JOIN writers ON drafts.Author = writers.Id `
     return db.load(sql)
   },
 
