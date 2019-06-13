@@ -1,12 +1,12 @@
 /* CSS for "Articles" page*/
-
+/* 
 .card {
   display: inline-block;
   border-radius: 5px;
   width: 300px;
   margin: 10px;
   box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
-}
+} */
 
 .articles-area {
   display: flex;

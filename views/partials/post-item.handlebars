@@ -1,24 +1,24 @@
-<div class="card border-0" id="card-detail-{{index}}">
+<div class="card border-0 my-1" id="card-detail-{{Id}}">
     <div class="card-body">
         <div class="card-detail">
-            <small class="card-writer">{{writer}}</small>
-            <h5 class="card-title"><a href="{{link}}" id="card-title-{{index}}"><b>{{title}}</b></a></h5>
-            <small class="card-datetime">{{datetime}}</small>
+            <small class="card-writer">{{Alias}}</small>
+            <h5 class="card-title"><a href="/draft/draft-{{Id}}" id="card-title-{{Id}}"><b>{{Title}}</b></a></h5>
+            <small class="card-datetime">{{Date}}</small>
         </div>
         <ul class="nav navbar-nav">
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle action" data-toggle="dropdown"><b class="caret"></b></a>
-                <ul class="dropdown-menu dropdown-menu-right shadow-none dropdown-action" id="action-{{index}}">
+                <ul class="dropdown-menu dropdown-menu-right shadow-none dropdown-action" id="action-{{Id}}">
                     <li><button type="button" class="btn btn-outline-primary" data-toggle="modal"
-                            data-target="#view_modal-{{index}}"><i class="far fa-eye"></i><small>
+                            data-target="#view_modal-{{Id}}"><i class="fa fa-eye" aria-hidden="true"></i></i><small>
                                 Xem</small></button></li>
                     <li><button type="button" class="btn btn-outline-primary" data-toggle="modal"
-                            data-target="#publish_modal-{{index}}"><i class="far fa-newspaper">
-                            </i><small>Xuất bản</small> </button> </li>
+                            data-target="#publish_modal-{{Id}}"><i class="fa fa-newspaper-o"
+                                aria-hidden="true"></i><small>Xuất bản</small> </button> </li>
                     <li><button type="button" class="btn btn-outline-primary" data-toggle="modal"
-                            data-target="#deny_modal-{{index}}"><i class="fas fa-eraser"></i><small>
+                            data-target="#deny_modal-{{Id}}"><i class="fa fa-eraser"></i><small>
                                 Từ chối</small></button>
-                    <li><button type="button" class="btn btn-outline-primary"><i class="fas fa-trash"></i><small>
+                    <li><button type="button" class="btn btn-outline-primary"><i class="fa fa-trash"></i><small>
                                 Xóa</small></button>
                     </li>
                 </ul>
@@ -26,7 +26,7 @@
         </ul>
     </div>
 </div>
-<div class="modal fade view-modal" id="view_modal-{{index}}" role="dialog">
+<div class="modal fade view-modal" id="view_modal-{{Id}}" role="dialog">
     <div class="modal-dialog modal-lg">
         <!-- Modal content-->
         <div class="modal-content">
@@ -36,7 +36,7 @@
                 <button type="button" class="btn btn-primary"><small>
                         Xóa</small></button>
             </div>
-            <div class="modal-body" id="data-{{index}}">
+            <div class="modal-body" id="data-{{Id}}">
                 {{> article}}
             </div>
             <div class="modal-footer">
@@ -46,18 +46,18 @@
     </div>
 </div>
 
-<div class="modal fade" id="publish_modal-{{index}}" role="dialog">
+<div class="modal fade" id="publish_modal-{{Id}}" role="dialog">
     <div class="modal-dialog modal-lg">
         <!-- Modal content-->
         <div class="modal-content">
             <div class="modal-header">
                 <h4>Xuất bản</h4>
             </div>
-            <div class="modal-body" id="data-{{index}}">
+            <div class="modal-body" id="data-{{Id}}">
                 <form>
                     <div class="form-group">
                         <label for="categories"><b>Chuyên mục:</b></label>
-                        <select class="form-control" id="categories-{{index}}">
+                        <select class="form-control" id="categories-{{Id}}">
                             <option value="volvo">Category 1</option>
                             <option value="saab">Category 1</option>
                             <option value="mercedes">Category 1</option>
@@ -66,11 +66,11 @@
                     </div>
                     <div class="form-group">
                         <label for="tags"><b>Tags:</b></label>
-                        <input class="form-control" type="text" name="tags" id="tags-{{index}}">
+                        <input class="form-control" type="text" name="tags" id="tags-{{Id}}">
                     </div>
                     <div class="form-group">
                         <label for="date"><b>Ngày xuất bản:</b></label>
-                        <input class="form-control" type="date" name="date" id="date-{{index}}">
+                        <input class="form-control" type="date" name="date" id="date-{{Id}}">
                     </div>
                 </form>
             </div>
@@ -82,18 +82,18 @@
     </div>
 </div>
 
-<div class="modal fade" id="deny_modal-{{index}}" role="dialog">
+<div class="modal fade" id="deny_modal-{{Id}}" role="dialog">
     <div class="modal-dialog modal-lg">
         <!-- Modal content-->
         <div class="modal-content">
             <div class="modal-header">
                 <h4>Lý do từ chối</h4>
             </div>
-            <div class="modal-body" id="data-{{index}}">
+            <div class="modal-body" id="data-{{Id}}">
                 <form>
                     <div class="form-group">
                         <label for="message-text" class="control-label"><b>Yêu câu hiệu chỉnh:</b></label>
-                        <textarea class="form-control" id="message-text-{{index}}" rows="5"></textarea>
+                        <textarea class="form-control" id="message-text-{{Id}}" rows="5"></textarea>
                     </div>
                 </form>
             </div>

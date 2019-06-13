@@ -24,6 +24,7 @@ app.use("/", require("./routes/index"));
 app.use("/subscriber", require("./routes/subscriber"));
 app.use("/writer", require("./routes/writer"));
 app.use("/article", require("./routes/article"));
+app.use("/draft", require("./routes/draft"));
 app.use("/editor", require("./routes/editor"));
 app.use("/admin", require("./routes/admin"));
 

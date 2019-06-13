@@ -12,6 +12,9 @@
         {{/if}}
         <div class="card-info">
             <div class="sc-info">
+                {{#if data.Premium}}
+                <span class="badge badge-pill badge-success">Premium</span>
+                {{/if}}
                 {{#if data.Alias}}
                 <em><i class="fa fa-user" aria-hidden="true"></i> Tác giả: {{data.Alias}}</em>
                 {{else}}

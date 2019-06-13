@@ -11,7 +11,7 @@ router.get("/", function (req, res, next) {
     dt.forEach(element => {
       element.Date = moment(element.Date).format("L").toString();
     });
-    var top = dt.splice(0, 2)
+    var top = dt.splice(0, 3)
     var topr = dt;
     res.render("general/general-index", {
       title: "TechHub",

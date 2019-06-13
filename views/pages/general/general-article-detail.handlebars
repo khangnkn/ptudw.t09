@@ -10,7 +10,11 @@
             <i class="fa fa-pencil" aria-hidden="true"></i>
             <em>Author: {{data.Alias}}</em> <br>
             <i class="fa fa-clock-o" aria-hidden="true"></i>
+            {{#if PublishTime}}
             <em>Date: {{data.PublishTime}}</em> <br>
+            {{else}}
+            <em>Date: {{data.Date}}</em> <br>
+            {{/if}}
             {{#if data.Premium}}
             <span class="badge badge-pill badge-success">Premium</span>
             {{/if}}
@@ -41,8 +45,9 @@
             </li>
         </ul>
     </div>
+    <h3>Bình luận</h3>
+    {{> comment}}
     <div class="comments">
-        <h3>Bình luận</h3>
         <form action="post" class="">
             <textarea name="txtComment" class="txtComment" id="" rows="5"></textarea>
             <button class="btn btn-primary m-1">Gửi</button>

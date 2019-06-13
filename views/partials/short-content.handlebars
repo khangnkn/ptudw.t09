@@ -1,52 +1,56 @@
-<a href="/article/article-{{Id}}" target="_blank">
-    <div class="card h-100">
-        <div class="card-img">
-            {{#if Cover}}
-            <img src="{{Cover}}" alt="Cover" class="card-img-top">
-            {{else}}
-            <img src="/images/articles/1/article-img1.png" alt="" class="card-img-top">
-            {{/if}}
-        </div>
-        <div class="card-body">
-            {{#if Title}}
-            <h4>{{Title}}</h4>
-            {{else}}
-            <h4>This title is missing</h4>
-            {{/if}}
-            <div>
-                {{#if Premium}}
-                <span class="badge badge-pill badge-success">Premium</span>
-                {{/if}}
-                <br>
-                <i class="fa fa-pencil" aria-hidden="true"></i>
-                {{#if Alias}}
-                <em>Tác giả: {{Alias}}</em>
+{{#if isWriter}}
+<a href="/draft/draft-{{Id}}" target="_blank">
+    {{else}}
+    <a href="/article/article-{{Id}}" target="_blank">
+        {{/if}}
+        <div class="card h-100">
+            <div class="card-img">
+                {{#if Cover}}
+                <img src="{{Cover}}" alt="Cover" class="card-img-top">
                 {{else}}
-                <em>Tác giả: Không tên</em>
-                {{/if}}
-                <br>
-                <i class="fa fa-clock-o" aria-hidden="true"></i>
-                {{#if Date}}
-                <em>Ngày xuất bản: {{Date}}</em>
-                {{else}}
-                <em>Ngày xuất bản: Không rõ</em>
-                {{/if}}
-                <br>
-                {{#if Category}}
-                <div class="badge badge-primary">{{Category}}</div>
+                <img src="/images/articles/1/article-img1.png" alt="" class="card-img-top">
                 {{/if}}
             </div>
-            <p class="card-text">
-                {{#if Abstract}}
-                {{Abstract}} <p>
-                    <b>Đọc tiếp ...</b>
-                    {{/if}}
-                </p>
-                {{#if isWriter}}
-                <button type="button" class="btn btn-sm btn-outline-primary" disabled>{{Status}}</button>
-                <button class="btn btn-sm btn-primary">Xem</button>
-                <button class="btn btn-sm btn-info">Chỉnh sửa</button>
+            <div class="card-body">
+                {{#if Title}}
+                <h4>{{Title}}</h4>
+                {{else}}
+                <h4>This title is missing</h4>
                 {{/if}}
+                <div>
+                    {{#if Premium}}
+                    <span class="badge badge-pill badge-success">Premium</span>
+                    {{/if}}
+                    <br>
+                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                    {{#if Alias}}
+                    <em>Tác giả: {{Alias}}</em>
+                    {{else}}
+                    <em>Tác giả: Không tên</em>
+                    {{/if}}
+                    <br>
+                    <i class="fa fa-clock-o" aria-hidden="true"></i>
+                    {{#if Date}}
+                    <em>Ngày xuất bản: {{Date}}</em>
+                    {{else}}
+                    <em>Ngày xuất bản: Không rõ</em>
+                    {{/if}}
+                    <br>
+                    {{#if Category}}
+                    <div class="badge badge-primary">{{Category}}</div>
+                    {{/if}}
+                </div>
+                <p class="card-text">
+                    {{#if Abstract}}
+                    {{Abstract}} <p>
+                        <b>Đọc tiếp ...</b>
+                        {{/if}}
+                    </p>
+                    {{#if isWriter}}
+                    <button type="button" class="btn btn-sm btn-outline-primary" disabled>{{Status}}</button>
+                    <button class="btn btn-sm btn-primary">Xem</button>
+                    <button class="btn btn-sm btn-info">Chỉnh sửa</button>
+                    {{/if}}
+            </div>
         </div>
-    </div>
-</a>
+    </a>

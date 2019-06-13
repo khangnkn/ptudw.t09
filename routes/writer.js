@@ -30,8 +30,7 @@ router.post("/:id/editor", (req, res, next) => {
     Title: req.body["Title"],
     Category: 1,
     Date: moment()
-      .format("YYYY-DD-MM")
-      .toString(),
+      .format("YYYY-MM-DD"),
     Cover: null,
     Author: parseInt(req.params.id),
     Content: req.body["Content"],
@@ -42,25 +41,26 @@ router.post("/:id/editor", (req, res, next) => {
   articlemodule
     .add(obj)
     .then(n => {
-      console.log(n.insertId);
-      draftmodule
-        .load(n.insertId)
-        .then(rows => {
-          console.log(rows);
-          var dt = {
-            Title: rows[0].Title,
-            Date: rows[0].Date,
-            Cover: rows[0].Cover,
-            Abstract: rows[0].Abstract,
-            Content: rows[0].Content,
-            Author: rows[0].Author,
-          };
-          console.log(dt);
-          res.render("general/general-article-detail", {
-            data: rows[0]
-          }); //?
-        })
-        .catch(next);
+      console.log(n);
+      res.redirect("/")
+      // draftmodule
+      //   .load(n.insertId)
+      //   .then(rows => {
+      //     console.log(rows);
+      //     var dt = {
+      //       Title: rows[0].Title,
+      //       Date: rows[0].Date,
+      //       Cover: rows[0].Cover,
+      //       Abstract: rows[0].Abstract,
+      //       Content: rows[0].Content,
+      //       Author: rows[0].Author,
+      //     };
+      //     console.log(dt);
+      //     res.render("general/general-article-detail", {
+      //       data: rows[0]
+      //     }); //?
+      //   })
+      //   .catch(next);
     })
     .catch(next);
 });
@@ -70,6 +70,7 @@ router.get("/:id/articles", function (req, res) {
   draftmodule.loadByUser(_id).then(rows => {
     rows.forEach(element => {
       element.Date = moment(element.Date).format("L")
+      console.log(element.Id, element.Alias);
     });
     // var list = Object.values(JSON.parse(JSON.stringify(_rows)));
     // console.log(list);
