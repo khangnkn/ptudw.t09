@@ -1,7 +1,9 @@
 const express = require("express");
 const router = express.Router();
+const moment = require('moment');
 const articles = require("../models/article.model");
 const draftmodule = require("../models/draft.model");
+const comments = require("../models/comment.model");
 
 router.get("/", function (req, res) {
   res.redirect("/");
@@ -36,5 +38,27 @@ router.get("/draft-:id", function (req, res, next) {
     })
     .catch(next);
 });
+
+router.post("/comment", function (req, res, next) {
+  console.log(req.body);
+  var comment = {
+    Article: req.body.Article,
+    User: req.body.User,
+    Time: moment().format("YYYY-MM-DD"),
+    Content: req.body.Content
+  }
+  console.log(comment);
+  comments.Add(comment).then(result => {
+    res.json({
+      success: true,
+    })
+  }).catch(err => {
+    console.log(err);
+    res.json({
+      success: false,
+    })
+  });
+});
+
 
 module.exports = router;

@@ -41,7 +41,8 @@
             </li>
             <li>
                 <a href="/article/article-04">Trải nghiệm Google Assistant tiếng Việt: Thông minh, được việc, giọng êm
-                    nhưng đôi lúc đùa hơi nhạt</a>
+                    nhưng đôi lúc đùa hơi nh
+                    ạt</a>
             </li>
         </ul>
     </div>
@@ -49,10 +50,18 @@
     {{#each comments}}
     {{> comment this}}
     {{/each}}
+    {{#if authUser}}
     <div class="comments">
-        <form action="post" class="">
-            <textarea name="txtComment" class="txtComment" id="" rows="5"></textarea>
-            <button class="btn btn-primary m-1">Gửi</button>
-        </form>
+        <div>
+            <textarea name="txtComment" class="txtComment" id="txtComment" rows="5"></textarea>
+            <button class="btn btn-primary m-1" onclick="submitComment({{data.Id}}, {{authUser.Id}})">Gửi</button>
+        </div>
     </div>
+    {{else}}
+    <a type="button" href="/subscriber/login" class="btn btn-primary btn-sm btn-block">Bạn phải đăng nhập để bình
+        luận</a>
+    {{/if}}
 </div>
+{{#section 'js'}}
+<script src="/javascripts/article.script.js"></script>
+{{/section}}
