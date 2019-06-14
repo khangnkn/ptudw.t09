@@ -8,16 +8,17 @@ router.get("/", function (req, res) {
 });
 
 router.get("/article-:id", function (req, res, next) {
-  articles
-    .GetDetail(req.params.id)
-    .then(dt => {
-      console.log("data: ", dt);
+  Promise.all([articles.GetDetail(req.params.id), articles.Comments(req.params.id)])
+    .then(function ([data, comments]) {
+      console.log(data);
+      console.log(comments);
       res.render("general/general-article-detail", {
-        data: dt[0],
-        title: dt[0].Title,
-        // extra: '<link rel="stylesheet" href="/stylesheets/writer.css">',
+        data: data[0],
+        title: data[0].Title,
+        comments: comments
       });
       articles.IncreaseView(req.params.id);
+
     })
     .catch(next);
 });

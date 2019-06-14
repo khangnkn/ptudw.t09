@@ -22,8 +22,16 @@ module.exports = {
     return db.load(sql);
   },
 
+  Comments: id => {
+    var sql = `SELECT comments.Time, comments.Content, users.Fullname
+    FROM comments, users
+    WHERE comments.User = users.Id
+    AND comments.Article = ${id}`
+    return db.load(sql)
+  },
+
   IncreaseView: id => {
-    var sql = `UPDATE articles SET View = View + 1 WHERE Id = ${id} `;
+    var sql = `UPDATE articles SET Views = Views + 1 WHERE Id = ${id} `;
     db.executeNoReturn(sql);
   },
 };

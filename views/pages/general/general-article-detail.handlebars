@@ -46,7 +46,9 @@
         </ul>
     </div>
     <h3>Bình luận</h3>
-    {{> comment}}
+    {{#each comments}}
+    {{> comment this}}
+    {{/each}}
     <div class="comments">
         <form action="post" class="">
             <textarea name="txtComment" class="txtComment" id="" rows="5"></textarea>
