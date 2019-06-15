@@ -1,18 +1,27 @@
 const writers = require('../models/writer.model');
+const editors = require('../models/editor.model');
+const admins = require('../models/admin.model');
 
 module.exports = (req, res, next) => {
     if (req.user) {
         res.locals.isAuthenticated = true;
         res.locals.authUser = req.user;
-        console.log(req.user.Id);
-        writers.byId(req.user.Id).then(rows => {
-            if (rows.length != 0) {
-                res.locals.isWriter = true;
+        user = req.user;
+        Promise.all([editors.byId(user.Id), writers.byId(user.Id)])
+            .then(([isEditor, isWriter]) => {
+                if (isEditor.length != 0) {
+                    res.locals.isEditor = true;
+                }
+                if (isWriter.length != 0) {
+                    res.locals.isWriter = true;
+                }
                 next();
-            } else {
+                return;
+            })
+            .catch(err => {
+                console.log(err);
                 next();
-            }
-        }).catch(err => console.log(err))
+            })
     } else {
         next();
     }

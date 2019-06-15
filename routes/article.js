@@ -20,7 +20,6 @@ router.get("/article-:id", function (req, res, next) {
         comments: comments
       });
       articles.IncreaseView(req.params.id);
-
     })
     .catch(next);
 });

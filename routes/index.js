@@ -7,19 +7,25 @@ var path = require('path');
 var moment = require('moment');
 
 router.get("/", function (req, res, next) {
-  articles.GetTopViews().then(dt => {
-    dt.forEach(element => {
-      element.Date = moment(element.Date).format("L").toString();
-    });
-    var top = dt.splice(0, 3)
-    var topr = dt;
-    res.render("general/general-index", {
-      title: "TechHub",
-      // extra: '<link rel="stylesheet" href="/stylesheets/home.css">',
-      top: top,
-      topr: topr
-    });
-  }).catch(err => console.log(err))
+  Promise.all([articles.GetMostComment(), articles.GetTopViews()])
+    .then(([byComments, byViews]) => {
+      byComments.forEach(element => {
+        element.Date = moment(element.Date).format("L").toString();
+      });
+      byViews.forEach(element => {
+        element.Date = moment(element.Date).format("L").toString();
+      });
+      res.render("general/general-index", {
+        title: "TechHub",
+        mostCommentCarousel: byComments.splice(0, 3),
+        mostCommentsRight: byComments,
+        mostViews: byViews,
+      });
+    })
+    .catch(err => {
+      console.log(err);
+      next(err);
+    })
 });
 
 router.get("/search", (req, res) => {

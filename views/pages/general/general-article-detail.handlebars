@@ -10,7 +10,7 @@
             <i class="fa fa-pencil" aria-hidden="true"></i>
             <em>Author: {{data.Alias}}</em> <br>
             <i class="fa fa-clock-o" aria-hidden="true"></i>
-            {{#if PublishTime}}
+            {{#if data.PublishTime}}
             <em>Date: {{data.PublishTime}}</em> <br>
             {{else}}
             <em>Date: {{data.Date}}</em> <br>
@@ -58,10 +58,23 @@
         </div>
     </div>
     {{else}}
-    <a type="button" href="/subscriber/login" class="btn btn-primary btn-sm btn-block">Bạn phải đăng nhập để bình
+    <a type="button" id="login-btn" href="/subscriber/login?return=" class="btn btn-primary btn-sm btn-block">Bạn phải
+        đăng nhập để bình
         luận</a>
+    {{#section 'js'}}
+    <script>
+        $(document).ready(function () {
+            $("#login-btn").attr('href', '/subscriber/login?return=' + window.location.href)
+        })
+    </script>
+    {{/section}}
     {{/if}}
 </div>
 {{#section 'js'}}
 <script src="/javascripts/article.script.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#login-btn").attr('href', '/subscriber/login?return=' + window.location.href)
+    })
+</script>
 {{/section}}

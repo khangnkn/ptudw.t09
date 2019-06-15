@@ -8,7 +8,7 @@
         <div class="col-sm-7">
             <div id="main-slide" class="carousel slide" data-ride="carousel">
                 <div class="carousel-inner">
-                    {{#each top}}
+                    {{#each mostCommentCarousel}}
                     <div class="carousel-item {{#unless @index}}active
                     {{/unless}}">
                         {{>short-content data=this}}
@@ -26,7 +26,7 @@
             </div>
         </div>
         <div class="col-sm-5">
-            {{#each topr}}
+            {{#each mostCommentsRight}}
             {{>home-short-content data=this}}
             {{/each}}
         </div>
@@ -87,7 +87,7 @@
                     Xem nhiều
                 </div>
                 <div class="group-contents">
-                    {{#each this.top}}
+                    {{#each mostViews}}
                     {{>horizontal-short-content data=this}}
                     {{/each}}
                 </div>

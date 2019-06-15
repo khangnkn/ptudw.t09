@@ -24,7 +24,6 @@ router.post("/login", (req, res, next) => {
 
     if (!user) {
       return res.render('subscriber/login', {
-
         err_message: info.message
       })
     }
@@ -33,9 +32,13 @@ router.post("/login", (req, res, next) => {
       if (err) {
         return next(err);
       }
-      // return res.redirect('/');
-
-      return res.redirect("/subscriber/change-password")
+      redirectURL = req.query.return
+      console.log(redirectURL);
+      if (redirectURL) {
+        return res.redirect("/subscriber/change-password");
+      } else {
+        return res.redirect("/");
+      }
     });
   })(req, res, next);
 });
@@ -54,7 +57,7 @@ router.get("/update-info", auth, (req, res) => {
 });
 
 router.post("/logout", auth, (req, res, next) => {
-  passport.logOut();
+  req.logOut();
   res.redirect("/login");
 });
 
