@@ -4,10 +4,10 @@
         <div class="col-sm-7">
             <div id="main-slide" class="carousel slide" data-ride="carousel">
                 <div class="carousel-inner">
-                    {{#each top}}
+                    {{#each topWeek}}
                     <div class="carousel-item {{#unless @index}}active
                     {{/unless}}">
-                        {{>short-content sc-id = this.id  sc-image = this.image sc-title = this.title sc-author = this.author sc-date = this.date sc-category = this.category sc-abstract = this.abstract}}
+                        {{>short-content sc-id = this.Id  sc-image = this.Cover sc-title = this.Title sc-author = this.Alias sc-date = this.PublishDate sc-category = this.Category sc-abstract = this.Abstract}}
                     </div>
                     {{/each}}
                 </div>
@@ -23,7 +23,7 @@
         </div>
         <div class="col-sm-5">
             {{#each topr}}
-            {{>home-short-content sc-id = this.id sc-image = this.image sc-title = this.title sc-author=this.author sc-date = this.date sc-category = this.category}}
+            {{>home-short-content sc-id = this.Id sc-image = this.Cover sc-title = this.Title sc-author=this.Alias sc-date = this.PublishDate sc-category = this.Category}}
             {{/each}}
         </div>
     </div>
@@ -83,8 +83,8 @@
                     Xem nhiều
                 </div>
                 <div class="group-contents">
-                    {{#each top}}
-                    {{>horizontal-short-content  sc-id = this.id  sc-image = this.image sc-title = this.title sc-author = this.author sc-date = this.date sc-category = this.category sc-abstract = this.abstract}}
+                    {{#each mostView}}
+                    {{>horizontal-short-content  sc-id = this.Id  sc-image = this.Cover sc-title = this.Title sc-author = this.Author sc-date = this.PublishDate sc-category = this.Category sc-abstract = this.Abstract}}
                     {{/each}}
                 </div>
             </div>
@@ -96,36 +96,30 @@
                 </div>
                 {{!-- Nav tabs --}}
                 <ul class="nav nav-tabs">
-                    <li class="nav-item fs-13"><a href="#phone-tab" data-toggle="tab" class="nav-link active">Điện
-                            thoại</a>
-                    </li>
-                    <li class="nav-item fs-13"><a href="#laptop-tab" data-toggle="tab" class="nav-link">Laptop</a></li>
-                    <li class="nav-item fs-13"><a href="#programming-tab" data-toggle="tab" class="nav-link">Lập
-                            trình</a>
-                    </li>
+                    <li class="nav-item fs-13"><a href="#_newest" data-toggle="tab" class="nav-link">Mới nhất</a></li>
+                    {{#each SC}}
+                        <li class="nav-item fs-13"><a href="#{{@index}}" data-toggle="tab" class="nav-link">{{this.Name}}</a></li>
+                    {{/each}}
                 </ul>
                 {{!-- Nav contents --}}
                 <div class="tab-content">
-                    <div class="tab-pane container active" id="phone-tab">
-                        {{>short-content sc-id = top.3.id sc-image = top.3.image sc-title = top.3.title sc-author = top.3.author sc-date = top.3.date sc-category = top.3.category sc-abstract = top.3.abstract}}
-                        {{#each top}}
-                        {{>horizontal-short-content  sc-id = this.id  sc-image = this.image sc-title = this.title sc-author = this.author sc-date = this.date sc-category = this.category sc-abstract = this.abstract}}
-                        {{/each}}
+                    <div class="tab-pane container active" id="_newest">
+                            {{>short-content sc-id = topNewest.0.Id sc-image = topNewest.0.Cover sc-title = topNewest.0.Title sc-author = topNewest.0.Alias sc-date = topNewest.0.PublishDate sc-category = topNewest.0.Category sc-abstract = topNewest.0.Abstract}}
+                            {{>horizontal-short-content  sc-id = topNewest.1.Id  sc-image = topNewest.1.Cover sc-title = topNewest.1.Title sc-author = topNewest.1.Alias sc-date = topNewest.1.PublishDate sc-category = topNewest.1.Category sc-abstract = topNewest.1.Abstract}}
+                            {{>horizontal-short-content  sc-id = topNewest.2.Id  sc-image = topNewest.2.Cover sc-title = topNewest.2.Title sc-author = topNewest.2.Alias sc-date = topNewest.2.PublishDate sc-category = topNewest.2.Category sc-abstract = topNewest.2.Abstract}}
+                            {{>horizontal-short-content  sc-id = topNewest.3.Id  sc-image = topNewest.3.Cover sc-title = topNewest.3.Title sc-author = topNewest.3.Alias sc-date = topNewest.3.PublishDate sc-category = topNewest.3.Category sc-abstract = topNewest.3.Abstract}}
+                            {{>horizontal-short-content  sc-id = topNewest.4.Id  sc-image = topNewest.4.Cover sc-title = topNewest.4.Title sc-author = topNewest.4.Alias sc-date = topNewest.4.PublishDate sc-category = topNewest.4.Category sc-abstract = topNewest.4.Abstract}}
                     </div>
-                    <div class="tab-pane container fade" id="laptop-tab">
 
-                        {{>short-content sc-id = top.1.id sc-image = top.1.image sc-title = top.1.title sc-author = top.1.author sc-date = top.1.date sc-category = top.1.category sc-abstract = top.1.abstract}}
-                        {{>horizontal-short-content}}
-                        {{>horizontal-short-content}}
-                        {{>horizontal-short-content}}
-                    </div>
-                    <div class="tab-pane container fade" id="programming-tab">
-                        {{>short-content sc-id = top.2.id sc-image = top.2.image sc-title = top.2.title sc-author = top.2.author sc-date = top.2.date sc-category = top.2.category sc-abstract = top.2.abstract}}
-                        {{>horizontal-short-content}}
-                        {{>horizontal-short-content}}
-                        {{>horizontal-short-content}}
-
-                    </div>
+                    {{#each topSC}}
+                        <div class="tab-pane container active" id="{{@index}}">
+                            {{>short-content sc-id = this.0.Id sc-image = this.0.Cover sc-title = this.0.Title sc-author = this.0.Alias sc-date = this.0.PublishDate sc-category = this.0.Category sc-abstract = this.0.Abstract}}
+                            {{>horizontal-short-content  sc-id = this.1.Id  sc-image = this.1.Cover sc-title = this.1.Title sc-author = this.1.Alias sc-date = this.1.PublishDate sc-category = this.1.Category sc-abstract = this.1.Abstract}}
+                            {{>horizontal-short-content  sc-id = this.2.Id  sc-image = this.2.Cover sc-title = this.2.Title sc-author = this.2.Alias sc-date = this.2.PublishDate sc-category = this.2.Category sc-abstract = this.2.Abstract}}
+                            {{>horizontal-short-content  sc-id = this.3.Id  sc-image = this.3.Cover sc-title = this.3.Title sc-author = this.3.Alias sc-date = this.3.PublishDate sc-category = this.3.Category sc-abstract = this.3.Abstract}}
+                            {{>horizontal-short-content  sc-id = this.4.Id  sc-image = this.4.Cover sc-title = this.4.Title sc-author = this.4.Alias sc-date = this.4.PublishDate sc-category = this.4.Category sc-abstract = this.4.Abstract}}
+                        </div>
+                    {{/each}}
                 </div>
             </div>
         </div>

@@ -1,0 +1,111 @@
+<div class="search-container">
+    <div class="row">
+        <div class="col-lg-9">
+            <div class="technology">
+                <div class="section_title_container d-flex flex-row align-items-start justify-content-start">
+                    <div>
+                        <div class="section_title">{{name}}</div>
+                        <div class="section_subtitle">{{type}}</div>
+                    </div>
+                    <div class="section_bar"></div>
+                </div>
+                <hr>
+                <div class="technology_content">
+
+                    <!-- Post -->
+                    {{#each result}}
+                        {{>item-search src-link=../link src-subcate = this.NameSubCate src-badges=this.tags src-img = this.Cover src-title = this.Title src-author=this.Alias src-date=this.PublishDate src-content=this.Abstract src-views = this.Views src-cmt = this.TotalCmt}}
+                        <hr>
+                    {{/each}}
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-3" style="margin-top: 75px;">
+            <div class="sidebar-area bg-white mb-30 box-shadow  ">
+                <!-- Sidebar Widget -->
+
+                <div class="p20">
+                    <div class="milestone_text1" style="font-weight: bold;">{{currCate.name}} có: </div> <br>
+                    <div class="milestone d-flex flex-row align-items-center justify-content-center">
+                        <div class="milestone_icon d-flex flex-column align-items-center justify-content-center">
+                            <img src="/images/icon_7.svg"></div>
+                        <div class="milestone_content">
+                            <div class="milestone_counter">{{count}}</div>
+                            <div class="milestone_text">Bài viết</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sidebar Widget -->
+                <div class="p20">
+                    <!-- Section Title -->
+                    <div class="section-heading" style="color: orange;font-weight: bold;">
+                        <h5>Gợi ý cho bạn</h5>
+                    </div>
+
+                    <!-- Catagory Widget -->
+                    <ul class="catagory-widgets _ul" style="padding:0px;">
+                        {{#if isTag}}
+                            <div class="tags">
+                                <div class="tags_content d-flex flex-row align-items-start justify-content-start flex-wrap">
+                                    {{#each wtTable}}
+                                        <div class="tag"><a href="/admin/tags?id={{this.Id}}">{{this.Name}}</a></div>
+                                    {{/each}}
+                                </div>
+                            </div>
+                        {{else}}
+                            {{#each wtTable}}
+                                <li>
+                                    <a href="/admin/categories?id={{this.Id}}">
+                                    <span class="_li" style="font-size: 20px;"><i class="fas fa-feather _li" aria-hidden="true"></i>
+                                        {{this.Name}}</span>
+                                    <span class="_li">{{this.Total}}</span>
+                                    </a>
+                                </li>
+                            {{/each}}
+                        {{/if}}
+                        
+                    </ul>
+                </div>
+            </div>
+
+            <div class="sidebar-area bg-white mb-30 box-shadow  ">
+                <div class="p20">
+                        <div class="single-widget mb-50">
+        <!-- Section Heading -->
+        <div class="section-heading-widget style-2 mb-30">
+            <h4>Most Viewed Articles</h4>
+            <div class="line"></div>
+        </div>
+        {{>mv_search_item src-img= mViewed.0.Cover src-title = mViewed.0.Title src-views=mViewed.0.Views src-cmt = mViewed.0.TotalCmt}}
+
+        {{>mv_search_item_s src-img= mViewed.1.Cover src-title = mViewed.1.Title src-views=mViewed.1.Views src-cmt = mViewed.1.TotalCmt}}
+        {{>mv_search_item_s src-img= mViewed.2.Cover src-title = mViewed.2.Title src-views=mViewed.2.Views src-cmt = mViewed.2.TotalCmt}}
+        {{>mv_search_item_s src-img= mViewed.3.Cover src-title = mViewed.3.Title src-views=mViewed.3.Views src-cmt = mViewed.3.TotalCmt}}
+        {{>mv_search_item_s src-img= mViewed.4.Cover src-title = mViewed.4.Title src-views=mViewed.4.Views src-cmt = mViewed.4.TotalCmt}}
+    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-lg-9">
+
+            <hr style="color: orange;size: 5px;">
+            <nav>
+                <ul class="pagination" load()>
+                    <li class="page-item active"><a class="page-link" href="#">{{currPage}}</a></li>
+                    <li class="page-item"><a class="page-link" id="pageNext1"></a></li>
+                    <li class="page-item"><a class="page-link" id="pageNext2"></a></li>
+                    <li class="page-item"><a class="page-link" href="#"><i class="fas fa-angle-right"></i></a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>
+<script>
+        document.getElementById("pageNext1").innerHTML = {{currPage}} + 1;
+        document.getElementById("pageNext2").innerHTML = {{currPage}}+2;
+</script> 
