@@ -5,6 +5,15 @@ module.exports = {
     return db.insert("drafts", article);
   },
 
+  byCat: id => {
+    var sql = `SELECT articles.Id, drafts.Title, drafts.Abstract, drafts.Cover, writers.Alias, drafts.Content, articles.Premium, articles.PublishTime as "Date", subcategories.Name as "Category"
+    FROM articles JOIN drafts ON articles.Draft = drafts.Id
+    JOIN writers ON drafts.Author = writers.Id
+    JOIN subcategories ON drafts.Category = subcategories.Id AND subcategories.Id = ${id}
+    LIMIT 10`;
+    return db.load(sql);
+  },
+
   GetDetail: id => {
     var sql = `SELECT articles.Id, drafts.Title, drafts.Abstract, drafts.Cover, writers.Alias, drafts.Content, articles.Premium, articles.PublishTime, articles.Views
     FROM articles JOIN drafts ON articles.Draft = drafts.Id and articles.Id = ${id} 

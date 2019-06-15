@@ -11,6 +11,7 @@ require('./middlewares/view-engine')(app);
 require('./middlewares/session')(app);
 require('./middlewares/passport')(app);
 app.use(require('./middlewares/auth-local'));
+app.use(require('./middlewares/local'));
 
 app.use(logger("dev"));
 app.use(express.json());

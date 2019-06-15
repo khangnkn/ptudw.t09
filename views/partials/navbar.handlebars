@@ -6,29 +6,25 @@
         <li class="nav-item dropdown">
             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" id="phone-dropdown">ĐIỆN THOẠI</a>
             <div class="dropdown-menu">
-                <a href="#" class="dropdown-item">Samsung</a>
-                <a href="#" class="dropdown-item">Huawei</a>
-                <a href="#" class="dropdown-item">Apple</a>
-                <a href="#" class="dropdown-item">Xiaomi</a>
-                <a href="#" class="dropdown-item">Khác</a>
+                {{#each PhoneCat}}
+                <a href="/search?category={{this.Id}}" class="dropdown-item">{{this.Name}}</a>
+                {{/each}}
             </div>
         </li>
         <li class="nav-item dropdown">
             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" id="laptop-dropdown">LAPTOP</a>
             <div class="dropdown-menu">
-                <a href="#" class="dropdown-item">Dell</a>
-                <a href="#" class="dropdown-item">Hewlett-Packard</a>
-                <a href="#" class="dropdown-item">Macbook</a>
-                <a href="#" class="dropdown-item">Asus</a>
-                <a href="#" class="dropdown-item">Khác</a>
+                {{#each LaptopCat}}
+                <a href="/search?category={{this.Id}}" class="dropdown-item">{{this.Name}}</a>
+                {{/each}}
             </div>
         </li>
         <li class="nav-item dropdown">
             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">CÔNG NGHỆ</a>
             <div class="dropdown-menu">
-                <a href="#" class="dropdown-item">Công nghệ mới</a>
-                <a href="#" class="dropdown-item">Data Science</a>
-                <a href="#" class="dropdown-item">Artificial Intelligence</a>
+                {{#each TechCat}}
+                <a href="/search?category={{this.Id}}" class="dropdown-item">{{this.Name}}</a>
+                {{/each}}
             </div>
         </li>
         {{#if isAuthenticated}}

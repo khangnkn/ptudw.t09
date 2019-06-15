@@ -33,7 +33,27 @@ router.get("/search", (req, res) => {
     // implement search
     return
   };
-  if (req.query.cat) {
+  if (req.query.category) {
+    var id = req.query.category;
+    if (isNaN(id)) {
+      next("Id must be a number");
+      return;
+    }
+    articles.byCat(id)
+      .then(data => {
+        data.forEach(element => {
+          element.Date = moment(element.Date).format("L").toString();
+        });
+        res.render("general/search", {
+          title: "Category",
+          // extra: '<link rel="stylesheet" href="/stylesheets/home.css">',
+          data: data
+        });
+      })
+      .catch(err => {
+        console.log(err);
+        next(err);
+      })
     return
   };
   if (req.query.tag) {

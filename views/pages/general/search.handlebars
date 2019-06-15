@@ -12,21 +12,13 @@
                     Chuyên mục
                 </div>
                 <ul class="nav flex-column">
+                    {{#each TopCat}}
                     <li>
-                        <a class="panel-category" href="">Apple</a>
+                        <a class="panel-category" href="/search?category={{this.Id}}">
+                            {{this.Name}}<span class="badge badge-secondary ml-auto">{{this.Articles}}</span></a>
+
                     </li>
-                    <li>
-                        <a class="panel-category" href="">Samsung</a>
-                    </li>
-                    <li>
-                        <a class="panel-category" href="">Hewlett-Packard</a>
-                    </li>
-                    <li>
-                        <a class="panel-category" href="">Artificial Intelligence</a>
-                    </li>
-                    <li>
-                        <a class="panel-category" href="">Xiaomi</a>
-                    </li>
+                    {{/each}}
                 </ul>
             </div>
             <div class="home-login section">
@@ -58,7 +50,7 @@
                     Tìm kiếm
                 </div>
                 <div class="group-contents">
-                    {{#each this.top}}
+                    {{#each this.data}}
                     {{>horizontal-short-content data=this}}
                     {{/each}}
                 </div>
