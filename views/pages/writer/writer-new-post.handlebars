@@ -17,8 +17,20 @@
         <textarea class="form-control shadow-none" rows="2" id="comment" name="Abstract"></textarea>
     </div>
     <div class="form-group">
+        <label for="Cover">Cover: </label>
+        <input type="text" name="Cover" id="Cover" class="form-control" placeholder="https://cdn.photo.com/sample.jpg">
+    </div>
+    <div class="form-group">
         <label for="comment"><b>Content</b>:</label>
         <textarea id="tiny-editor" name="Content"></textarea>
+    </div>
+    <div class="form-group">
+        <label for="CatSelect">Category: </label>
+        <select class="form-control" name="CatSelect" id="CatSelect">
+            {{#each Cats}}
+            <option value="{{this.Id}}">{{this.Name}}</option>
+            {{/each}}
+        </select>
     </div>
     <div class="form-group d-flex flex-row-reverse">
         <button type="submit" class="btn btn-outline-primary mt-5 right">Đăng bài</button>

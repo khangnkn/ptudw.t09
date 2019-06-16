@@ -36,12 +36,23 @@
 
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                {{#if isWriter}}
+                <a class="dropdown-item" href="/writer/{{authUser.Id}}/editor">
+                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                    Trang viết bài
+                </a>
+                {{/if}}
+                {{#if isEditor}}
+                <a class="dropdown-item" href="/editor/{{authUser.Id}}/drafts">
+                    <i class="fa fa-sticky-note" aria-hidden="true"></i> Trang biên tập
+                </a>
+                {{/if}}
                 <a class="dropdown-item" href="/account/profile">
                     <i class="fa fa-user" aria-hidden="true"></i>
-                    Profile
+                    Thông tin cá nhân
                 </a>
                 <a class="dropdown-item" href="javascript: $('#frmSignout').submit();">
-                    <i class="fa fa-power-off" aria-hidden="true"></i> Sign Out
+                    <i class="fa fa-power-off" aria-hidden="true"></i> Đăng xuất
                 </a>
             </div>
         </li>

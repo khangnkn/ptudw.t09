@@ -16,4 +16,12 @@ module.exports = {
     WHERE dr.Author = ${id} AND dr.Author = wr.Id AND ca.Id = dr.Category and dr.State = states.Id`;
     return db.load(sql);
   },
+
+  ByEditor: id => {
+    var sql = `SELECT drafts.Id, drafts.Title, drafts.Date, drafts.Cover, drafts.Content, drafts.Abstract, subcategories.Name as "Category", writers.Alias
+    FROM drafts JOIN writers on drafts.Author = writers.Id
+    JOIN subcategories ON subcategories.Id = drafts.Category
+    JOIN editors ON subcategories.Category = editors.ManagedCate AND editors.Id = ${id}`
+    return db.load(sql)
+  },
 };

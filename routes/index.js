@@ -28,7 +28,7 @@ router.get("/", function (req, res, next) {
     })
 });
 
-router.get("/search", (req, res) => {
+router.get("/search", (req, res, next) => {
   if (req.query.search) {
     // implement search
     return
@@ -46,7 +46,6 @@ router.get("/search", (req, res) => {
         });
         res.render("general/search", {
           title: "Category",
-          // extra: '<link rel="stylesheet" href="/stylesheets/home.css">',
           data: data
         });
       })
@@ -65,9 +64,7 @@ router.get("/search", (req, res) => {
     });
     res.render("general/search", {
       title: "TechHub",
-      extra: '<link rel="stylesheet" href="/stylesheets/home.css">',
-      top: dt.splice(0, 2),
-      topr: dt
+      top: dt,
     });
   }).catch(err => console.log(err))
 })

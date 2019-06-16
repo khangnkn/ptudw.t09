@@ -1,6 +1,7 @@
 var express = require("express");
 const articlemodule = require("../models/article.model");
 const draftmodule = require("../models/draft.model");
+const subcategories = require("../models/subcategory.model");
 var router = express.Router();
 var moment = require("moment");
 
@@ -16,22 +17,29 @@ router.get("/welcome", function (req, res) {
   });
 });
 
-router.get("/:id/editor", function (req, res) {
+router.get("/:id/editor", function (req, res, next) {
   var _id = req.param.id;
-  res.render("writer/writer-new-post", {
-    id: _id,
-    layout: "writer-layout",
-    title: "Biên tập bài viết",
-  });
+  subcategories.All().then(data => {
+    res.render("writer/writer-new-post", {
+      id: _id,
+      layout: "writer-layout",
+      title: "Biên tập bài viết",
+      Cats: data
+    });
+  }).catch(err => {
+    console.log(err);
+    next(err)
+  })
 });
 
 router.post("/:id/editor", (req, res, next) => {
+  console.log(req.body);
   var obj = {
     Title: req.body["Title"],
-    Category: 1,
+    Category: req.body.CatSelect,
     Date: moment()
       .format("YYYY-MM-DD"),
-    Cover: null,
+    Cover: req.body.Cover,
     Author: parseInt(req.params.id),
     Content: req.body["Content"],
     Abstract: req.body["Abstract"],

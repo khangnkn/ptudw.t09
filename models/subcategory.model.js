@@ -1,6 +1,12 @@
 var db = require('../utils/db.util');
 
 module.exports = {
+    All: () => {
+        var sql = `SELECT * from subcategories`
+        return db.load(sql);
+    },
+
+
     byId: id => {
         var sql = `select Name from subcategories where Id = "${id}"`
         return db.load(sql)
