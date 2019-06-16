@@ -19,9 +19,17 @@ module.exports = {
 
   ByEditor: id => {
     var sql = `SELECT drafts.Id, drafts.Title, drafts.Date, drafts.Cover, drafts.Content, drafts.Abstract, subcategories.Name as "Category", writers.Alias
-    FROM drafts JOIN writers on drafts.Author = writers.Id
+    FROM drafts JOIN writers on drafts.Author = writers.Id AND drafts.State = 1
     JOIN subcategories ON subcategories.Id = drafts.Category
     JOIN editors ON subcategories.Category = editors.ManagedCate AND editors.Id = ${id}`
-    return db.load(sql)
+    return db.load(sql);
   },
+
+  PublishByEditor: id => {
+    var sql = `SELECT drafts.Id, drafts.Title, drafts.Date, drafts.Cover, drafts.Content, drafts.Abstract, subcategories.Name as "Category", writers.Alias
+    FROM drafts JOIN writers on drafts.Author = writers.Id AND drafts.State = 4
+    JOIN subcategories ON subcategories.Id = drafts.Category
+    JOIN editors ON subcategories.Category = editors.ManagedCate AND editors.Id = ${id}`
+    return db.load(sql);
+  }
 };

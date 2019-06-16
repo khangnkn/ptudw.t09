@@ -1,13 +1,34 @@
+{{#section 'css'}}
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+    type="text/css" />
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+    integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+</script>
+<link rel="stylesheet" href="/stylesheets/editor.css">
+{{/section}}
 <div class="container">
     <div class="card border-right-0 border-bottom-0 border-left-0">
         <div class="card-header border-left border-right">
             <ul class="nav nav-tabs card-header-tabs">
+                {{#if isDrafts}}
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Publish<span class="badge badge-light">{{{publish}}}</span></a>
+                    <a class="nav-link" name="top-article-tab" status="4" href="#">Publish<span
+                            class="badge badge-light">{{{publish}}}</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" href="#">Dafts<span class="badge badge-light">{{{draft}}}</span></a>
+                    <a class="nav-link active" name="top-article-tab" status="1" href="#">Dafts<span
+                            class="badge badge-light">{{{draft}}}</span></a>
                 </li>
+                {{else}}
+                <li class="nav-item">
+                    <a class="nav-link active" name="top-article-tab" status="4" href="#">Publish<span
+                            class="badge badge-light">{{{publish}}}</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" name="top-article-tab" status="1" href="#">Dafts<span
+                            class="badge badge-light">{{{draft}}}</span></a>
+                </li>
+                {{/if}}
             </ul>
         </div>
         {{#each data}}
@@ -15,3 +36,24 @@
         {{/each}}
     </div>
 </div>
+{{#section 'js'}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.2/handlebars.js"></script>
+<script>
+    $("button[name='btn-publish']").click(function () {
+
+        console.log($(this).attr("data-target"));
+    })
+
+    $("a[name='top-article-tab']").click(function () {
+        var status = $(this).attr("status");
+        console.log(status);
+        if (status == "1") {
+            window.location.href = "/editor/{{authUser.Id}}/drafts/unreleased"
+        } else if (status == "4") {
+            window.location.href = "/editor/{{authUser.Id}}/drafts/released"
+        } else {
+            return;
+        }
+    })
+</script>
+{{/section}}

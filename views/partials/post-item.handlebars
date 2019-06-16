@@ -14,9 +14,13 @@
                             data-target="#view_modal-{{data.Id}}"><i class="fa fa-eye"
                                 aria-hidden="true"></i></i><small>
                                 Xem</small></button></li>
-                    <li><button type="button" class="btn btn-outline-primary" data-toggle="modal"
-                            data-target="#publish_modal-{{data.Id}}"><i class="fa fa-newspaper-o"
-                                aria-hidden="true"></i><small>Xuất bản</small> </button> </li>
+                    <li>
+                        <button name="btn-publish" type="button" class="btn btn-outline-primary" data-toggle="modal"
+                            data-target="#publish_modal-{{data.Id}}">
+                            <i class="fa fa-newspaper-o" aria-hidden="true"></i>
+                            <small>Xuất bản</small>
+                        </button>
+                    </li>
                     <li><button type="button" class="btn btn-outline-primary" data-toggle="modal"
                             data-target="#deny_modal-{{data.Id}}"><i class="fa fa-eraser"></i><small>
                                 Từ chối</small></button>
@@ -25,6 +29,8 @@
         </ul>
     </div>
 </div>
+
+{{!-- View modal --}}
 <div class="modal fade view-modal" id="view_modal-{{data.Id}}" role="dialog">
     <div class="modal-dialog modal-lg">
         <!-- Modal content-->
@@ -46,6 +52,7 @@
     </div>
 </div>
 
+{{!-- Publish modal --}}
 <div class="modal fade" id="publish_modal-{{data.Id}}" role="dialog">
     <div class="modal-dialog modal-lg">
         <!-- Modal content-->
@@ -83,6 +90,7 @@
     </div>
 </div>
 
+{{!-- Deny modal --}}
 <div class="modal fade" id="deny_modal-{{data.Id}}" role="dialog">
     <div class="modal-dialog modal-lg">
         <!-- Modal content-->
