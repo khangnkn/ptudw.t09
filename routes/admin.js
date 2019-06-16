@@ -1,5 +1,8 @@
 const express = require("express");
 const router = express.Router();
+var bcrypt = require('bcrypt');
+var passport = require('passport');
+var auth = require('../middlewares/auth-admin');
 
 router.get("/", function (req, res) {
   res.redirect("/admin/login");
@@ -11,11 +14,30 @@ router.get('/login', function (req, res, next) {
   })
 })
 
-router.post('/login', (req, res) => {
-  res.end(req.body.username + req.body.password);
+router.post('/login', (req, res,next) => {
+  passport.authenticate('admin', (err, user, info) => {
+    if (err)
+      return next(err);
+
+    if (!user) {
+      console.log(req.session);
+      return res.render('admin/login', {
+        layout: false,
+        err_message: info.message
+      })
+    }
+
+    req.logIn(user, err => {
+      if (err)
+        return next(err);
+      console.log(req.session);
+      return res.end('a');
+    });
+  })(req, res, next);
+  
 })
 
-router.get("/categories", function (req, res) {
+router.get("/categories", auth,function (req, res) {
   var page = 1;
   var cate = {
     id: 1,

@@ -10,6 +10,7 @@ var app = express();
 require('./middlewares/view-engine')(app);
 require('./middlewares/session')(app);
 require('./middlewares/passport')(app);
+require('./middlewares/passport-admin')(app);
 app.use(require('./middlewares/auth-local'));
 app.use(require('./middlewares/local'));
 
