@@ -51,24 +51,6 @@ router.post("/:id/editor", (req, res, next) => {
     .then(n => {
       console.log(n);
       res.redirect("/")
-      // draftmodule
-      //   .load(n.insertId)
-      //   .then(rows => {
-      //     console.log(rows);
-      //     var dt = {
-      //       Title: rows[0].Title,
-      //       Date: rows[0].Date,
-      //       Cover: rows[0].Cover,
-      //       Abstract: rows[0].Abstract,
-      //       Content: rows[0].Content,
-      //       Author: rows[0].Author,
-      //     };
-      //     console.log(dt);
-      //     res.render("general/general-article-detail", {
-      //       data: rows[0]
-      //     }); //?
-      //   })
-      //   .catch(next);
     })
     .catch(next);
 });

@@ -2,8 +2,18 @@ const express = require("express");
 const router = express.Router();
 
 router.get("/", function (req, res) {
-  res.redirect("/admin/categories");
+  res.redirect("/admin/login");
 });
+
+router.get('/login', function (req, res, next) {
+  res.render("admin/login", {
+    layout: false,
+  })
+})
+
+router.post('/login', (req, res) => {
+  res.end(req.body.username + req.body.password);
+})
 
 router.get("/categories", function (req, res) {
   var page = 1;
