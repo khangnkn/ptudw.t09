@@ -1,6 +1,30 @@
 {{#each data}}
 {{> post-item this}}
 {{/each}}
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item">
+        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="pending"
+            aria-selected="true">Đã được duyệt, chờ xuất bản</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="published"
+            aria-selected="false">Đã xuất bản</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="denied"
+            aria-selected="false">Bị từ chối</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="waiting"
+            aria-selected="false">Chưa được duyệt</a>
+    </li>
+</ul>
+<div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade show active" id="pending" role="tabpanel" aria-labelledby="home-tab">...</div>
+    <div class="tab-pane fade" id="published" role="tabpanel" aria-labelledby="profile-tab">...</div>
+    <div class="tab-pane fade" id="denied" role="tabpanel" aria-labelledby="contact-tab">...</div>
+    <div class="tab-pane fade" id="waiting" role="tabpanel" aria-labelledby="contact-tab">...</div>
+</div>
 <div class="paging">
     <ul class="pagination">
         <li class="page-item"><a class="page-link" href="#">Previous</a></li>

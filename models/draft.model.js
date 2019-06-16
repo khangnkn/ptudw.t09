@@ -31,5 +31,12 @@ module.exports = {
     JOIN subcategories ON subcategories.Id = drafts.Category
     JOIN editors ON subcategories.Category = editors.ManagedCate AND editors.Id = ${id}`
     return db.load(sql);
+  },
+
+  byWriterStatus: (id, status) => {
+    var sql = `SELECT drafts.Id, drafts.Title, drafts.Date, drafts.Cover, drafts.Content, drafts.Abstract, subcategories.Name as "Category", writers.Alias 
+    FROM drafts JOIN writers ON drafts.Author = writers.Id AND drafts.State = ${status} AND writers.Id = ${id} 
+    JOIN subcategories ON subcategories.Id = drafts.Category`;
+    return db.load(sql);
   }
 };
