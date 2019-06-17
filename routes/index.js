@@ -56,6 +56,21 @@ router.get("/search", (req, res, next) => {
     return
   };
   if (req.query.tag) {
+    var tag = req.query.tag;
+    articles.byTagName(tag)
+      .then(data => {
+        data.forEach(element => {
+          element.Date = moment(element.Date).format("L").toString();
+        });
+        res.render("general/search", {
+          title: "Tag",
+          data: data
+        });
+      })
+      .catch(err => {
+        console.log(err);
+        next(err)
+      })
     return;
   };
   articles.GetTopViews().then(dt => {
