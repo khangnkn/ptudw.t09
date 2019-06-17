@@ -10,6 +10,7 @@ module.exports = {
     FROM articles JOIN drafts ON articles.Draft = drafts.Id
     JOIN writers ON drafts.Author = writers.Id
     JOIN subcategories ON drafts.Category = subcategories.Id AND subcategories.Id = ${id}
+    ORDER BY articles.Premium DESC
     LIMIT 10`;
     return db.load(sql);
   },
@@ -21,6 +22,7 @@ module.exports = {
     JOIN subcategories ON drafts.Category = subcategories.Id
     JOIN drafts_tags on drafts.Id = drafts_tags.idArticle
     JOIN tags ON drafts_tags.idTag = tags.Id AND tags.Name = "${tagName}"
+    ORDER BY articles.Premium DESC
     LIMIT 10`;
     return db.load(sql);
   },

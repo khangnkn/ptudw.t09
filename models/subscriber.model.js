@@ -7,7 +7,7 @@ module.exports = {
     },
 
     singleByEmail: email => {
-        sql = `SELECT Id, Username, Password, Fullname, Email, DATE_FORMAT(Birthday, '%d/%m/%Y') as "Birthday" FROM users WHERE Email = "${email}" `
+        sql = `SELECT users.Id, Username, Password, Fullname, Email, DATE_FORMAT(Birthday, '%d/%m/%Y') as "Birthday", subcribers.Premium FROM users LEFT JOIN subcribers ON users.Id = subcribers.Id AND users.Email = "${email}" `
         console.log(sql);
         return db.load(sql)
     },

@@ -31,6 +31,12 @@
         {{else}}
         <h3>Name is missing</h3>
         {{/if}}
+        {{#if authUser.Premium}}
+        <button class="btn btn-outline-primary">
+            <i class="fa fa-key" aria-hidden="true"></i> Premium <span
+                class="badge badge-primary">{{authUser.Premium}}</span>
+        </button>
+        {{/if}}
     </div>
 
     {{!-- Basic credentials --}}

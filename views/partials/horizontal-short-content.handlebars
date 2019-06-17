@@ -8,6 +8,9 @@
             {{/if}}
         </div>
         <div class="col-sm-8">
+            {{#if data.Premium}}
+            <span class="badge badge-pill badge-success">Premium</span>
+            {{/if}}
             <div class="badge badge-primary">{{data.Category}}</div>
             {{#if data.Title}}
             <h4>{{data.Title}}</h4>
