@@ -1,0 +1,171 @@
+{{#section 'css'}}
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<style>
+    .ava {
+        height: 150px;
+        width: 150px;
+        border-radius: 50%;
+        border-width: 5px;
+        border-color: #19608b;
+        overflow: hidden;
+        background-color: blue;
+    }
+
+    .thumb {
+        height: 150px;
+        width: 150px;
+
+    }
+</style>
+{{/section}}
+<div class="bio-compose">
+    <div class="d-flex flex-column align-items-center">
+        {{#if Avatar}}
+        <img class="rounded-circle img-thumbnail thumb" src="{{Avatar}}" alt="avatar">
+        {{else}}
+        <img class="rounded-circle img-thumbnail thumb"
+            src="https://specials-images.forbesimg.com/imageserve/5cc0c243a7ea436c70f3ba2f/960x0.jpg" alt="avatar">
+        {{/if}}
+        {{#if authUser.Fullname}}
+        <h3>{{authUser.Fullname}}</h3>
+        {{else}}
+        <h3>Name is missing</h3>
+        {{/if}}
+    </div>
+
+    {{!-- Basic credentials --}}
+    <div class="card my-4 shadow">
+        <div class="card-body">
+            <h5 class="card-title">Basic</h5>
+            <h6 class="card-subtitle mb-2 text-muted">Your basic credential</h6>
+            <div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        <div class="form-group row">
+                            <label for="uname" class="col-sm-2 col-form-label">Username: </label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="uname" placeholder="{{authUser.Username}}"
+                                    readonly>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="form-group row">
+                            <label for="password" class="col-sm-2 col-form-label">Password:</label>
+                            <div class="col-sm-10">
+                                <input type="password" class="form-control" id="password" placeholder="******" readonly>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="form-group row">
+                            <label for="email" class="col-sm-2 col-form-label">Email: </label>
+                            <div class="col-sm-10">
+                                <input type="email" class="form-control" id="email" placeholder="{{authUser.Email}}"
+                                    readonly>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="form-group row" id="update-birthday">
+                            <label for="birthday" class="col-sm-2 col-form-label">Birthday: </label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="birthday" name="birthday"
+                                    placeholder="{{authUser.Birthday}}" readonly>
+                            </div>
+                            <button id="btn-change-birthday" type="button" class="col-sm-2 btn btn-outline-danger"><i
+                                    class="fa fa-pencil" aria-hidden="true"></i></button>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <button type="button my-3" class="btn btn-warning" data-toggle="modal" data-target="#changePwd">Change
+                password</button>
+            <!-- Modal -->
+            <div class="modal fade" id="changePwd" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Change password</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label for="pwd">Password:</label>
+                                <input type="password" name="pwd" id="pwd" class="form-control" placeholder="*******">
+                            </div>
+                            <div class="form-group">
+                                <label for="new-pwd">New password:</label>
+                                <input type="password" name="new-pwd" id="new-pwd" class="form-control"
+                                    placeholder="*******">
+                            </div>
+                            <div class="form-group">
+                                <label for="confirm-new-pdw">Confirm password:</label>
+                                <input type="password" name="confirm-new-pdw" id="confirm-new-pdw" class="form-control"
+                                    placeholder="*******">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary" onclick="changepwd()">Save changes</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{#section 'js'}}
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+        function changepwd() {
+            var curpwd = $("#pwd").val();
+            var newpwd = $("#new-pwd").val();
+            var cfmpwd = $("#confirm-new-pdw").val();
+            if (newpwd != cfmpwd) {
+                alert("Wrong confirmation password!");
+                return;
+            }
+            $.post("/subscriber/chgpwd", {
+                id: {{ authUser.Id }},
+        curpwd: curpwd,
+            newpwd: newpwd
+            }).done(data => {
+                if (data.success == true) {
+                    alert(data.message);
+                    $("#changePwd").modal(toggle);
+                } else {
+                    alert(data.message);
+                    $("#changePwd").modal(toggle);
+                }
+            })
+        }
+
+        $("#btn-change-birthday").click(function () {
+            var value = $("#birthday").val()
+            if (value == "") {
+                $("#birthday").removeAttr("readonly")
+                $("#birthday").datepicker();
+                $("#btn-change-birthday").html("Change");
+                $("#btn-change-birthday").attr("type", "submit");
+            } else {
+                $.post('/subscriber/change-birthday', {
+                    Id: {{ authUser.Id }},
+            Birthday: value,
+                }).done(result => {
+                if (result.success == true) {
+                    window.location.reload();
+                } else {
+                    alert("failed");
+                    return;
+                }
+            })
+            }
+        })
+
+
+    </script>
+    {{/section}}

@@ -57,7 +57,7 @@ module.exports = {
 
       connection.query(sql, [obj, id], (error, results, fields) => {
         if (error) reject(error);
-        resolve(results.changedRows);
+        resolve(results);
       });
       connection.end();
     });

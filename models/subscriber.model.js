@@ -7,8 +7,12 @@ module.exports = {
     },
 
     singleByEmail: email => {
-        sql = `SELECT * FROM users WHERE Email = "${email}" `
+        sql = `SELECT Id, Username, Password, Fullname, Email, DATE_FORMAT(Birthday, '%d/%m/%Y') as "Birthday" FROM users WHERE Email = "${email}" `
         console.log(sql);
         return db.load(sql)
+    },
+
+    update: obj => {
+        return db.update("users", obj)
     }
 }

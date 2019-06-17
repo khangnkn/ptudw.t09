@@ -8,7 +8,6 @@ module.exports = (req, res, next) => {
             res.locals.TechCat = tech;
             res.locals.TopCat = cat;
             res.locals.AllCats = allCat;
-            console.log(allCat);
             next();
         })
         .catch(err => {
