@@ -14,7 +14,7 @@ router.get('/login', function (req, res, next) {
   })
 })
 
-router.post('/login', (req, res,next) => {
+router.post('/login', (req, res, next) => {
   passport.authenticate('admin', (err, user, info) => {
     if (err)
       return next(err);
@@ -31,13 +31,13 @@ router.post('/login', (req, res,next) => {
       if (err)
         return next(err);
       console.log(req.session);
-      return res.end('a');
+      return res.redirect("/admin/categories")
     });
   })(req, res, next);
-  
+
 })
 
-router.get("/categories", auth,function (req, res) {
+router.get("/categories", auth, function (req, res) {
   var page = 1;
   var cate = {
     id: 1,

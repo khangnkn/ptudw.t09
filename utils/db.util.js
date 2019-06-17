@@ -4,8 +4,8 @@ var createConnection = () => {
     host: "localhost",
     port: 3306,
     user: "root",
-    password: "maudoden",
-    database: "TechhubDB",
+    password: "root",
+    database: "techhub_v3",
     multipleStatements: true,
   });
 };
