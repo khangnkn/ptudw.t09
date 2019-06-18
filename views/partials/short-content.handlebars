@@ -1,48 +1,48 @@
 {{#if isWriter}}
-<a href="/draft/draft-{{Id}}" target="_blank">
+<a href="/draft/draft-{{data.Id}}" target="_blank">
     {{else}}
-    <a href="/article/article-{{Id}}" target="_blank">
+    <a href="/article/article-{{data.Id}}" target="_blank">
         {{/if}}
         <div class="card h-100">
             <div class="card-img">
-                {{#if Cover}}
-                <img src="{{Cover}}" alt="Cover" class="card-img-top">
+                {{#if data.Cover}}
+                <img src="{{data.Cover}}" alt="Cover" class="card-img-top">
                 {{else}}
                 <img src="/images/articles/1/article-img1.png" alt="" class="card-img-top">
                 {{/if}}
             </div>
             <div class="card-body">
-                {{#if Title}}
-                <h4>{{Title}}</h4>
+                {{#if data.Title}}
+                <h4>{{data.Title}}</h4>
                 {{else}}
                 <h4>This title is missing</h4>
                 {{/if}}
                 <div>
-                    {{#if Premium}}
+                    {{#if data.Premium}}
                     <span class="badge badge-pill badge-success">Premium</span>
                     {{/if}}
                     <br>
                     <i class="fa fa-pencil" aria-hidden="true"></i>
-                    {{#if Alias}}
-                    <em>Tác giả: {{Alias}}</em>
+                    {{#if data.Alias}}
+                    <em>Tác giả: {{data.Alias}}</em>
                     {{else}}
                     <em>Tác giả: Không tên</em>
                     {{/if}}
                     <br>
                     <i class="fa fa-clock-o" aria-hidden="true"></i>
-                    {{#if Date}}
-                    <em>Ngày xuất bản: {{Date}}</em>
+                    {{#if data.Date}}
+                    <em>Ngày xuất bản: {{data.Date}}</em>
                     {{else}}
                     <em>Ngày xuất bản: Không rõ</em>
                     {{/if}}
                     <br>
-                    {{#if Category}}
-                    <div class="badge badge-primary">{{Category}}</div>
+                    {{#if data.Category}}
+                    <div class="badge badge-primary">{{data.Category}}</div>
                     {{/if}}
                 </div>
                 <p class="card-text">
-                    {{#if Abstract}}
-                    {{Abstract}} <p>
+                    {{#if data.Abstract}}
+                    {{data.Abstract}} <p>
                         <b>Đọc tiếp ...</b>
                         {{/if}}
                     </p>

@@ -10,8 +10,8 @@ router.get("/", function (req, res) {
 });
 
 router.get("/article-:id", function (req, res, next) {
-  Promise.all([articles.GetDetail(req.params.id), articles.Comments(req.params.id)])
-    .then(function ([data, comments]) {
+  Promise.all([articles.GetDetail(req.params.id), articles.Comments(req.params.id), articles.related(req.params.id)])
+    .then(function ([data, comments, related]) {
       if (data[0].Premium == true) {
         if (!req.user) {
           res.render('general/premium-denied', {
@@ -25,10 +25,12 @@ router.get("/article-:id", function (req, res, next) {
           })
           return;
         }
+        console.log(related);
         res.render("general/general-article-detail", {
           data: data[0],
           title: data[0].Title,
-          comments: comments
+          comments: comments,
+          related: related,
         });
         articles.IncreaseView(req.params.id);
         return;
@@ -36,7 +38,8 @@ router.get("/article-:id", function (req, res, next) {
         res.render("general/general-article-detail", {
           data: data[0],
           title: data[0].Title,
-          comments: comments
+          comments: comments,
+          related: related,
         });
         articles.IncreaseView(req.params.id);
         return;
@@ -44,6 +47,18 @@ router.get("/article-:id", function (req, res, next) {
     })
     .catch(next);
 });
+
+router.get("/new/:cat", function (req, res, next) {
+  var id = req.params.cat;
+  articles.newestByCat(id).then(data => {
+    console.log(data);
+    res.render("general/new-posts", {
+      layout: false,
+      newest: data.splice(0, 1),
+      new: data,
+    })
+  })
+})
 
 router.get("/draft-:id", function (req, res, next) {
   draftmodule

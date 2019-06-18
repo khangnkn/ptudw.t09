@@ -30,20 +30,11 @@
     <div class="relative-articles">
         <h3>Các bài viết liên quan</h3>
         <ul>
+            {{#each related}}
             <li>
-                <a href="/article/article-01">5 tính năng hay nhất của MIUI 10 trên máy Xiaomi</a>
+                <a href="/article/article-{{this.Id}}">{{this.Title}}</a>
             </li>
-            <li>
-                <a href="/article/article-01">5 tính năng hay nhất của MIUI 10 trên máy Xiaomi</a>
-            </li>
-            <li>
-                <a href="/article/article-03">YouTube đã "sát hại" Internet Explorer 6 như thế nào?</a>
-            </li>
-            <li>
-                <a href="/article/article-04">Trải nghiệm Google Assistant tiếng Việt: Thông minh, được việc, giọng êm
-                    nhưng đôi lúc đùa hơi nh
-                    ạt</a>
-            </li>
+            {{/each}}
         </ul>
     </div>
     <h3>Bình luận</h3>
@@ -61,20 +52,16 @@
     <a type="button" id="login-btn" href="/subscriber/login?return=" class="btn btn-primary btn-sm btn-block">Bạn phải
         đăng nhập để bình
         luận</a>
-    {{#section 'js'}}
-    <script>
-        $(document).ready(function () {
-            $("#login-btn").attr('href', '/subscriber/login?return=' + window.location.href)
-        })
-    </script>
-    {{/section}}
     {{/if}}
 </div>
+
 {{#section 'js'}}
 <script src="/javascripts/article.script.js"></script>
 <script>
     $(document).ready(function () {
-        $("#login-btn").attr('href', '/subscriber/login?return=' + window.location.href)
+        $.get("/article/new/1").done(data => {
+            console.log(data);
+        })
     })
 </script>
 {{/section}}
