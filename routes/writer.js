@@ -54,7 +54,7 @@ router.post("/editor", (req, res, next) => {
 
 router.get("/articles", function (req, res) {
   var id = req.user.Id;
-  Promise.all([articles.pendingByWriter(id), articles.rejectedByWriter(id), articles.approvedByWriter(id), articles.publishedByWriter(id)])
+  Promise.all([drafts.pendingByWriter(id), drafts.rejectedByWriter(id), drafts.approvedByWriter(id), drafts.publishedByWriter(id)])
     .then(([pending, rejected, approved, published]) => {
       res.render("writer/writer-show-articles", {
         layout: "writer-layout",
