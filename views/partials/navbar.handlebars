@@ -37,13 +37,13 @@
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                 {{#if isWriter}}
-                <a class="dropdown-item" href="/writer/{{authUser.Id}}/editor">
+                <a class="dropdown-item" href="/writer/editor">
                     <i class="fa fa-pencil" aria-hidden="true"></i>
                     Trang viết bài
                 </a>
                 {{/if}}
                 {{#if isEditor}}
-                <a class="dropdown-item" href="/editor/{{authUser.Id}}/drafts/unreleased">
+                <a class="dropdown-item" href="/editor/drafts/unreleased">
                     <i class="fa fa-sticky-note" aria-hidden="true"></i> Trang biên tập
                 </a>
                 {{/if}}

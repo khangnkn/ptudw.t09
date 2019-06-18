@@ -38,5 +38,13 @@ module.exports = {
     FROM drafts JOIN writers ON drafts.Author = writers.Id AND drafts.State = ${status} AND writers.Id = ${id} 
     JOIN subcategories ON subcategories.Id = drafts.Category`;
     return db.load(sql);
+  },
+
+  updateStatus: (id, status) => {
+    var obj = {
+      Id: id,
+      State: status,
+    }
+    return db.update("drafts", obj)
   }
 };

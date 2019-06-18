@@ -2,7 +2,7 @@ var db = require("../utils/db.util");
 
 module.exports = {
   add: article => {
-    return db.insert("drafts", article);
+    return db.insert("articles", article);
   },
 
   byCat: id => {
@@ -69,6 +69,11 @@ module.exports = {
   IncreaseView: id => {
     var sql = `UPDATE articles SET Views = Views + 1 WHERE Id = ${id}`;
     console.log(sql);
-    db.executeNoReturn(sql);
+    db.execute(sql);
   },
+
+  addTag: (id, tag) => {
+    var sql = `INSERT INTO \`tags\`(\`Id\`, \`Name\`) VALUES (${id}, ${tag})`;
+    db.execute(sql);
+  }
 };

@@ -32,7 +32,7 @@
             </ul>
         </div>
         {{#each data}}
-        {{>post-item data=this}}
+        {{>post-item article=this cats=../cats tags=../tags}}
         {{/each}}
     </div>
 </div>
@@ -48,9 +48,9 @@
         var status = $(this).attr("status");
         console.log(status);
         if (status == "1") {
-            window.location.href = "/editor/{{authUser.Id}}/drafts/unreleased"
+            window.location.href = "/editor/drafts/unreleased"
         } else if (status == "4") {
-            window.location.href = "/editor/{{authUser.Id}}/drafts/released"
+            window.location.href = "/editor/drafts/released"
         } else {
             return;
         }

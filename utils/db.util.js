@@ -77,7 +77,7 @@ module.exports = {
     });
   },
 
-  executeNoReturn: sql => {
+  execute: sql => {
     var connection = createConnection();
     connection.connect();
     connection.query(sql, (error, results, fields) => {
