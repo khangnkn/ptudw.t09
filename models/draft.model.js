@@ -31,5 +31,36 @@ module.exports = {
     JOIN subcategories ON subcategories.Id = drafts.Category
     JOIN editors ON subcategories.Category = editors.ManagedCate AND editors.Id = ${id}`
     return db.load(sql);
+  },
+  getAllForAdminWC: () => {
+    var sql = ` select drafts.Id,drafts.Title,wt.Alias as Author,drafts.Abstract,date_format(drafts.Date,"%d-%c-%Y") as Date,drafts.Category,drafts.State,atc.Premium,date_format(atc.PublishTime,"%d-%c-%Y %k:%i:%s") as PublishTime
+                from drafts
+                left join (
+                select Id,Draft,Premium,PublishTime
+                from articles
+                group by Id,Draft,Premium,PublishTime) atc on atc.Draft = drafts.Id 
+                
+                left join (
+                  select Id,Alias
+                  from writers
+                  group by Id,Alias) wt on wt.Id = drafts.Author
+                  
+                group by drafts.Id,Author,atc.Premium,PublishTime
+                order by drafts.Id ASC
+                `;
+    return db.load(sql);
+  },
+  listByTag: id => {
+    return db.load(`
+    select drafts.Id,drafts.Title,drafts.Abstract,drafts.Date,wt.Alias as Author,states.Status as State,subcategories.Name as SubCategory,categories.Name as Category
+    from drafts 
+    inner join drafts_tags on drafts.Id = drafts_tags.idTag and drafts_tags.idTag = ${id}
+    inner join states on states.Id = drafts.State
+    inner join subcategories on subcategories.Id = drafts.Category
+    inner join categories on subcategories.Category = categories.Id
+    left join (
+      select Id,Alias
+      from writers
+      group by Id) wt on wt.Id = drafts.Author `);
   }
 };
