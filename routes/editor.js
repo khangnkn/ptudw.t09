@@ -32,6 +32,7 @@ router.get("/drafts/unreleased", function (req, res, next) {
     }).catch(err => {
       console.log(err);
       next(err);
+      return;
     })
 });
 
@@ -48,6 +49,7 @@ router.get("/drafts/released", function (req, res, next) {
   }).catch(err => {
     console.log(err);
     next(err);
+    return;
   })
 });
 

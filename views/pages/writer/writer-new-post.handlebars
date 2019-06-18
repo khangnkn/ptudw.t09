@@ -27,7 +27,7 @@
     <div class="form-group">
         <label for="CatSelect">Category: </label>
         <select class="form-control" name="CatSelect" id="CatSelect">
-            {{#each Cats}}
+            {{#each AllCats}}
             <option value="{{this.Id}}">{{this.Name}}</option>
             {{/each}}
         </select>

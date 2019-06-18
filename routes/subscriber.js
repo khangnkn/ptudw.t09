@@ -82,7 +82,6 @@ router.post('/change-birthday', auth, (req, res) => {
 })
 
 router.post('/chgpwd', auth, (req, res) => {
-  console.log(req.body);
   if (req.body.curpwd != req.user.Password) {
     res.json({
       success: false,

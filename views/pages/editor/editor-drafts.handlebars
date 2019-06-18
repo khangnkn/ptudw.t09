@@ -12,21 +12,17 @@
             <ul class="nav nav-tabs card-header-tabs">
                 {{#if isDrafts}}
                 <li class="nav-item">
-                    <a class="nav-link" name="top-article-tab" status="4" href="#">Publish<span
-                            class="badge badge-light">{{{publish}}}</span></a>
+                    <a class="nav-link" name="top-article-tab" status="4" href="#">Published</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" name="top-article-tab" status="1" href="#">Dafts<span
-                            class="badge badge-light">{{{draft}}}</span></a>
+                    <a class="nav-link active" name="top-article-tab" status="1" href="#">Dafts</a>
                 </li>
                 {{else}}
                 <li class="nav-item">
-                    <a class="nav-link active" name="top-article-tab" status="4" href="#">Publish<span
-                            class="badge badge-light">{{{publish}}}</span></a>
+                    <a class="nav-link active" name="top-article-tab" status="4" href="#">Published</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" name="top-article-tab" status="1" href="#">Dafts<span
-                            class="badge badge-light">{{{draft}}}</span></a>
+                    <a class="nav-link" name="top-article-tab" status="1" href="#">Dafts</a>
                 </li>
                 {{/if}}
             </ul>
@@ -39,14 +35,8 @@
 {{#section 'js'}}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.2/handlebars.js"></script>
 <script>
-    $("button[name='btn-publish']").click(function () {
-
-        console.log($(this).attr("data-target"));
-    })
-
     $("a[name='top-article-tab']").click(function () {
         var status = $(this).attr("status");
-        console.log(status);
         if (status == "1") {
             window.location.href = "/editor/drafts/unreleased"
         } else if (status == "4") {

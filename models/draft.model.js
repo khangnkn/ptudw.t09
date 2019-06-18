@@ -11,7 +11,7 @@ module.exports = {
   },
 
   loadByUser: id => {
-    var sql = `SELECT dr.Id, dr.Title, dr.Date, dr.Cover, dr.Abstract, dr.Content, wr.Alias, ca.Name as Category, states.Status
+    var sql = `SELECT dr.Id, dr.Title, dr.Date, dr.Cover, dr.Abstract, dr.Content, wr.Alias, ca.Name as Category, states.Status, dr.State
     FROM drafts as dr, writers as wr, subcategories as ca, states
     WHERE dr.Author = ${id} AND dr.Author = wr.Id AND ca.Id = dr.Category and dr.State = states.Id`;
     return db.load(sql);

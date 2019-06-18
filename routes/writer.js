@@ -1,6 +1,6 @@
 var express = require("express");
-const articlemodule = require("../models/article.model");
-const draftmodule = require("../models/draft.model");
+const articles = require("../models/article.model");
+const drafts = require("../models/draft.model");
 const subcategories = require("../models/subcategory.model");
 var router = express.Router();
 var moment = require("moment");
@@ -18,22 +18,21 @@ router.get("/welcome", function (req, res) {
 });
 
 router.get("/editor", function (req, res, next) {
-  var _id = req.param.id;
-  subcategories.All().then(data => {
-    res.render("writer/writer-new-post", {
-      id: _id,
-      layout: "writer-layout",
-      title: "Biên tập bài viết",
-      Cats: data
-    });
-  }).catch(err => {
-    console.log(err);
-    next(err)
-  })
+  var _id = req.user.Id
+  // subcategories.All().then(data => {
+  res.render("writer/writer-new-post", {
+    id: _id,
+    layout: "writer-layout",
+    title: "Biên tập bài viết",
+    // Cats: data
+  });
+  // }).catch(err => {
+  // console.log(err);
+  // next(err)
+  // })
 });
 
 router.post("/editor", (req, res, next) => {
-  console.log(req.body);
   var obj = {
     Title: req.body["Title"],
     Category: req.body.CatSelect,
@@ -45,8 +44,7 @@ router.post("/editor", (req, res, next) => {
     Abstract: req.body["Abstract"],
     State: 1,
   };
-  console.log(obj);
-  draftmodule.add(obj)
+  drafts.add(obj)
     .then(n => {
       console.log(n);
       res.redirect("/")
@@ -55,14 +53,27 @@ router.post("/editor", (req, res, next) => {
 });
 
 router.get("/articles", function (req, res) {
-  var _id = req.params.id;
-  draftmodule.loadByUser(_id).then(rows => {
+  var id = req.user.Id;
+  Promise.all([articles.pendingByWriter(id), articles.rejectedByWriter(id), articles.approvedByWriter(id), articles.publishedByWriter(id)])
+    .then(([pending, rejected, approved, published]) => {
+      res.render("writer/writer-show-articles", {
+        layout: "writer-layout",
+        title: "Các bài đã viết",
+        pending: pending,
+        rejected: rejected,
+        approved: approved,
+        published: published
+      });
+    }).catch(err => {
+      console.log(err);
+      next(err)
+    })
+  return;
+  drafts.loadByUser(id).then(rows => {
     rows.forEach(element => {
       element.Date = moment(element.Date).format("L")
       console.log(element.Id, element.Alias);
     });
-    // var list = Object.values(JSON.parse(JSON.stringify(_rows)));
-    // console.log(list);
     res.render("writer/writer-show-articles", {
       data: rows,
       layout: "writer-layout",

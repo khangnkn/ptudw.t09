@@ -6,7 +6,6 @@ module.exports = (req, res, next) => {
     } else {
         writers.byId(req.user.Id)
             .then(data => {
-                console.log(data);
                 if (data.length == 0) {
                     res.redirect('/subscriber/login');
                 } else {

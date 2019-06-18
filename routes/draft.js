@@ -23,7 +23,6 @@ router.get("/draft-:id", function (req, res, next) {
 
 router.post("/publish/:id", function (req, res, next) {
     var id = req.params.id;
-    console.log(req.body);
     var article = {
         Draft: id,
         Premium: parseInt(req.body.premium, 10),
@@ -36,16 +35,19 @@ router.post("/publish/:id", function (req, res, next) {
                     .catch(err => {
                         console.log(err);
                         next(err);
+                        return;
                     })
                 articles.addTag(parseInt(req.body.tag, 10));
             } else {
                 next("Error when adding article")
+                return;
             }
             return;
         })
         .catch(err => {
             console.log(err);
             next(err);
+            return;
         })
 
     res.redirect("/editor/drafts/unreleased")

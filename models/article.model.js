@@ -7,7 +7,7 @@ module.exports = {
 
   byCat: id => {
     var sql = `SELECT articles.Id, drafts.Title, drafts.Abstract, drafts.Cover, writers.Alias, drafts.Content, articles.Premium, articles.PublishTime as "Date", subcategories.Name as "Category"
-    FROM articles JOIN drafts ON articles.Draft = drafts.Id
+    FROM articles JOIN drafts ON articles.Draft = drafts.Id AND articles.PublishTime <= NOW()
     JOIN writers ON drafts.Author = writers.Id
     JOIN subcategories ON drafts.Category = subcategories.Id AND subcategories.Id = ${id}
     ORDER BY articles.Premium DESC
@@ -17,7 +17,7 @@ module.exports = {
 
   byTagName: tagName => {
     var sql = `SELECT articles.Id, drafts.Title, drafts.Abstract, drafts.Cover, writers.Alias, drafts.Content, articles.Premium, articles.PublishTime as "Date", subcategories.Name as "Category"
-    FROM articles JOIN drafts ON articles.Draft = drafts.Id
+    FROM articles JOIN drafts ON articles.Draft = drafts.Id AND articles.PublishTime <= NOW()
     JOIN writers ON drafts.Author = writers.Id
     JOIN subcategories ON drafts.Category = subcategories.Id
     JOIN drafts_tags on drafts.Id = drafts_tags.idArticle
@@ -31,13 +31,12 @@ module.exports = {
     var sql = `SELECT articles.Id, drafts.Title, drafts.Abstract, drafts.Cover, writers.Alias, drafts.Content, articles.Premium, articles.PublishTime, articles.Views
     FROM articles JOIN drafts ON articles.Draft = drafts.Id and articles.Id = ${id} 
     JOIN writers ON drafts.Author = writers.Id `;
-    console.log(sql);
     return db.load(sql);
   },
 
   GetMostComment: () => {
     var sql = `SELECT articles.Id, drafts.Title, drafts.Abstract, drafts.Cover, writers.Alias, drafts.Content, articles.Premium, articles.PublishTime as "Date", articles.Views, subcategories.Name as "Category", COUNT(comments.Id) as "Comments"
-    FROM articles JOIN drafts ON articles.Draft = drafts.Id 
+    FROM articles JOIN drafts ON articles.Draft = drafts.Id  AND articles.PublishTime <= NOW()
     JOIN writers ON drafts.Author = writers.Id 
     JOIN subcategories ON drafts.Category = subcategories.Id
     LEFT JOIN comments ON comments.Article = articles.Id
@@ -50,7 +49,7 @@ module.exports = {
   GetTopViews: () => {
     var sql = `
         SELECT articles.Id, drafts.Title, drafts.Abstract, drafts.Cover, writers.Alias, drafts.Content, articles.Premium, articles.PublishTime as "Date", articles.Views, subcategories.Name as "Category"
-        FROM articles JOIN drafts ON articles.Draft = drafts.Id
+        FROM articles JOIN drafts ON articles.Draft = drafts.Id AND articles.PublishTime <= NOW()
         JOIN writers ON drafts.Author = writers.Id
         JOIN subcategories ON drafts.Category = subcategories.Id
         ORDER BY Views DESC
@@ -66,11 +65,44 @@ module.exports = {
     return db.load(sql)
   },
 
+  publishedByWriter: id => {
+    var sql = `SELECT articles.Id, drafts.Title, drafts.Abstract, drafts.Cover, writers.Alias, drafts.Content, articles.Premium, DATE_FORMAT(articles.PublishTime, '%d/%m/%Y') as "Date", subcategories.Name as "Category" 
+    FROM articles JOIN drafts ON articles.Draft = drafts.Id AND drafts.State = 4 
+    JOIN writers ON drafts.Author = writers.Id AND writers.Id = ${id}
+    JOIN subcategories ON drafts.Category = subcategories.Id
+    ORDER BY articles.Premium DESC LIMIT 10 `;
+    return db.load(sql);
+  },
 
+  rejectedByWriter: id => {
+    var sql = `SELECT articles.Id, drafts.Title, drafts.Abstract, drafts.Cover, writers.Alias, drafts.Content, articles.Premium, DATE_FORMAT(articles.PublishTime, '%d/%m/%Y') as "Date", subcategories.Name as "Category" 
+    FROM articles JOIN drafts ON articles.Draft = drafts.Id AND drafts.State = 2 
+    JOIN writers ON drafts.Author = writers.Id AND writers.Id = ${id}
+    JOIN subcategories ON drafts.Category = subcategories.Id
+    ORDER BY articles.Premium DESC LIMIT 10 `;
+    return db.load(sql);
+  },
+
+  pendingByWriter: id => {
+    var sql = `SELECT articles.Id, drafts.Title, drafts.Abstract, drafts.Cover, writers.Alias, drafts.Content, articles.Premium, DATE_FORMAT(articles.PublishTime, '%d/%m/%Y') as "Date", subcategories.Name as "Category" 
+    FROM articles JOIN drafts ON articles.Draft = drafts.Id AND drafts.State = 1 
+    JOIN writers ON drafts.Author = writers.Id AND writers.Id = ${id}
+    JOIN subcategories ON drafts.Category = subcategories.Id
+    ORDER BY articles.Premium DESC LIMIT 10 `;
+    return db.load(sql);
+  },
+
+  approvedByWriter: id => {
+    var sql = `SELECT articles.Id, drafts.Title, drafts.Abstract, drafts.Cover, writers.Alias, drafts.Content, articles.Premium, DATE_FORMAT(articles.PublishTime, '%d/%m/%Y') as "Date", subcategories.Name as "Category" 
+    FROM articles JOIN drafts ON articles.Draft = drafts.Id AND drafts.State = 3 
+    JOIN writers ON drafts.Author = writers.Id AND writers.Id = ${id}
+    JOIN subcategories ON drafts.Category = subcategories.Id
+    ORDER BY articles.Premium DESC LIMIT 10 `;
+    return db.load(sql);
+  },
 
   IncreaseView: id => {
     var sql = `UPDATE articles SET Views = Views + 1 WHERE Id = ${id}`;
-    console.log(sql);
     db.execute(sql);
   },
 
