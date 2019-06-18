@@ -5,11 +5,11 @@ const subcategories = require("../models/subcategory.model");
 var router = express.Router();
 var moment = require("moment");
 
-router.get("/", function (req, res) {
+router.get("/", function(req, res) {
   res.redirect("/writer/welcome");
 });
 
-router.get("/welcome", function (req, res) {
+router.get("/welcome", function(req, res) {
   res.render("writer/writer-welcome", {
     layout: "writer-layout",
     title: "Chào mừng, phóng viên!",
@@ -17,8 +17,8 @@ router.get("/welcome", function (req, res) {
   });
 });
 
-router.get("/editor", function (req, res, next) {
-  var _id = req.user.Id
+router.get("/editor", function(req, res, next) {
+  var _id = req.user.Id;
   // subcategories.All().then(data => {
   res.render("writer/writer-new-post", {
     id: _id,
@@ -36,25 +36,30 @@ router.post("/editor", (req, res, next) => {
   var obj = {
     Title: req.body["Title"],
     Category: req.body.CatSelect,
-    Date: moment()
-      .format("YYYY-MM-DD"),
+    Date: moment().format("YYYY-MM-DD"),
     Cover: req.body.Cover,
     Author: req.user.Id,
     Content: req.body["Content"],
     Abstract: req.body["Abstract"],
     State: 1,
   };
-  drafts.add(obj)
+  drafts
+    .add(obj)
     .then(n => {
       console.log(n);
-      res.redirect("/")
+      res.redirect("/");
     })
     .catch(next);
 });
 
-router.get("/articles", function (req, res) {
+router.get("/articles", function(req, res) {
   var id = req.user.Id;
-  Promise.all([drafts.pendingByWriter(id), drafts.rejectedByWriter(id), drafts.approvedByWriter(id), drafts.publishedByWriter(id)])
+  Promise.all([
+    drafts.pendingByWriter(id),
+    drafts.rejectedByWriter(id),
+    drafts.approvedByWriter(id),
+    drafts.publishedByWriter(id),
+  ])
     .then(([pending, rejected, approved, published]) => {
       res.render("writer/writer-show-articles", {
         layout: "writer-layout",
@@ -62,24 +67,28 @@ router.get("/articles", function (req, res) {
         pending: pending,
         rejected: rejected,
         approved: approved,
-        published: published
+        published: published,
       });
-    }).catch(err => {
-      console.log(err);
-      next(err)
     })
+    .catch(err => {
+      console.log(err);
+      next(err);
+    });
   return;
-  drafts.loadByUser(id).then(rows => {
-    rows.forEach(element => {
-      element.Date = moment(element.Date).format("L")
-      console.log(element.Id, element.Alias);
-    });
-    res.render("writer/writer-show-articles", {
-      data: rows,
-      layout: "writer-layout",
-      title: "Các bài đã viết",
-    });
-  }).catch(err => console.log(err));
+  drafts
+    .loadByUser(id)
+    .then(rows => {
+      rows.forEach(element => {
+        element.Date = moment(element.Date).format("L");
+        console.log(element.Id, element.Alias);
+      });
+      res.render("writer/writer-show-articles", {
+        data: rows,
+        layout: "writer-layout",
+        title: "Các bài đã viết",
+      });
+    })
+    .catch(err => console.log(err));
 });
 
 module.exports = router;
