@@ -18,5 +18,10 @@ module.exports = {
         inner join drafts_tags
         on drafts_tags.idTag = tags.Id
         group by tags.Id`);
+    },
+
+    all: () => {
+        var sql = `select * from tags`;
+        return db.load(sql);
     }
 }

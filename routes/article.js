@@ -12,14 +12,35 @@ router.get("/", function (req, res) {
 router.get("/article-:id", function (req, res, next) {
   Promise.all([articles.GetDetail(req.params.id), articles.Comments(req.params.id)])
     .then(function ([data, comments]) {
-      console.log(data);
-      console.log(comments);
-      res.render("general/general-article-detail", {
-        data: data[0],
-        title: data[0].Title,
-        comments: comments
-      });
-      articles.IncreaseView(req.params.id);
+      if (data[0].Premium == true) {
+        if (!req.user) {
+          res.render('general/premium-denied', {
+            title: data[0].Title,
+          })
+          return;
+        }
+        if (req.user.Premium == null) {
+          res.render('general/premium-denied', {
+            title: data[0].Title,
+          })
+          return;
+        }
+        res.render("general/general-article-detail", {
+          data: data[0],
+          title: data[0].Title,
+          comments: comments
+        });
+        articles.IncreaseView(req.params.id);
+        return;
+      } else {
+        res.render("general/general-article-detail", {
+          data: data[0],
+          title: data[0].Title,
+          comments: comments
+        });
+        articles.IncreaseView(req.params.id);
+        return;
+      }
     })
     .catch(next);
 });

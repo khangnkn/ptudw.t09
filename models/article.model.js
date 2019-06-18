@@ -2,7 +2,7 @@ var db = require("../utils/db.util");
 
 module.exports = {
   add: article => {
-    return db.insert("drafts", article);
+    return db.insert("articles", article);
   },
 
   byCat: id => {
@@ -10,6 +10,19 @@ module.exports = {
     FROM articles JOIN drafts ON articles.Draft = drafts.Id
     JOIN writers ON drafts.Author = writers.Id
     JOIN subcategories ON drafts.Category = subcategories.Id AND subcategories.Id = ${id}
+    ORDER BY articles.Premium DESC
+    LIMIT 10`;
+    return db.load(sql);
+  },
+
+  byTagName: tagName => {
+    var sql = `SELECT articles.Id, drafts.Title, drafts.Abstract, drafts.Cover, writers.Alias, drafts.Content, articles.Premium, articles.PublishTime as "Date", subcategories.Name as "Category"
+    FROM articles JOIN drafts ON articles.Draft = drafts.Id
+    JOIN writers ON drafts.Author = writers.Id
+    JOIN subcategories ON drafts.Category = subcategories.Id
+    JOIN drafts_tags on drafts.Id = drafts_tags.idArticle
+    JOIN tags ON drafts_tags.idTag = tags.Id AND tags.Name = "${tagName}"
+    ORDER BY articles.Premium DESC
     LIMIT 10`;
     return db.load(sql);
   },
@@ -58,6 +71,11 @@ module.exports = {
   IncreaseView: id => {
     var sql = `UPDATE articles SET Views = Views + 1 WHERE Id = ${id}`;
     console.log(sql);
-    db.executeNoReturn(sql);
+    db.execute(sql);
   },
+
+  addTag: (id, tag) => {
+    var sql = `INSERT INTO \`tags\`(\`Id\`, \`Name\`) VALUES (${id}, ${tag})`;
+    db.execute(sql);
+  }
 };

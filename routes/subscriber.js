@@ -2,7 +2,9 @@ var express = require("express");
 var router = express.Router();
 var passport = require('passport');
 var auth = require('../middlewares/auth');
+const moment = require('moment');
 const writers = require('../models/writer.model');
+const subscribers = require('../models/subscriber.model');
 
 /* GET users listing. */
 router.get("/", function (req, res) {
@@ -50,15 +52,81 @@ router.get("/change-password", auth, function (req, res) {
   });
 });
 
-router.get("/update-info", auth, (req, res) => {
-  res.render("subscriber/update-info", {
+router.post('/change-birthday', auth, (req, res) => {
+  console.log(req.body);
+  var obj = {
+    Id: req.body.Id,
+    Birthday: moment(req.body.Birthday).format("YYYY-MM-DD"),
+  }
+  console.log(obj);
+  subscribers.update(obj).then(result => {
+      if (result.changedRows == 0) {
+        res.json({
+          success: false,
+        })
+        return;
+      } else {
+        res.locals.authUser.Birthday = req.body.Birthday;
+        res.json({
+          success: true,
+        })
+        return;
+      }
+    })
+    .catch(err => {
+      console.log(err);
+      res.json({
+        success: false,
+      })
+    })
+})
+
+router.post('/chgpwd', auth, (req, res) => {
+  console.log(req.body);
+  if (req.body.curpwd != req.user.Password) {
+    res.json({
+      success: false,
+      message: "Wrong password!"
+    })
+  }
+  var obj = {
+    Id: req.body.id,
+    Password: req.body.newpwd,
+  }
+  console.log(obj);
+  subscribers.update(obj).then(result => {
+      if (result.changedRows == 0) {
+        res.json({
+          success: false,
+          message: "An orror has occurred!"
+        })
+        return;
+      } else {
+        res.json({
+          success: true,
+          message: "Change password successfully!"
+        })
+        return;
+      }
+    })
+    .catch(err => {
+      console.log(err);
+      res.json({
+        success: false,
+        message: err,
+      })
+    })
+})
+
+router.get("/profile", auth, (req, res) => {
+  res.render("subscriber/profile", {
     title: "Cập nhật thông tin cá nhân"
   });
 });
 
 router.post("/logout", auth, (req, res, next) => {
   req.logOut();
-  res.redirect("/login");
+  res.redirect("/subscriber/login");
 });
 
 module.exports = router;

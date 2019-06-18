@@ -62,5 +62,20 @@ module.exports = {
       select Id,Alias
       from writers
       group by Id) wt on wt.Id = drafts.Author `);
+  },
+
+  byWriterStatus: (id, status) => {
+    var sql = `SELECT drafts.Id, drafts.Title, drafts.Date, drafts.Cover, drafts.Content, drafts.Abstract, subcategories.Name as "Category", writers.Alias 
+    FROM drafts JOIN writers ON drafts.Author = writers.Id AND drafts.State = ${status} AND writers.Id = ${id} 
+    JOIN subcategories ON subcategories.Id = drafts.Category`;
+    return db.load(sql);
+  },
+
+  updateStatus: (id, status) => {
+    var obj = {
+      Id: id,
+      State: status,
+    }
+    return db.update("drafts", obj)
   }
 };

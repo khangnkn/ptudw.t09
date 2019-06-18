@@ -17,7 +17,7 @@ router.get("/welcome", function (req, res) {
   });
 });
 
-router.get("/:id/editor", function (req, res, next) {
+router.get("/editor", function (req, res, next) {
   var _id = req.param.id;
   subcategories.All().then(data => {
     res.render("writer/writer-new-post", {
@@ -32,7 +32,7 @@ router.get("/:id/editor", function (req, res, next) {
   })
 });
 
-router.post("/:id/editor", (req, res, next) => {
+router.post("/editor", (req, res, next) => {
   console.log(req.body);
   var obj = {
     Title: req.body["Title"],
@@ -40,14 +40,13 @@ router.post("/:id/editor", (req, res, next) => {
     Date: moment()
       .format("YYYY-MM-DD"),
     Cover: req.body.Cover,
-    Author: parseInt(req.params.id),
+    Author: req.user.Id,
     Content: req.body["Content"],
     Abstract: req.body["Abstract"],
     State: 1,
   };
   console.log(obj);
-  articlemodule
-    .add(obj)
+  draftmodule.add(obj)
     .then(n => {
       console.log(n);
       res.redirect("/")
@@ -55,7 +54,7 @@ router.post("/:id/editor", (req, res, next) => {
     .catch(next);
 });
 
-router.get("/:id/articles", function (req, res) {
+router.get("/articles", function (req, res) {
   var _id = req.params.id;
   draftmodule.loadByUser(_id).then(rows => {
     rows.forEach(element => {
