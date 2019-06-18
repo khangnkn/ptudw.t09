@@ -7,19 +7,14 @@ var path = require('path');
 var moment = require('moment');
 
 router.get("/", function (req, res, next) {
-  Promise.all([articles.GetMostComment(), articles.GetTopViews()])
-    .then(([byComments, byViews]) => {
-      byComments.forEach(element => {
-        element.Date = moment(element.Date).format("L").toString();
-      });
-      byViews.forEach(element => {
-        element.Date = moment(element.Date).format("L").toString();
-      });
+  Promise.all([articles.GetMostComment(), articles.GetTopViews(), subcategories.top10Cat()])
+    .then(([byComments, byViews, topCats]) => {
       res.render("general/general-index", {
         title: "TechHub",
         mostCommentCarousel: byComments.splice(0, 3),
         mostCommentsRight: byComments,
         mostViews: byViews,
+        topCats: topCats,
       });
     })
     .catch(err => {

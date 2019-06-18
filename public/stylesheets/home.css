@@ -43,12 +43,12 @@
 }
 
 /* Override tab-content bootstrap */
-.tab-pane {
+/* .tab-pane {
   max-height: 450px;
   width: auto;
   padding: 25px;
   overflow: scroll;
-}
+} */
 
 /* Home panel
  * Category panel */
