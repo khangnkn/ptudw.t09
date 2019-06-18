@@ -53,6 +53,8 @@ module.exports = {
     return db.load(sql)
   },
 
+
+
   IncreaseView: id => {
     var sql = `UPDATE articles SET Views = Views + 1 WHERE Id = ${id}`;
     console.log(sql);

@@ -4,6 +4,11 @@ var bcrypt = require('bcrypt');
 var passport = require('passport');
 var auth = require('../middlewares/auth-admin');
 
+var subCategoryModel = require('../models/subcategory.model');
+var draftModel = require('../models/draft.model');
+var statesModel = require('../models/states.model');
+var tagModel = require('../models/tag.model');
+
 router.get("/", function (req, res) {
   res.redirect("/admin/login");
 });
@@ -20,7 +25,6 @@ router.post('/login', (req, res, next) => {
       return next(err);
 
     if (!user) {
-      console.log(req.session);
       return res.render('admin/login', {
         layout: false,
         err_message: info.message
@@ -34,6 +38,24 @@ router.post('/login', (req, res, next) => {
       return res.redirect("/admin/categories")
     });
   })(req, res, next);
+
+})
+
+router.get('/:id/welcome', function (req, res, next) {
+  Promise.all([
+    subCategoryModel.All(),
+    draftModel.getAllForAdminWC(),
+    statesModel.all(),
+    tagModel.listForAdminWC()
+  ]).then(([scrows, drrows, strows, tagrows]) => {
+    res.render("admin/admin-welcome", {
+      layout: false,
+      subCate: scrows,
+      drafts: drrows,
+      states: strows,
+      tags: tagrows
+    })
+  })
 
 })
 
@@ -114,7 +136,7 @@ router.get("/categories", auth, function (req, res) {
   });
 });
 
-router.get("/tags", function (req, res) {
+router.get("/tags", auth, function (req, res) {
   var page = 1;
   var tag = {
     id: 1,
@@ -188,7 +210,7 @@ router.get("/tags", function (req, res) {
   });
 });
 
-router.get("/drafts", function (req, res) {
+router.get("/drafts", auth, function (req, res) {
   var postData = [{
       writer: "Ngân Khánh",
       title: "The first post of all",
@@ -225,7 +247,7 @@ var bagde = {
   editors: 0,
   subscribers: 0,
 };
-router.get("/users", function (req, res) {
+router.get("/users", auth, function (req, res) {
   var postData = [{
       fullname: "Ngân Khánh",
       username: "ngankhanh98",
@@ -254,7 +276,7 @@ router.get("/users", function (req, res) {
   });
 });
 
-router.get("/users/edit/ngankhanh98", function (req, res) {
+router.get("/users/edit/ngankhanh98", auth, function (req, res) {
   res.render("admin/admin-users-edit", {
     layout: "admin-layout",
     title: "Chỉnh sửa người dùng",
@@ -265,7 +287,7 @@ router.get("/users/edit/ngankhanh98", function (req, res) {
   });
 });
 
-router.get("/users/edit/nkhang", function (req, res) {
+router.get("/users/edit/nkhang", auth, function (req, res) {
   res.render("admin/admin-users-edit", {
     title: "Chỉnh sửa người dùng",
     extra: '<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"/> <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous"> <link rel="stylesheet" href="/stylesheets/admin.css">',
