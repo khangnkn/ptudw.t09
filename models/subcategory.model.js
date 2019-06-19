@@ -31,11 +31,15 @@ module.exports = {
         return db.load(`
                         select subcategories.*,count(drafts.Id) as NofDr
                         from subcategories 
-                        inner join drafts on drafts.Category  = subcategories.Id
+                        left join drafts on drafts.Category  = subcategories.Id
                         group by subcategories.Id
                         order by subcategories.Id asc`);
     },
     updateInfor: (id,name,cate) => {
         return db.load(`update subcategories set Name='${name}',Category=${cate} where Id = ${id}`);
+    }
+    ,
+    add: (name,Category) => {
+        return db.load(`insert into subcategories values(default,${Category},'${name}')`);
     }
 }

@@ -20,5 +20,8 @@ module.exports = {
     },
     updateName: (id,name) => {
         return db.load(`update tags set Name='${name}' where Id = ${id}`);
+    },
+    add: name => {
+        return db.load(`insert into tags values(default,'${name}')`);
     }
 }

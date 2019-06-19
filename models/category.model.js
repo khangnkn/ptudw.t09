@@ -10,11 +10,14 @@ module.exports = {
     listForAdmin: () => {
         return db.load(`select categories.*,count(subcategories.Id) as NofSubC
                         from categories
-                        inner join subcategories on categories.Id = subcategories.Category
+                        left join subcategories on categories.Id = subcategories.Category
                         group by categories.Id
                         order by categories.Id asc`);
     },
     updateName: (id,name) => {
         return db.load(`update categories set Name='${name}' where Id = ${id}`);
+    },
+    add: name => {
+        return db.load(`insert into categories values(default,'${name}')`);
     }
 }
