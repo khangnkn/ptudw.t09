@@ -238,4 +238,27 @@ router.post('/welcome/update-editor', function (req, res, next) {
     res.redirect('/admin/welcome/users');
   })
 })
+
+router.post('/welcome/add-cate', function (req, res, next) {
+  var name = req.body.Name;
+  categoriesModel.add(name).then(rows => {
+    res.redirect('/admin/welcome/categories');
+  })
+})
+
+router.post('/welcome/add-subcate', function (req, res, next) {
+  var name = req.body.Name;
+  var Category = parseInt(req.body.Category);
+  subCategoryModel.add(name, Category).then(rows => {
+    res.redirect('/admin/welcome/categories');
+  })
+})
+
+router.post('/welcome/add-tag', function (req, res, next) {
+  var name = req.body.Name;
+  tagModel.add(name).then(rows => {
+    res.redirect('/admin/welcome/tags');
+  })
+})
+
 module.exports = router;

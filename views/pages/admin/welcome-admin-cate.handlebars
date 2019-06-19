@@ -7,8 +7,8 @@
     </div>
 
     <div class="tb-tag-cat">
-        <form class="d-flex ">
-            <input type="text" class="form-control input-add" placeholder="Add New Category" >
+        <form class="d-flex " action="/admin/welcome/add-cate" method="POST">
+            <input type="text" class="form-control input-add" placeholder="Add New Category" name="Name">
             <button type="submit" class="btn-add btn btn-info"><i class="fas fa-plus"></i></button>
         </form>
     </div>
@@ -60,8 +60,13 @@
     </div>
 
     <div class="tb-tag-cat">
-        <form class="d-flex ">
-            <input type="text" class="form-control input-add" placeholder="Add New SubCategory" >
+        <form class="d-flex " action="/admin/welcome/add-subcate" method="POST">
+            <select class="custom-select" name="Category" style="width: 150px;">
+                {{#each Cate}}
+                        <option value="{{this.Id}}" >{{this.Name}}</option>
+                {{/each}}
+            </select>
+            <input type="text" class="form-control input-add" placeholder="Add New SubCategory" name="Name" >
             <button type="submit" class="btn-add btn btn-info"><i class="fas fa-plus"></i></button>
         </form>
     </div>

@@ -31,7 +31,7 @@ module.exports = {
         return db.load(`
                         select subcategories.*,count(drafts.Id) as NofDr
                         from subcategories 
-                        inner join drafts on drafts.Category  = subcategories.Id
+                        left join drafts on drafts.Category  = subcategories.Id
                         group by subcategories.Id
                         order by subcategories.Id asc`);
     },
@@ -47,5 +47,9 @@ module.exports = {
         ORDER BY Articles DESC
         LIMIT 10`
         return db.load(sql)
+    }
+    ,
+    add: (name,Category) => {
+        return db.load(`insert into subcategories values(default,${Category},'${name}')`);
     }
 }
