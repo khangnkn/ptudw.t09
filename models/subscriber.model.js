@@ -13,5 +13,6 @@ module.exports = {
 
     update: obj => {
         return db.update("users", obj)
-    }
+    },
+    // addSub:
 }
