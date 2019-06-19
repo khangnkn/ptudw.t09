@@ -65,7 +65,7 @@ router.post("/publish/:id", function (req, res, next) {
     articles.add(article)
         .then(result => {
             if (result.affectedRows == 1) {
-                drafts.updateStatus(id, 4)
+                drafts.updateStatus(id, 3)
                     .catch(err => {
                         console.log(err);
                         next(err);

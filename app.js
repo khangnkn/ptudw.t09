@@ -6,6 +6,7 @@ var logger = require("morgan");
 const exphbs = require("express-handlebars");
 const authWriter = require('./middlewares/auth-writer');
 const authEditor = require('./middlewares/auth-editor');
+const authAdmin = require('./middlewares/auth-admin');
 
 
 var app = express();
@@ -31,7 +32,7 @@ app.use("/writer", authWriter, require("./routes/writer"));
 app.use("/article", require("./routes/article"));
 app.use("/draft", require("./routes/draft"));
 app.use("/editor", authEditor, require("./routes/editor"));
-app.use("/admin", require("./routes/admin"));
+app.use("/admin", authAdmin, require("./routes/admin"));
 
 app.get("/sitemap", (req, res) => {
   res.render("sitemap", {

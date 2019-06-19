@@ -27,9 +27,16 @@
                 {{/if}}
             </ul>
         </div>
+        {{#if isDrafts}}
         {{#each data}}
-        {{>post-item article=this cats=../cats tags=../tags isDraft=true}}
+        {{>post-item article=this cats=../cats tags=../tags isDrafts=true}}
         {{/each}}
+        {{else}}
+        {{#each data}}
+        {{>post-item article=this cats=../cats tags=../tags}}
+        {{/each}}
+        {{/if}}
+        {{!-- {{>post-item article=this cats=../cats tags=../tags}} --}}
     </div>
 </div>
 {{#section 'js'}}
