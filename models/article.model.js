@@ -102,8 +102,8 @@ module.exports = {
 
   updatePremium: (idDraft, premium) => {
     return db.load(`update articles
-                    set Premium = premium
-                    where Draft = idDraft`);
+                    set Premium = ${premium}
+                    where Draft = ${idDraft}`);
   },
   deleteByDraft: draft => {
     return db.load(`delete from articles where Draft = ${draft}`);

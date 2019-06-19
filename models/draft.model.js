@@ -103,8 +103,9 @@ module.exports = {
     return db.load(`delete from drafts where Id = ${id}`)
   },
   searchFTS: key => {
-    return db.load(`select * from drafts 
-    where match (Title,Abstract) against ('${key}' )`);
+    return db.load(`select articles.Id, drafts.Title, drafts.Abstract, drafts.Cover, drafts.Content 
+    from drafts join articles on drafts.Id = articles.Draft
+    where match (Title,Abstract) against ('${key}' ) and drafts.State>3`);
   },
 
   rejectReason: id => {

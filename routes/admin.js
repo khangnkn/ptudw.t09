@@ -22,7 +22,7 @@ router.get("/", function (req, res) {
 
 
 
-router.get('/welcome', function (req, res, next) {
+router.get('/welcome',function (req, res, next) {
   res.redirect('/admin/welcome/drafts')
 })
 

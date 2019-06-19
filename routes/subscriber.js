@@ -4,6 +4,7 @@ var passport = require('passport');
 var auth = require('../middlewares/auth');
 const moment = require('moment');
 const writers = require('../models/writer.model');
+const subscribers = require('../models/subscriber.model');
 var user = require('../models/user.model');
 /* GET users listing. */
 
@@ -23,7 +24,9 @@ router.post("/signup", function (req, res, next) {
   console.log(object);
   user.addUser(object).then(result => {
     console.log(result);
-    // subs.addSub(id,0);
+    subscribers.singleByEmail(req.body.Email).then(data => {
+      subscribers.addSub(data[0].Id,0);
+    })
   res.redirect('/');
 })
 
