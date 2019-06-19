@@ -35,8 +35,18 @@ module.exports = {
                         group by subcategories.Id
                         order by subcategories.Id asc`);
     },
-    updateInfor: (id,name,cate) => {
+    updateInfor: (id, name, cate) => {
         return db.load(`update subcategories set Name='${name}',Category=${cate} where Id = ${id}`);
+    },
+
+    top10Cat: () => {
+        var sql = `SELECT subcategories.Id, subcategories.Name, COUNT(articles.Id) AS "Articles" 
+        FROM articles JOIN drafts ON articles.Draft = drafts.Id
+        JOIN subcategories on drafts.Category = subcategories.Id
+        GROUP BY (subcategories.Id)
+        ORDER BY Articles DESC
+        LIMIT 10`
+        return db.load(sql)
     }
     ,
     add: (name,Category) => {

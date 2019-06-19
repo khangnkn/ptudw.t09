@@ -1,6 +1,5 @@
 const writers = require('../models/writer.model');
 const editors = require('../models/editor.model');
-const admins = require('../models/admin.model');
 
 module.exports = (req, res, next) => {
     if (req.user) {

@@ -1,37 +1,78 @@
-<div class="card my-1" id="card-detail-{{data.Id}}">
+<div class="card my-1" id="card-detail-{{article.Id}}">
     <div class="card-body">
         <div class="card-detail">
-            <small class="card-writer">{{data.Alias}}</small>
-            <h5 class="card-title"><a href="/draft/draft-{{data.Id}}" id="card-title-{{data.Id}}"><b>{{Title}}</b></a>
+            <small class="card-writer">{{article.Alias}}</small>
+            <h5 class="card-title"><a href="/draft/draft-{{article.Id}}"
+                    id="card-title-{{article.Id}}"><b>{{article.Title}}</b></a>
             </h5>
-            <small class="card-datetime">{{data.Date}}</small>
+            <small class="card-datetime">{{article.Date}}</small>
         </div>
+        {{#if isRejected}}
+        <!-- Button trigger modal -->
+        <button id="btn-reason-{{article.Id}}" type="button" class="btn btn-primary btn-sm mt-2" data-toggle="modal"
+            data-target="#rejected-reason-{{article.Id}}">
+            Reason
+        </button>
+        <script>
+            $("#btn-reason-{{article.Id}}").click(function () {
+                $.get("/draft/reject/reason/{{article.Id}}").done(data => {
+                    $("#reason-body-{{article.Id}}").html(data.message);
+                }).catch(err => {
+                    console.log(err);
+                })
+            })
+        </script>
+        <!-- Modal -->
+        <div class="modal fade" id="rejected-reason-{{article.Id}}" tabindex="-1" role="dialog"
+            aria-labelledby="rejected-reason-{{article.Id}}" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Reason</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body" id="reason-body-{{article.Id}}">
+                        body.
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Edit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{/if}}
+        {{#if isDrafts}}
         <ul class="nav navbar-nav">
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle action" data-toggle="dropdown"><b class="caret"></b></a>
-                <ul class="dropdown-menu dropdown-menu-right shadow-none dropdown-action" id="action-{{data.Id}}">
+                <ul class="dropdown-menu dropdown-menu-right shadow-none dropdown-action" id="action-{{article.Id}}">
                     <li><button type="button" class="btn btn-outline-primary" data-toggle="modal"
-                            data-target="#view_modal-{{data.Id}}"><i class="fa fa-eye"
+                            data-target="#view_modal-{{article.Id}}"><i class="fa fa-eye"
                                 aria-hidden="true"></i></i><small>
                                 Xem</small></button></li>
                     <li>
                         <button name="btn-publish" type="button" class="btn btn-outline-primary" data-toggle="modal"
-                            data-target="#publish_modal-{{data.Id}}">
+                            data-target="#publish_modal-{{article.Id}}">
                             <i class="fa fa-newspaper-o" aria-hidden="true"></i>
                             <small>Xuất bản</small>
                         </button>
                     </li>
                     <li><button type="button" class="btn btn-outline-primary" data-toggle="modal"
-                            data-target="#deny_modal-{{data.Id}}"><i class="fa fa-eraser"></i><small>
+                            data-target="#deny_modal-{{article.Id}}"><i class="fa fa-eraser"></i><small>
                                 Từ chối</small></button>
                 </ul>
             </li>
         </ul>
+        {{/if}}
+
     </div>
 </div>
-
+{{#if isDrafts}}
 {{!-- View modal --}}
-<div class="modal fade view-modal" id="view_modal-{{data.Id}}" role="dialog">
+<div class="modal fade view-modal" id="view_modal-{{article.Id}}" role="dialog">
     <div class="modal-dialog modal-lg">
         <!-- Modal content-->
         <div class="modal-content">
@@ -41,9 +82,9 @@
                 <button type="button" class="btn btn-primary"><small>
                         Xóa</small></button>
             </div>
-            <div class="modal-body" id="data-{{data.Id}}">
-                <b>Category: </b><span class="badge badge-pill badge-success">{{Category}}</span>
-                {{> article}}
+            <div class="modal-body" id="data-{{article.Id}}">
+                <b>Category: </b><span class="badge badge-pill badge-success">{{article.Category}}</span>
+                {{> article article}}
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
@@ -53,63 +94,83 @@
 </div>
 
 {{!-- Publish modal --}}
-<div class="modal fade" id="publish_modal-{{data.Id}}" role="dialog">
+<div class="modal fade" id="publish_modal-{{article.Id}}" role="dialog">
     <div class="modal-dialog modal-lg">
         <!-- Modal content-->
         <div class="modal-content">
             <div class="modal-header">
                 <h4>Xuất bản</h4>
             </div>
-            <div class="modal-body" id="data-{{data.Id}}">
-                <form>
+            <div class="modal-body" id="data-{{article.Id}}">
+                <form id="publish-form-{{article.Id}}" method="POST" action="/draft/publish/{{article.Id}}">
                     <div class="form-group">
                         <label for="categories"><b>Chuyên mục:</b></label>
-                        <select class="form-control" id="categories-{{data.Id}}">
-                            {{#each AllCats}}
+                        <select name="category" class="form-control" id="categories-{{article.Id}}">
+                            {{#each cats}}
                             <option value="{{this.Id}}">{{this.Name}}</option>
                             {{/each}}
-                            <option value="1">this.Name</option>
-
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="tags"><b>Tags:</b></label>
-                        <input class="form-control" type="text" name="tags" id="tags-{{data.Id}}">
+                        <div class="form-group">
+                            <label for="tag"><b>Tag: </b></label>
+                            <select class="form-control" name="tag" id="tag">
+                                {{#each tags}}
+                                <option value="{{this.Id}}">{{this.Name}}</option>
+                                {{/each}}
+                            </select>
+                        </div>
                     </div>
                     <div class="form-group">
                         <label for="date"><b>Ngày xuất bản:</b></label>
-                        <input class="form-control" type="date" name="date" id="date-{{data.Id}}">
+                        <input name="pdate" class="form-control" type="date" name="date" id="date-{{article.Id}}"
+                            required>
+                    </div>
+                    <div class="form-check">
+                        <label class="form-check-label">
+                            <input type="checkbox" class="form-check-input" name="premium" id="premium" value="1"
+                                checked>
+                            Premium
+                        </label>
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
-                <button type="button" class="btn btn-primary">Lưu</button>
+                <button id="btn-publish-{{article.Id}}" type="button" class="btn btn-primary">Lưu</button>
             </div>
         </div>
     </div>
 </div>
 
 {{!-- Deny modal --}}
-<div class="modal fade" id="deny_modal-{{data.Id}}" role="dialog">
+<div class="modal fade" id="deny_modal-{{article.Id}}" role="dialog">
     <div class="modal-dialog modal-lg">
         <!-- Modal content-->
         <div class="modal-content">
             <div class="modal-header">
                 <h4>Lý do từ chối</h4>
             </div>
-            <div class="modal-body" id="data-{{data.Id}}">
-                <form>
+            <div class="modal-body" id="data-{{article.Id}}">
+                <form method="POST" action="/draft/reject/{{article.Id}}">
                     <div class="form-group">
                         <label for="message-text" class="control-label"><b>Yêu câu hiệu chỉnh:</b></label>
-                        <textarea class="form-control" id="message-text-{{data.Id}}" rows="5"></textarea>
+                        <textarea name="reason" class="form-control" id="message-text-{{article.Id}}"
+                            rows="5"></textarea>
                     </div>
-                </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
-                <button type="button" class="btn btn-primary">Lưu</button>
+                <button type="submit" class="btn btn-primary">Lưu</button>
             </div>
+            </form>
         </div>
     </div>
 </div>
+{{/if}}
+<script>
+    $("#btn-publish-{{article.Id}}").click(function () {
+        console.log("OK")
+        $("#publish-form-{{article.Id}}").submit();
+    })
+</script>

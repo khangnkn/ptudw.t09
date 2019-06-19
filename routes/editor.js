@@ -2,6 +2,8 @@
 var express = require("express");
 var router = express.Router();
 const drafts = require("../models/draft.model");
+const tags = require("../models/tag.model");
+const subcategories = require("../models/subcategory.model");
 const authEditor = require("../middlewares/auth-editor");
 
 var badge = {
@@ -11,18 +13,12 @@ var badge = {
 
 /* GET users listing. */
 router.get("/", function (req, res) {
-  res.redirect("/editor/:id/drafts");
+  res.redirect("/editor/drafts/unreleased");
 });
 
-router.get("/:id/drafts/:status", authEditor, function (req, res, next) {
-  var id = req.params.id
-  if (isNaN(id)) {
-    next()
-    return
-  }
-  status = req.params.status;
-  if (status == "unreleased" || status == "") {
-    drafts.ByEditor(id).then(data => {
+router.get("/drafts/unreleased", function (req, res, next) {
+  Promise.all([drafts.ByEditor(req.user.Id), tags.all(), subcategories.All()])
+    .then(([data, tags, cats]) => {
       res.render("editor/editor-drafts", {
         layout: "editor-layout",
         title: "Blog Posts",
@@ -30,28 +26,31 @@ router.get("/:id/drafts/:status", authEditor, function (req, res, next) {
         isDrafts: true,
         publish: badge.publish,
         data: data,
+        tags: tags,
+        cats: cats,
       });
     }).catch(err => {
       console.log(err);
       next(err);
+      return;
     })
-  } else if (status == "released") {
-    drafts.PublishByEditor(id).then(data => {
-      res.render("editor/editor-drafts", {
-        layout: "editor-layout",
-        title: "Blog Posts",
-        isDrafts: false,
-        draft: badge.draft,
-        publish: badge.publish,
-        data: data,
-      });
-    }).catch(err => {
-      console.log(err);
-      next(err);
-    })
-  } else {
-    next();
-  }
+});
+
+router.get("/drafts/released", function (req, res, next) {
+  drafts.PublishByEditor(req.user.Id).then(data => {
+    res.render("editor/editor-drafts", {
+      layout: "editor-layout",
+      title: "Blog Posts",
+      isDrafts: false,
+      draft: badge.draft,
+      publish: badge.publish,
+      data: data,
+    });
+  }).catch(err => {
+    console.log(err);
+    next(err);
+    return;
+  })
 });
 
 module.exports = router;

@@ -1,0 +1,26 @@
+{{!-- {{> navbar}} --}}
+<div class="container login-body">
+    <div class="row">
+        <div class="col-sm-4">
+            <form method="POST" action="/subscriber/signup" class="login-form">
+                <div class="form-group">
+                    <label for="email">Username:</label>
+                    <input type="text" class="form-control" id="Username" name="Username" placeholder="username">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" class="form-control" id="Email" name="Email" placeholder="abc@xyz.com.vn">
+                </div>
+                <div class="form-group">
+                    <label for="email">Họ tên:</label>
+                    <input type="text" class="form-control" id="Fullname" name="Fullname" placeholder="abc@xyz.com.vn">
+                </div>
+                <div class="form-group">
+                    <label for="pwd">Mật khẩu:</label>
+                    <input type="password" class="form-control" id="Password" name="Password" placeholder="******">
+                </div>
+                <button type="submit" class="btn btn-primary">Đăng ký</button>
+            </form>
+        </div>
+    </div>
+</div>

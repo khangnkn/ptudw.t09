@@ -50,18 +50,19 @@
                     {{/each}}
                 </ul>
             </div>
+            {{#unless authUser}}
             <div class="home-login section">
                 <div class="group-header">
                     Đăng nhập nhanh
                 </div>
-                <form class="login-form login-form-sm" action="">
+                <form method="POST" action="/subscriber/login" class="login-form login-form-sm" action="">
                     <div class="form-group">
                         <label for="email">Email:</label>
-                        <input type="email" class="form-control" id="email" placeholder="abc@xyz.com.vn">
+                        <input name="email" type="email" class="form-control" id="email" placeholder="abc@xyz.com.vn">
                     </div>
                     <div class="form-group">
                         <label for="pwd">Mật khẩu:</label>
-                        <input type="password" class="form-control" id="pwd" placeholder="******">
+                        <input name="password" type="password" class="form-control" id="pwd" placeholder="******">
                     </div>
                     <div class="form-group form-check">
                         <label class="form-check-label">
@@ -71,6 +72,7 @@
                     <button type="submit" class="btn btn-primary">Đăng nhập</button>
                 </form>
             </div>
+            {{/unless}}
         </div>
         <div class="col-sm-9">
             {{!-- Most viewed articles --}}
@@ -92,36 +94,27 @@
                 </div>
                 {{!-- Nav tabs --}}
                 <ul class="nav nav-tabs">
-                    <li class="nav-item fs-13"><a href="#phone-tab" data-toggle="tab" class="nav-link active">Điện
-                            thoại</a>
+                    {{#each topCats}}
+                    <li class="nav-item fs-13"><a id="toggle-{{this.Id}}" href="#tab-{{this.Id}}" data-toggle="tab"
+                            class="nav-link">{{this.Name}}</a>
                     </li>
-                    <li class="nav-item fs-13"><a href="#laptop-tab" data-toggle="tab" class="nav-link">Laptop</a></li>
-                    <li class="nav-item fs-13"><a href="#programming-tab" data-toggle="tab" class="nav-link">Lập
-                            trình</a>
-                    </li>
+                    <script>
+                        $("#toggle-{{this.Id}}").click(() => {
+                            $.get("/article/new/{{this.Id}}").done(data => {
+                                console.log(data)
+                                $("#tab-{{this.Id}}").html(data);
+                            });
+                        })
+                    </script>
+                    {{/each}}
                 </ul>
                 {{!-- Nav contents --}}
                 <div class="tab-content">
-                    <div class="tab-pane container active" id="phone-tab">
-                        {{>short-content sc-id = top.3.id sc-image = top.3.image sc-title = top.3.title sc-author = top.3.author sc-date = top.3.date sc-category = top.3.category sc-abstract = top.3.abstract}}
-                        {{#each top}}
-                        {{>horizontal-short-content  sc-id = this.id  sc-image = this.image sc-title = this.title sc-author = this.author sc-date = this.date sc-category = this.category sc-abstract = this.abstract}}
-                        {{/each}}
+                    {{#each topCats}}
+                    <div class="tab-pane container" id="tab-{{this.Id}}">
+                        {{this.Name}}
                     </div>
-                    <div class="tab-pane container fade" id="laptop-tab">
-
-                        {{>short-content sc-id = top.1.id sc-image = top.1.image sc-title = top.1.title sc-author = top.1.author sc-date = top.1.date sc-category = top.1.category sc-abstract = top.1.abstract}}
-                        {{>horizontal-short-content}}
-                        {{>horizontal-short-content}}
-                        {{>horizontal-short-content}}
-                    </div>
-                    <div class="tab-pane container fade" id="tech-tab">
-                        {{>short-content sc-id = top.2.id sc-image = top.2.image sc-title = top.2.title sc-author = top.2.author sc-date = top.2.date sc-category = top.2.category sc-abstract = top.2.abstract}}
-                        {{>horizontal-short-content}}
-                        {{>horizontal-short-content}}
-                        {{>horizontal-short-content}}
-
-                    </div>
+                    {{/each}}
                 </div>
             </div>
         </div>

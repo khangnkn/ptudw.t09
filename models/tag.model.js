@@ -18,7 +18,14 @@ module.exports = {
         where drafts_tags.idTag = tags.Id) as NofDr
         from tags`);
     },
-    updateName: (id,name) => {
+
+    all: () => {
+        var sql = `select * from tags`;
+        return db.load(sql);
+
+    },
+
+    updateName: (id, name) => {
         return db.load(`update tags set Name='${name}' where Id = ${id}`);
     },
     add: name => {

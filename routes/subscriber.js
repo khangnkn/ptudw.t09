@@ -2,15 +2,10 @@ var express = require("express");
 var router = express.Router();
 var passport = require('passport');
 var auth = require('../middlewares/auth');
+const moment = require('moment');
 const writers = require('../models/writer.model');
-var subs =require('../models/subscriber.model');
 var user = require('../models/user.model');
 /* GET users listing. */
-router.get("/", function (req, res) {
-  res.render("general/general-index", {
-    title: "User"
-  });
-});
 
 router.get("/login", (req, res) => {
   res.render("subscriber/login", {
@@ -19,15 +14,13 @@ router.get("/login", (req, res) => {
 });
 
 router.post("/signup", function (req, res, next) {
-  var Username = req.body.Username;
-  var Password = req.body.Password;
-  var FullName = req.body.FullName;
   var object = {
     Username: req.body.Username,
     Password: req.body.Password,
-    Fullname: req.boay.Fullname,
+    Fullname: req.body.Fullname,
     Email: req.body.Email, 
   }
+  console.log(object);
   user.addUser(object).then(result => {
     console.log(result);
     // subs.addSub(id,0);
@@ -35,6 +28,12 @@ router.post("/signup", function (req, res, next) {
 })
 
 });
+
+router.get("/signup", (req, res, next) => {
+  res.render("subscriber/register", {
+    title: "Register",
+  })
+})
 
 router.post("/login", (req, res, next) => {
   passport.authenticate('local', (err, user, info) => {
@@ -69,15 +68,80 @@ router.get("/change-password", auth, function (req, res) {
   });
 });
 
-router.get("/update-info", auth, (req, res) => {
-  res.render("subscriber/update-info", {
+router.post('/change-birthday', auth, (req, res) => {
+  console.log(req.body);
+  var obj = {
+    Id: req.body.Id,
+    Birthday: moment(req.body.Birthday).format("YYYY-MM-DD"),
+  }
+  console.log(obj);
+  subscribers.update(obj).then(result => {
+      if (result.changedRows == 0) {
+        res.json({
+          success: false,
+        })
+        return;
+      } else {
+        res.locals.authUser.Birthday = req.body.Birthday;
+        res.json({
+          success: true,
+        })
+        return;
+      }
+    })
+    .catch(err => {
+      console.log(err);
+      res.json({
+        success: false,
+      })
+    })
+})
+
+router.post('/chgpwd', auth, (req, res) => {
+  if (req.body.curpwd != req.user.Password) {
+    res.json({
+      success: false,
+      message: "Wrong password!"
+    })
+  }
+  var obj = {
+    Id: req.body.id,
+    Password: req.body.newpwd,
+  }
+  console.log(obj);
+  subscribers.update(obj).then(result => {
+      if (result.changedRows == 0) {
+        res.json({
+          success: false,
+          message: "An orror has occurred!"
+        })
+        return;
+      } else {
+        res.json({
+          success: true,
+          message: "Change password successfully!"
+        })
+        return;
+      }
+    })
+    .catch(err => {
+      console.log(err);
+      res.json({
+        success: false,
+        message: err,
+      })
+    })
+})
+
+router.get("/profile", auth, (req, res) => {
+  res.render("subscriber/profile", {
     title: "Cập nhật thông tin cá nhân"
   });
 });
 
 router.post("/logout", auth, (req, res, next) => {
   req.logOut();
-  res.redirect("/login");
+  res.redirect("/subscriber/login");
 });
 
 module.exports = router;
