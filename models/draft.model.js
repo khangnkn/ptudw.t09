@@ -85,38 +85,38 @@ module.exports = {
   },
 
   publishedByWriter: id => {
-    var sql = `SELECT drafts.Id, drafts.Title, drafts.Abstract, drafts.Cover, writers.Alias, drafts.Content, articles.Premium, DATE_FORMAT(articles.PublishTime, '%d/%m/%Y') as "Date", subcategories.Name as "Category" 
-    FROM articles JOIN drafts ON articles.Draft = drafts.Id AND drafts.State = 4 
-    JOIN writers ON drafts.Author = writers.Id AND writers.Id = ${id}
+    var sql = `SELECT drafts.Id, Title, subcategories.Name as "Category", DATE_FORMAT(drafts.Date, "%d/%m/%Y") as "Date", Content, Abstract, State, writers.Alias
+    FROM drafts JOIN writers ON drafts.Author = writers.Id 
     JOIN subcategories ON drafts.Category = subcategories.Id
-    ORDER BY articles.Premium DESC LIMIT 10 `;
+    WHERE writers.Id = ${id} AND drafts.State = 4
+    LIMIT 10`;
     return db.load(sql);
   },
 
   rejectedByWriter: id => {
-    var sql = `SELECT drafts.Id, drafts.Title, drafts.Abstract, drafts.Cover, writers.Alias, drafts.Content, articles.Premium, DATE_FORMAT(articles.PublishTime, '%d/%m/%Y') as "Date", subcategories.Name as "Category" 
-    FROM articles JOIN drafts ON articles.Draft = drafts.Id AND drafts.State = 2 
-    JOIN writers ON drafts.Author = writers.Id AND writers.Id = ${id}
+    var sql = `SELECT drafts.Id, Title, subcategories.Name as "Category", DATE_FORMAT(drafts.Date, "%d/%m/%Y") as "Date", Content, Abstract, State, writers.Alias
+    FROM drafts JOIN writers ON drafts.Author = writers.Id 
     JOIN subcategories ON drafts.Category = subcategories.Id
-    ORDER BY articles.Premium DESC LIMIT 10 `;
+    WHERE writers.Id = ${id} AND drafts.State = 2
+    LIMIT 10`;
     return db.load(sql);
   },
 
   pendingByWriter: id => {
-    var sql = `SELECT drafts.Id, drafts.Title, drafts.Abstract, drafts.Cover, writers.Alias, drafts.Content, articles.Premium, DATE_FORMAT(articles.PublishTime, '%d/%m/%Y') as "Date", subcategories.Name as "Category" 
-    FROM articles JOIN drafts ON articles.Draft = drafts.Id AND drafts.State = 1 
-    JOIN writers ON drafts.Author = writers.Id AND writers.Id = ${id}
+    var sql = `SELECT drafts.Id, Title, subcategories.Name as "Category", DATE_FORMAT(drafts.Date, "%d/%m/%Y") as "Date", Content, Abstract, State, writers.Alias
+    FROM drafts JOIN writers ON drafts.Author = writers.Id 
     JOIN subcategories ON drafts.Category = subcategories.Id
-    ORDER BY articles.Premium DESC LIMIT 10 `;
+    WHERE writers.Id = ${id} AND drafts.State = 1
+    LIMIT 10`;
     return db.load(sql);
   },
 
   approvedByWriter: id => {
-    var sql = `SELECT drafts.Id, drafts.Title, drafts.Abstract, drafts.Cover, writers.Alias, drafts.Content, articles.Premium, DATE_FORMAT(articles.PublishTime, '%d/%m/%Y') as "Date", subcategories.Name as "Category" 
-    FROM articles JOIN drafts ON articles.Draft = drafts.Id AND drafts.State = 3 
-    JOIN writers ON drafts.Author = writers.Id AND writers.Id = ${id}
+    var sql = `SELECT drafts.Id, Title, subcategories.Name as "Category", DATE_FORMAT(drafts.Date, "%d/%m/%Y") as "Date", Content, Abstract, State, writers.Alias
+    FROM drafts JOIN writers ON drafts.Author = writers.Id 
     JOIN subcategories ON drafts.Category = subcategories.Id
-    ORDER BY articles.Premium DESC LIMIT 10 `;
+    WHERE writers.Id = ${id} AND drafts.State = 3
+    LIMIT 10`;
     return db.load(sql);
   },
 };

@@ -54,6 +54,7 @@ router.post("/editor", (req, res, next) => {
 
 router.get("/articles", function (req, res) {
   var id = req.user.Id;
+  console.log("userid: ", id);
   Promise.all([drafts.pendingByWriter(id), drafts.rejectedByWriter(id), drafts.approvedByWriter(id), drafts.publishedByWriter(id)])
     .then(([pending, rejected, approved, published]) => {
       res.render("writer/writer-show-articles", {
@@ -69,17 +70,7 @@ router.get("/articles", function (req, res) {
       next(err)
     })
   return;
-  drafts.loadByUser(id).then(rows => {
-    rows.forEach(element => {
-      element.Date = moment(element.Date).format("L")
-      console.log(element.Id, element.Alias);
-    });
-    res.render("writer/writer-show-articles", {
-      data: rows,
-      layout: "writer-layout",
-      title: "Các bài đã viết",
-    });
-  }).catch(err => console.log(err));
+
 });
 
 module.exports = router;
