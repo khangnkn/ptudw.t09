@@ -1,29 +1,45 @@
 {{#each data}}
-{{> post-item this}}
+{{> post-item article=this}}
 {{/each}}
 <ul class="nav nav-tabs" id="myTab" role="tablist">
     <li class="nav-item">
-        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="pending"
-            aria-selected="true">Đã được duyệt, chờ xuất bản</a>
+        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#pending" role="tab" aria-controls="pending"
+            aria-selected="true">Chưa được duyệt</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="published"
+        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#published" role="tab" aria-controls="published"
             aria-selected="false">Đã xuất bản</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="denied"
+        <a class="nav-link" id="rejected-tab" data-toggle="tab" href="#rejected" role="tab" aria-controls="rejected"
             aria-selected="false">Bị từ chối</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="waiting"
-            aria-selected="false">Chưa được duyệt</a>
+        <a class="nav-link" id="approved-tab" data-toggle="tab" href="#approved" role="tab" aria-controls="approved"
+            aria-selected="false">Đã được duyệt, chờ xuất bản</a>
     </li>
 </ul>
 <div class="tab-content" id="myTabContent">
-    <div class="tab-pane fade show active" id="pending" role="tabpanel" aria-labelledby="home-tab">...</div>
-    <div class="tab-pane fade" id="published" role="tabpanel" aria-labelledby="profile-tab">...</div>
-    <div class="tab-pane fade" id="denied" role="tabpanel" aria-labelledby="contact-tab">...</div>
-    <div class="tab-pane fade" id="waiting" role="tabpanel" aria-labelledby="contact-tab">...</div>
+    <div class="tab-pane fade show active" id="pending" role="tabpanel" aria-labelledby="home-tab">
+        {{#each pending}}
+        {{> post-item article=this}}
+        {{/each}}
+    </div>
+    <div class="tab-pane fade" id="published" role="tabpanel" aria-labelledby="profile-tab">
+        {{#each published}}
+        {{> post-item article=this}}
+        {{/each}}
+    </div>
+    <div class="tab-pane fade" id="rejected" role="tabpanel" aria-labelledby="contact-tab">
+        {{#each rejected}}
+        {{> post-item article=this isRejected=true}}
+        {{/each}}
+    </div>
+    <div class="tab-pane fade" id="approved" role="tabpanel" aria-labelledby="contact-tab">
+        {{#each approved}}
+        {{> post-item article=this}}
+        {{/each}}
+    </div>
 </div>
 <div class="paging">
     <ul class="pagination">

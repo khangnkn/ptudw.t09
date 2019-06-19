@@ -6,8 +6,45 @@
                     id="card-title-{{article.Id}}"><b>{{article.Title}}</b></a>
             </h5>
             <small class="card-datetime">{{article.Date}}</small>
-
         </div>
+        {{#if isRejected}}
+        <!-- Button trigger modal -->
+        <button id="btn-reason-{{article.Id}}" type="button" class="btn btn-primary btn-sm mt-2" data-toggle="modal"
+            data-target="#rejected-reason-{{article.Id}}">
+            Reason
+        </button>
+        <script>
+            $("#btn-reason-{{article.Id}}").click(function () {
+                $.get("/draft/reject/reason/{{article.Id}}").done(data => {
+                    $("#reason-body-{{article.Id}}").html(data.message);
+                }).catch(err => {
+                    console.log(err);
+                })
+            })
+        </script>
+        <!-- Modal -->
+        <div class="modal fade" id="rejected-reason-{{article.Id}}" tabindex="-1" role="dialog"
+            aria-labelledby="rejected-reason-{{article.Id}}" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Reason</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body" id="reason-body-{{article.Id}}">
+                        body.
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Edit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{/if}}
+        {{#if isDrafts}}
         <ul class="nav navbar-nav">
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle action" data-toggle="dropdown"><b class="caret"></b></a>
@@ -29,9 +66,11 @@
                 </ul>
             </li>
         </ul>
+        {{/if}}
+
     </div>
 </div>
-
+{{#if isDrafts}}
 {{!-- View modal --}}
 <div class="modal fade view-modal" id="view_modal-{{article.Id}}" role="dialog">
     <div class="modal-dialog modal-lg">
@@ -113,20 +152,22 @@
                 <h4>Lý do từ chối</h4>
             </div>
             <div class="modal-body" id="data-{{article.Id}}">
-                <form>
+                <form method="POST" action="/draft/reject/{{article.Id}}">
                     <div class="form-group">
                         <label for="message-text" class="control-label"><b>Yêu câu hiệu chỉnh:</b></label>
-                        <textarea class="form-control" id="message-text-{{article.Id}}" rows="5"></textarea>
+                        <textarea name="reason" class="form-control" id="message-text-{{article.Id}}"
+                            rows="5"></textarea>
                     </div>
-                </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
-                <button type="button" class="btn btn-primary">Lưu</button>
+                <button type="submit" class="btn btn-primary">Lưu</button>
             </div>
+            </form>
         </div>
     </div>
 </div>
+{{/if}}
 <script>
     $("#btn-publish-{{article.Id}}").click(function () {
         console.log("OK")

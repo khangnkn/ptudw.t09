@@ -11,7 +11,7 @@ module.exports = {
   },
 
   loadByUser: id => {
-    var sql = `SELECT dr.Id, dr.Title, dr.Date, dr.Cover, dr.Abstract, dr.Content, wr.Alias, ca.Name as Category, states.Status
+    var sql = `SELECT dr.Id, dr.Title, dr.Date, dr.Cover, dr.Abstract, dr.Content, wr.Alias, ca.Name as Category, states.Status, dr.State
     FROM drafts as dr, writers as wr, subcategories as ca, states
     WHERE dr.Author = ${id} AND dr.Author = wr.Id AND ca.Id = dr.Category and dr.State = states.Id`;
     return db.load(sql);
@@ -101,5 +101,46 @@ module.exports = {
 
   deleteById: id => {
     return db.load(`delete from drafts where Id = ${id}`)
-  }
+  },
+
+  rejectReason: id => {
+    var sql = `SELECT * FROM rejectdrafts WHERE Draft = ${id}`;
+    return db.load(sql);
+  },
+
+  publishedByWriter: id => {
+    var sql = `SELECT drafts.Id, Title, subcategories.Name as "Category", DATE_FORMAT(drafts.Date, "%d/%m/%Y") as "Date", Content, Abstract, State, writers.Alias
+    FROM drafts JOIN writers ON drafts.Author = writers.Id 
+    JOIN subcategories ON drafts.Category = subcategories.Id
+    WHERE writers.Id = ${id} AND drafts.State = 4
+    LIMIT 10`;
+    return db.load(sql);
+  },
+
+  rejectedByWriter: id => {
+    var sql = `SELECT drafts.Id, Title, subcategories.Name as "Category", DATE_FORMAT(drafts.Date, "%d/%m/%Y") as "Date", Content, Abstract, State, writers.Alias
+    FROM drafts JOIN writers ON drafts.Author = writers.Id 
+    JOIN subcategories ON drafts.Category = subcategories.Id
+    WHERE writers.Id = ${id} AND drafts.State = 2
+    LIMIT 10`;
+    return db.load(sql);
+  },
+
+  pendingByWriter: id => {
+    var sql = `SELECT drafts.Id, Title, subcategories.Name as "Category", DATE_FORMAT(drafts.Date, "%d/%m/%Y") as "Date", Content, Abstract, State, writers.Alias
+    FROM drafts JOIN writers ON drafts.Author = writers.Id 
+    JOIN subcategories ON drafts.Category = subcategories.Id
+    WHERE writers.Id = ${id} AND drafts.State = 1
+    LIMIT 10`;
+    return db.load(sql);
+  },
+
+  approvedByWriter: id => {
+    var sql = `SELECT drafts.Id, Title, subcategories.Name as "Category", DATE_FORMAT(drafts.Date, "%d/%m/%Y") as "Date", Content, Abstract, State, writers.Alias
+    FROM drafts JOIN writers ON drafts.Author = writers.Id 
+    JOIN subcategories ON drafts.Category = subcategories.Id
+    WHERE writers.Id = ${id} AND drafts.State = 3
+    LIMIT 10`;
+    return db.load(sql);
+  },
 };
