@@ -3,7 +3,8 @@ var router = express.Router();
 var passport = require('passport');
 var auth = require('../middlewares/auth');
 const writers = require('../models/writer.model');
-
+var subs =require('../models/subscriber.model');
+var user = require('../models/user.model');
 /* GET users listing. */
 router.get("/", function (req, res) {
   res.render("general/general-index", {
@@ -15,6 +16,24 @@ router.get("/login", (req, res) => {
   res.render("subscriber/login", {
     title: "Đăng nhập"
   });
+});
+
+router.post("/signup", function (req, res, next) {
+  var Username = req.body.Username;
+  var Password = req.body.Password;
+  var FullName = req.body.FullName;
+  var object = {
+    Username: req.body.Username,
+    Password: req.body.Password,
+    Fullname: req.boay.Fullname,
+    Email: req.body.Email, 
+  }
+  user.addUser(object).then(result => {
+    console.log(result);
+    // subs.addSub(id,0);
+  res.redirect('/');
+})
+
 });
 
 router.post("/login", (req, res, next) => {

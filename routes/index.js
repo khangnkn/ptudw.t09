@@ -2,6 +2,8 @@ var express = require("express");
 var articles = require('../models/article.model');
 var writers = require('../models/writer.model');
 var subcategories = require('../models/subcategory.model');
+var user = require('../models/user.model');
+var draftModel = require('../models/draft.model');
 var router = express.Router();
 var path = require('path');
 var moment = require('moment');
@@ -28,9 +30,17 @@ router.get("/", function (req, res, next) {
     })
 });
 
+
+
 router.get("/search", (req, res, next) => {
   if (req.query.search) {
     // implement search
+    draftModel.searchFTS(req.query.search).then(rows=>{
+      res.render("general/search", {
+        title: "Search",
+        data: rows
+      });
+    })
     return
   };
   if (req.query.category) {

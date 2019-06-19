@@ -83,5 +83,9 @@ module.exports = {
   },
   deleteById: id => {
     return db.load(`delete from drafts where Id = ${id}`)
+  },
+  searchFTS: key => {
+    return db.load(`select * from drafts 
+    where match (Title,Abstract) against ('${key}' )`);
   }
 };

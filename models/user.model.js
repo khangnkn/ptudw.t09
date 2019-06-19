@@ -33,5 +33,8 @@ module.exports = {
     updateManagedCate: (id,cate) => {
 
         return db.load(`update editors set ManagedCate=${cate} where Id = ${id}`);
+    },
+    addUser: object => {
+        return db.insert("users", object);
     }
 }

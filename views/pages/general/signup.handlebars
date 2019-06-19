@@ -1,0 +1,54 @@
+<link rel="stylesheet" href="/stylesheets/pages/admin/form-style.css">
+
+<!-- partial -->
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="card d-flex flex-column justify-content-center">
+            <div class="card-body d-flex justify-content-center ">
+                <form class="contact1-form validate-form" style="width: 1000px;" action = "/admin/customer/update" method="POST">
+                    <span class="contact1-form-title">
+                        Chỉnh sửa thông tin khách hàng
+                    </span>
+                    <div class="" >
+                        <span style="margin-left: 200px;"><i class="fas fa-id-badge" style="margin-right: 5px;"></i>ID:</span>   
+                        <div class="wrap-input1 validate-input d-flex justify-content-center align-items-center" >
+                            <input class="input1" name="IdKhachHang" type="text"readonly="readonly" value="{{infor.IdKhachHang}}" style="width:500px; ">
+                        </div>
+                    </div>
+                    <div class="">
+                        <span style="margin-left: 200px;"><i class="fas fa-signature" style="margin-right: 5px;"></i>Họ tên:</span>
+                        <div class="wrap-input1 validate-input d-flex justify-content-center align-items-center" >   
+                            <input class="input1" name= "HoTen" value="{{infor.HoTen}}"  type="text" style="width:500px; ">
+                        </div>
+                    </div>
+                    <div class=""> 
+                            <span style="margin-left: 200px;"><i class="far fa-envelope" style="margin-right: 5px;"></i>Email:</span>
+                            <div class="wrap-input1 validate-input d-flex justify-content-center align-items-center">
+                                <input class="input1" name="Email" type="email" value="{{infor.Email}}" style="width:500px; " >
+                            </div>
+                    </div>
+                    <div class="">
+                        <span style="margin-left: 200px;"><i class="fas fa-phone" style="margin-right: 5px;"></i>SĐT:</span>
+                        <div class="wrap-input1 validate-input d-flex justify-content-center align-items-center">
+                            <input class="input1" name="SDT" type="text" value="{{infor.SDT}}" style="width:500px; " >
+                        </div>
+                    </div>
+                    <div class="row d-flex justify-content-center">
+                        <button class="contact1-form-btn" type="submit" style="margin-right: 30px;">
+                            <span>
+                                Cập nhật
+                                <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+                            </span>
+                        </button>
+                        <a class="contact1-form-btn" href="/admin/customer/search">
+                            <span>
+                                Trở về
+                                <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+                            </span>
+                        </a>
+                    </div>
+        </form>
+    </div>
+</div>
+
+
