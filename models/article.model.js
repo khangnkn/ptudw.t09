@@ -66,8 +66,6 @@ module.exports = {
     return db.load(sql)
   },
 
-
-
   IncreaseView: id => {
     var sql = `UPDATE articles SET Views = Views + 1 WHERE Id = ${id}`;
     console.log(sql);
@@ -77,5 +75,18 @@ module.exports = {
   addTag: (id, tag) => {
     var sql = `INSERT INTO \`tags\`(\`Id\`, \`Name\`) VALUES (${id}, ${tag})`;
     db.execute(sql);
+  },
+
+  updatePremium: (idDraft, premium) => {
+    return db.load(`update articles
+                    set Premium = premium
+                    where Draft = idDraft`);
+  },
+  deleteByDraft: draft => {
+    return db.load(`delete from articles where Draft = ${draft}`);
+  },
+
+  singleByDraft: draft => {
+    return db.load(`select * from articles where Draft = ${draft}`);
   }
 };

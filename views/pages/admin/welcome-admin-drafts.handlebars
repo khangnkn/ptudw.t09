@@ -1,0 +1,90 @@
+
+<div class="container-wc">
+    <span class="list-header"><i class="far fa-file"></i> List Of Drafts</span>
+    <br>
+    <hr>
+    
+    <div>
+        <span class="list-header">Add New Draft: </span>
+        <a href="#" class="btn-add btn btn-info"><i class="fas fa-plus"></i></a>
+    </div>
+    <br>
+    
+    <table id="order-listing" class="table dataTable " role="grid">
+        <thead>
+            <tr role="row">
+                <th class="sorting_asc" style="width: 10px !important;">#</th>
+                <th class="sorting" style="width: 20px;">Title</th>
+                <th class="sorting"style="width: 20px !important;;">Author</th>
+                {{!-- <th scope="sorting" style="width: 100px !important;">Abstract</th> --}}
+                <th scope="sorting" style="width: 15px !important;">Date</th>
+                <th scope="sorting" style="width: 40px;">SubCategory</th>
+                {{!-- <th scope="col" style="width: 20px;">Number Of Tags</th> --}}
+                <th scope="sorting" style="width: 40px;">State</th>
+                <th scope="sorting" style="width: 40px;">Premium</th>
+                <th scope="sorting" style="width: 27px;">Publish Time</th>
+                <th scope="sorting" style="width: 15px;">Update</th>
+                <th scope="sorting" style="width: 20px;">More</th>
+                
+        </thead>
+        <tbody>
+           {{#each drafts}} 
+                <tr role="row">
+                    <th scope="sorting_1" name="Id">{{this.Id}}</th>
+                    <td>{{this.Title}}</td>
+                    <td>{{this.Author}}</td>
+                    {{!-- <td>{{this.Abstract}}</td> --}}
+                    <td>{{this.Date}}</td>
+                    <form action="/admin/welcome/update-draft" method="POST">
+                    <td>
+                        <input type="hidden" name="Id" value="{{this.Id}}">
+                        <select class="custom-select" id="inputGroupSelect01" name="SubCategory">
+                            {{#each ../subCate}}
+                                    <option value="{{this.Id}}" {{isSelected ../ManagedCate this.Id}}>{{this.Name}}</option>
+                            {{/each}}
+                        </select>
+                    </td>
+                    <td>
+                        
+                        <select class="custom-select" id="inputGroupSelect01" name="State">
+                            {{#each ../states}}
+                                    <option value="{{this.Id}}" {{isSelected ../State this.Id}}>{{this.Status}}</option>
+                            {{/each}}
+                        </select>
+                    </td>
+                    <td>
+                        <select class="custom-select" id="inputGroupSelect01" name="Premium">
+                            <option value="0" {{isSelected this.Premium 0}}>No Premium</option>
+                            <option value="1" {{isSelected this.Premium 1}}>Premium</option>
+                            
+                        </select>
+                        
+                    </td>
+                    <td>{{this.PublishTime}}</td>
+                    <td>
+                        <button class="btn btn-secondary" >
+                            <i class="fas fa-upload"></i>
+                        </button>
+                    </td>
+                    </form>
+                    <td>
+                        <button type="button" class="btn btn-success dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-cog"></i>
+                        </button>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#"><i class="fas fa-eye"></i> Detail</a>
+                            <a class="dropdown-item" href="#"><i class="fas fa-edit"></i> Edit</a>
+                            <div class="dropdown-divider"></div>
+                            <form action="/admin/welcome/delete-draft" method="POST">
+                                <input type="hidden" name="Id" value="{{this.Id}}">
+                                <button class="dropdown-item" type="submit"><i class="fas fa-trash-alt"></i> Delete</button>
+                            </form>
+                        </div>
+                    </td>
+                </tr> 
+            {{/each}}
+        </tbody>
+    </table>
+    <br><br>
+</div>
+
