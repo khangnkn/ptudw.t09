@@ -33,7 +33,7 @@ module.exports = {
     return db.load(sql);
   },
   getAllForAdminWC: () => {
-    var sql = ` select drafts.Id,drafts.Title,wt.Alias as Author,drafts.Abstract,date_format(drafts.Date,"%d-%c-%Y") as Date,drafts.Category,drafts.State,atc.Premium,date_format(atc.PublishTime,"%d-%c-%Y %k:%i:%s") as PublishTime
+    var sql = ` select drafts.Id,drafts.Title,wt.Alias as Author,drafts.Abstract,date_format(drafts.Date,"%d-%c-%Y") as Date,drafts.Category,drafts.State,atc.Premium,date_format(atc.PublishTime,"%d-%c-%Y %H:%i:%s") as PublishTime
                 from drafts
                 left join (
                 select Id,Draft,Premium,PublishTime
@@ -52,7 +52,7 @@ module.exports = {
   },
   listByTag: id => {
     return db.load(`
-    select drafts.Id,drafts.Title,drafts.Abstract,drafts.Date,wt.Alias as Author,states.Status as State,subcategories.Name as SubCategory,categories.Name as Category
+    select drafts.Id,drafts.Title,drafts.Abstract,date_format(drafts.Date,"%d-%c-%Y") as Date,wt.Alias as Author,states.Status as State,subcategories.Name as SubCategory,categories.Name as Category
     from drafts 
     inner join drafts_tags on drafts.Id = drafts_tags.idTag and drafts_tags.idTag = ${id}
     inner join states on states.Id = drafts.State
@@ -62,5 +62,26 @@ module.exports = {
       select Id,Alias
       from writers
       group by Id) wt on wt.Id = drafts.Author `);
+  },
+  listBySub: id => {
+    return db.load(`
+    select drafts.Id,drafts.Title,date_format(drafts.Date,"%d-%c-%Y") as Date,wt.Alias as Author,states.Status as State,subcategories.Name as SubCategory,categories.Name as Category
+    from drafts 
+    inner join states on states.Id = drafts.State
+    inner join subcategories on subcategories.Id = drafts.Category
+    inner join categories on subcategories.Category = categories.Id
+    left join (
+      select Id,Alias
+      from writers
+      group by Id) wt on wt.Id = drafts.Author
+    where drafts.Category = ${id}`);
+  },
+  updateByAdmin: (id,scate,state) => {
+    return db.load(`update drafts 
+                    set State= ${state},Category = ${scate}
+                    where Id = ${id}`);
+  },
+  deleteById: id => {
+    return db.load(`delete from drafts where Id = ${id}`)
   }
 };

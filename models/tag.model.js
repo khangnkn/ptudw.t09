@@ -13,10 +13,12 @@ module.exports = {
     },
     listForAdminWC: () => {
         return db.load(`
-        select tags.*,count(drafts_tags.Id) as NofDraft
-        from tags
-        inner join drafts_tags
-        on drafts_tags.idTag = tags.Id
-        group by tags.Id`);
+        select tags.*,(select count(*) 
+        from drafts_tags 
+        where drafts_tags.idTag = tags.Id) as NofDr
+        from tags`);
+    },
+    updateName: (id,name) => {
+        return db.load(`update tags set Name='${name}' where Id = ${id}`);
     }
 }
