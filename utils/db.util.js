@@ -4,21 +4,12 @@ var createConnection = () => {
     host: "localhost",
     port: 3306,
     user: "root",
-    password: "maudoden",
-    database: "TechhubDB",
+    password: "root",
+    database: "techhub_v3",
     multipleStatements: true,
   });
 };
 
-// var createConnection = () => {
-//   return mysql.createConnection({
-//     host: "db4free.net",
-//     port: 3306,
-//     user: "techhub",
-//     password: "ptudw.t09",
-//     database: "techhub",
-//   });
-// };
 module.exports = {
   load: sql => {
     return new Promise((resolve, reject) => {

@@ -14,5 +14,12 @@ module.exports = {
     update: obj => {
         return db.update("users", obj)
     },
-    // addSub:
+
+    addSub: (id, days) => {
+        var object = {
+            Id: id,
+            Premium: days,
+        }
+        return db.insert("subcribers", object)
+    }
 }

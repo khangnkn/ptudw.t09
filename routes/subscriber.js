@@ -19,16 +19,20 @@ router.post("/signup", function (req, res, next) {
     Username: req.body.Username,
     Password: req.body.Password,
     Fullname: req.body.Fullname,
-    Email: req.body.Email, 
+    Email: req.body.Email,
   }
   console.log(object);
   user.addUser(object).then(result => {
     console.log(result);
     subscribers.singleByEmail(req.body.Email).then(data => {
-      subscribers.addSub(data[0].Id,0);
+      subscribers.addSub(data[0].Id, 0).catch(err => {
+        console.log(err);
+        next(err);
+        return;
+      })
     })
-  res.redirect('/');
-})
+    res.redirect('/');
+  })
 
 });
 

@@ -1,11 +1,13 @@
-
 <div class="container-user-wc">
     <div class="row nav-user-wc">
         <div class="col-2 d-flex  justify-content-center">
             <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#subriber" role="tab" aria-controls="v-pills-home" aria-selected="true">  Subscribers</i></a>
-                <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#writer" role="tab" aria-controls="v-pills-profile" aria-selected="false"> Writers</a>
-                <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#editor" role="tab" aria-controls="v-pills-messages" aria-selected="false"> Editors</a>
+                <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#subriber" role="tab"
+                    aria-controls="v-pills-home" aria-selected="true"> Subscribers</i></a>
+                <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#writer" role="tab"
+                    aria-controls="v-pills-profile" aria-selected="false"> Writers</a>
+                <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#editor" role="tab"
+                    aria-controls="v-pills-messages" aria-selected="false"> Editors</a>
             </div>
         </div>
         <div class="col-10 div-user">
@@ -13,7 +15,7 @@
                 <div class="tab-pane fade show active" id="subriber" role="tabpanel" aria-labelledby="v-pills-home-tab">
                     <div class="">
                         <div class="conainer-table">
-                            <span class="list-header"><i class="fas fa-user"></i> List Of Subscriber </span> 
+                            <span class="list-header"><i class="fas fa-user"></i> List Of Subscriber </span>
                             <hr>
                             {{!-- <div>
                                 <span class="list-header">Add Subscriber: </span>
@@ -23,49 +25,45 @@
                     </div>
                     <br>
                     <table id="order-listing" class="table dataTable " role="grid">
-                    <thead>
-                        <tr role="row">
-                            <th scope="sorting_asc" style="width: 10px !important;">#</th>
-                            <th scope="sorting" style="width: 30px;">UserName</th>
-                            <th scope="sorting" style="width: 30px;">Full Name</th>
-                            <th scope="sorting" style="width: 30px;">Email</th>
-                            <th scope="sorting" style="width: 35px;">Birthday</th>
-                            <th scope="sorting" style="width: 30px;">Avatar</th>
-                            <th scope="sorting" style="width: 15px;">Premium</th>
-                            <th scope="sorting" style="width: 15px;">Update</th>
-                            <th scope="sorting" style="width: 20px;">Delete</th>
-                        </tr> 
-                    </thead>
-                    <tbody>
-                        {{#each subs}}
+                        <thead>
+                            <tr role="row">
+                                <th scope="sorting_asc" style="width: 10px !important;">#</th>
+                                <th scope="sorting" style="width: 15px;">UserName</th>
+                                <th scope="sorting" style="width: 20px;">Full Name</th>
+                                <th scope="sorting" style="width: 20px;">Email</th>
+                                <th scope="sorting" style="width: 25px;">Birthday</th>
+                                <th scope="sorting" style="width: 10px;">Premium</th>
+                                <th scope="sorting" style="width: 15px;">Update</th>
+                                <th scope="sorting" style="width: 20px;">Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each subs}}
                             <tr>
                                 <form action="/admin/welcome/update-subscriber" method="POST">
-                                <input type="hidden"  value="{{this.Id}}" name="Id">
-                                <th scope="row">{{this.Id}}</th>
-                                <td>
-                                    <input type="text"  value="{{this.Username}}" disabled>
-                                </td>
-                                <td>
-                                    <input type="text" name="Fullname" value="{{this.Fullname}}">
-                                </td>
-                                <td>
-                                    <input type="text" name="Email" value="{{this.Email}}">
-                                </td>
-                                <td>
-                                    <input type="date" name="Birthday" value="{{this.Birthday}}">  
-                                </td>
-                                <td>
-                                    <input type="text" name="Avatar" value="{{this.Avatar}}">   
-                                </td>
-                                <td>
-                                    <input type="text" name="Premium" value="{{this.Premium}}" max="7" min="0">
-                                    
-                                </td>
-                                <td>
-                                    <button class="btn btn-secondary" type="submit">
-                                        <i class="fas fa-upload"></i>
-                                    </button>
-                                </td>
+                                    <input type="hidden" value="{{this.Id}}" name="Id">
+                                    <th scope="row">{{this.Id}}</th>
+                                    <td>
+                                        <input type="text" value="{{this.Username}}" disabled>
+                                    </td>
+                                    <td>
+                                        <input type="text" name="Fullname" value="{{this.Fullname}}">
+                                    </td>
+                                    <td>
+                                        <input type="text" name="Email" value="{{this.Email}}">
+                                    </td>
+                                    <td>
+                                        <input type="date" name="Birthday" value="{{this.Birthday}}">
+                                    </td>
+                                    <td>
+                                        <input type="text" name="Premium" value="{{this.Premium}}" max="7" min="0">
+
+                                    </td>
+                                    <td>
+                                        <button class="btn btn-secondary" type="submit">
+                                            <i class="fas fa-upload"></i>
+                                        </button>
+                                    </td>
                                 </form>
                                 <td>
                                     <form action="admin/welcome/delete-subscriber" method="POST">
@@ -80,9 +78,9 @@
                     </table>
                 </div>
                 <div class="tab-pane fade " id="writer" role="tabpanel" aria-labelledby="v-pills-profile-tab">
-                        <div class="">
+                    <div class="">
                         <div class="conainer-table">
-                            <span class="list-header"><i class="fas fa-user-edit"></i> List Of Writers</span> 
+                            <span class="list-header"><i class="fas fa-user-edit"></i> List Of Writers</span>
                             <hr>
                             {{!-- <div>
                                 <span class="list-header">Add New Writes: </span>
@@ -92,49 +90,49 @@
                     </div>
                     <br>
                     <table id="order-listing" class="table dataTable " role="grid">
-                    <thead>
-                        <tr role="row">
-                            <th scope="sorting_asc" style="width: 10px !important;">#</th>
-                            <th scope="sorting" style="width: 30px;">UserName</th>
-                            <th scope="sorting" style="width: 30px;">Full Name</th>
-                            <th scope="sorting" style="width: 30px;">Email</th>
-                            <th scope="sorting" style="width: 35px;">Birthday</th>
-                            <th scope="sorting" style="width: 30px;">Avatar</th>
-                            <th scope="sorting" style="width: 15px;">Alias</th>
-                            <th scope="sorting" style="width: 15px;">Update</th>
-                            <th scope="sorting" style="width: 20px;">Delete</th>
-                        </tr> 
-                    </thead>
-                    <tbody>
-                        {{#each wri}}
+                        <thead>
+                            <tr role="row">
+                                <th scope="sorting_asc" style="width: 10px !important;">#</th>
+                                <th scope="sorting">UserName</th>
+                                <th scope="sorting">Full Name</th>
+                                <th scope="sorting">Email</th>
+                                <th scope="sorting">Birthday</th>
+                                <th scope="sorting">Avatar</th>
+                                <th scope="sorting">Alias</th>
+                                <th scope="sorting">Update</th>
+                                <th scope="sorting">Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each wri}}
                             <tr>
                                 <form action="/admin/welcome/update-writer" method="POST">
-                                <input type="hidden"  value="{{this.Id}}" name="Id">
-                                <th scope="row">{{this.Id}}</th>
-                                <td>
-                                    <input type="text"  value="{{this.Username}}" disabled>
-                                </td>
-                                <td>
-                                    <input type="text" name="Fullname" value="{{this.Fullname}}">
-                                </td>
-                                <td>
-                                    <input type="text" name="Email" value="{{this.Email}}">
-                                </td>
-                                <td>
-                                    <input type="date" name="Birthday" value="{{this.Birthday}}">  
-                                </td>
-                                <td>
-                                    <input type="text" name="Avatar" value="{{this.Avatar}}">   
-                                </td>
-                                <td>
-                                    <input type="text" name="Alias" value="{{this.Alias}}" >
-                                    
-                                </td>
-                                <td>
-                                    <button class="btn btn-secondary" type="submit">
-                                        <i class="fas fa-upload"></i>
-                                    </button>
-                                </td>
+                                    <input type="hidden" value="{{this.Id}}" name="Id">
+                                    <th scope="row">{{this.Id}}</th>
+                                    <td>
+                                        <input type="text" value="{{this.Username}}" disabled>
+                                    </td>
+                                    <td>
+                                        <input type="text" name="Fullname" value="{{this.Fullname}}">
+                                    </td>
+                                    <td>
+                                        <input type="text" name="Email" value="{{this.Email}}">
+                                    </td>
+                                    <td>
+                                        <input type="date" name="Birthday" value="{{this.Birthday}}">
+                                    </td>
+                                    <td>
+                                        <input type="text" name="Avatar" value="{{this.Avatar}}">
+                                    </td>
+                                    <td>
+                                        <input type="text" name="Alias" value="{{this.Alias}}">
+
+                                    </td>
+                                    <td>
+                                        <button class="btn btn-secondary" type="submit">
+                                            <i class="fas fa-upload"></i>
+                                        </button>
+                                    </td>
                                 </form>
                                 <td>
                                     <form action="admin/welcome/delete-writer" method="POST">
@@ -149,11 +147,11 @@
                     </table>
                 </div>
                 <div class="tab-pane fade " id="editor" role="tabpanel" aria-labelledby="v-pills-messages-tab">
-                                    <div class="">
+                    <div class="">
                         <div class="conainer-table">
-                            <span class="list-header"><i class="fas fa-users-cog"></i> List Of Editors</span> 
+                            <span class="list-header"><i class="fas fa-users-cog"></i> List Of Editors</span>
                             <hr>
-                                {{!-- <div>
+                            {{!-- <div>
                                     <span class="list-header">Add New Editor: </span>
                                     <a href="#" class="btn-add btn btn-info"><i class="fas fa-plus"></i></a>
                                 </div> --}}
@@ -161,52 +159,53 @@
                     </div>
                     <br>
                     <table id="order-listing" class="table dataTable " role="grid">
-                    <thead>
-                        <tr role="row">
-                            <th scope="sorting_asc" style="width: 10px !important;">#</th>
-                            <th scope="sorting" style="width: 30px;">UserName</th>
-                            <th scope="sorting" style="width: 30px;">Full Name</th>
-                            <th scope="sorting" style="width: 30px;">Email</th>
-                            <th scope="sorting" style="width: 35px;">Birthday</th>
-                            <th scope="sorting" style="width: 30px;">Avatar</th>
-                            <th scope="sorting" style="width: 15px;">ManagedCate</th>
-                            <th scope="sorting" style="width: 15px;">Update</th>
-                            <th scope="sorting" style="width: 20px;">Delete</th>
-                        </tr> 
-                    </thead>
-                    <tbody>
-                        {{#each edi}}
+                        <thead>
+                            <tr role="row">
+                                <th scope="sorting_asc" style="width: 10px !important;">#</th>
+                                <th scope="sorting" style="width: 30px;">UserName</th>
+                                <th scope="sorting" style="width: 30px;">Full Name</th>
+                                <th scope="sorting" style="width: 30px;">Email</th>
+                                <th scope="sorting" style="width: 35px;">Birthday</th>
+                                <th scope="sorting" style="width: 30px;">Avatar</th>
+                                <th scope="sorting" style="width: 15px;">ManagedCate</th>
+                                <th scope="sorting" style="width: 15px;">Update</th>
+                                <th scope="sorting" style="width: 20px;">Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each edi}}
                             <tr>
                                 <form action="/admin/welcome/update-editor" method="POST">
-                                <input type="hidden"  value="{{this.Id}}" name="Id">
-                                <th scope="row">{{this.Id}}</th>
-                                <td>
-                                    <input type="text"  value="{{this.Username}}" disabled>
-                                </td>
-                                <td>
-                                    <input type="text" name="Fullname" value="{{this.Fullname}}">
-                                </td>
-                                <td>
-                                    <input type="text" name="Email" value="{{this.Email}}">
-                                </td>
-                                <td>
-                                    <input type="date" name="Birthday" value="{{this.Birthday}}">  
-                                </td>
-                                <td>
-                                    <input type="text" name="Avatar" value="{{this.Avatar}}">   
-                                </td>
-                                <td>
-                                    <select class="custom-select" id="inputGroupSelect01" name="ManagedCate">
-                                        {{#each ../subCate}}
-                                                <option value="{{this.Id}}" {{isSelected ../ManagedCate this.Id}}>{{this.Name}}</option>
-                                        {{/each}}
-                                    </select>
-                                </td>
-                                <td>
-                                    <button class="btn btn-secondary" type="submit">
-                                        <i class="fas fa-upload"></i>
-                                    </button>
-                                </td>
+                                    <input type="hidden" value="{{this.Id}}" name="Id">
+                                    <th scope="row">{{this.Id}}</th>
+                                    <td>
+                                        <input type="text" value="{{this.Username}}" disabled>
+                                    </td>
+                                    <td>
+                                        <input type="text" name="Fullname" value="{{this.Fullname}}">
+                                    </td>
+                                    <td>
+                                        <input type="text" name="Email" value="{{this.Email}}">
+                                    </td>
+                                    <td>
+                                        <input type="date" name="Birthday" value="{{this.Birthday}}">
+                                    </td>
+                                    <td>
+                                        <input type="text" name="Avatar" value="{{this.Avatar}}">
+                                    </td>
+                                    <td>
+                                        <select class="custom-select" id="inputGroupSelect01" name="ManagedCate">
+                                            {{#each ../subCate}}
+                                            <option value="{{this.Id}}" {{isSelected ../ManagedCate this.Id}}>
+                                                {{this.Name}}</option>
+                                            {{/each}}
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <button class="btn btn-secondary" type="submit">
+                                            <i class="fas fa-upload"></i>
+                                        </button>
+                                    </td>
                                 </form>
                                 <td>
                                     <form action="admin/welcome/delete-subscriber" method="POST">
