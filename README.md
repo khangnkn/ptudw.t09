@@ -31,6 +31,12 @@ Phát triển giao diện các trang:
   - [YouTube đã "sát hại" Internet Explorer 6 ](http://localhost:3000/article/article-3)
   - [Trải nghiệm Google Assistant tiếng Việt: Thông minh, được việc, giọng êm nhưng đôi lúc đùa hơi nhạt](http://localhost:3000/article/article-4)
 
+  ## Giai đoạn 2: Backend
+|Nhóm|Bắt đầu|Mô tả|
+|------|-----|-----|
+|**Admin**|/admin/login|Đăng nhập với tài khoản admin|
+|**Subscriber**|/subscriber/login|Đăng nhập với vai trò subscriber/writer/editor
+
 ### Kiểm tra:
 
 - Clone từ [GitHub](https://github.com/nkhang/ptudw.t09)
@@ -45,7 +51,9 @@ cd ptudw.t09
 ```bash
 npm install
 ```
-
+- Cài đặt cơ sở dữ liệu
+    - Tạo cơ sở dữ liệu bằng MySQL
+    - Import cơ sở dữ liệu sử dụng file `techhub_dump.sql`
 - Start ứng dụng:
 
 ```bash
